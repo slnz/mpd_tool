@@ -1,0 +1,38 @@
+before_install:
+- echo '--colour' > ~/.rspec
+- 'echo ''gem: --no-document'' > ~/.gemrc'
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+before_script:
+- cp .sample.env .env
+- psql -c 'create database "mpd-sl_test";' -U postgres
+- cp config/database.yml.travis config/database.yml
+- bundle exec rake db:migrate RAILS_ENV=test
+script:
+- bundle exec rake
+- bundle exec rubocop -R --fail-level error
+cache:
+- bundler
+language:
+- ruby
+notifications:
+  email:
+  - false
+rvm:
+- 2.1.2
+addons:
+  postgresql: '9.3'
+deploy:
+  provider: heroku
+  strategy: git
+  api_key:
+    secure: do1iO/YrB79aLEZp7WDU7fOwkZ09VUWEGDSE79cLkzR12Uojubh8YeGQO6Ogayqv6oTniCm7eGJy+DY++DuQjgamuG9mk3xLYgcytXimOqvfRTDMj3o1yphUVQ7RNSWxccIadYH02GrgP4kLLDDB/D7Tkkimi+N4Ec+RWCOnxrs=
+  app:
+    master: mpd-sl-staging
+    production: mpd-sl-production
+  run:
+  - rake db:migrate
+  - restart
+  - rake cleanup
+  on:
+    repo: slnz/mpd_tool
