@@ -4,7 +4,6 @@ before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 before_script:
-- cp .sample.env .env
 - psql -c 'create database "mpd-sl_test";' -U postgres
 - cp config/database.travis.yml config/database.yml
 - bundle exec rake db:migrate RAILS_ENV=test
