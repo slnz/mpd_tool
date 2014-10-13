@@ -61,6 +61,7 @@ group :test do
   gem 'timecop'
   gem 'webmock'
   gem 'fuubar'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :staging, :production do

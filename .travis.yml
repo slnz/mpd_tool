@@ -1,13 +1,18 @@
-before_install:
-- echo '--colour' > ~/.rspec
-- 'echo ''gem: --no-document'' > ~/.gemrc'
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
 env:
   global:
   - SECRET_KEY_BASE=7b73a3310b9f96f79c8fec09fac558ebe2bc863a25da4eed0fbff524c7795f228247dafdfe09dd580f8b7e8c0f634815851d1d018e45341f768e8dca6e4fb5ec
   - RAILS_ENV=test
   - RACK_ENV=test
+  - AMAZON_S3_BUCKET=slnz_bundle_cache
+  - AMAZON_ACCESS_KEY_ID=AKIAJASCGZW43RRP46TQ
+  - secure: "CU3H4jZUCTbc/ySl3R2QBLALc/p/sKOphhDoNZQ57j6jq01deF4Kb0IEZgnCsEW9W1EUrXfnDgqOjT0zNiUtJf8UUpCqS4khqiJG0G+/dHzxPQWQTLwsEJqgA0YHq8jeYunYwm9jRABdnH9XFeTqOgwhEALgOMCXTguJj98z2+I="
+before_install:
+- echo '--colour' > ~/.rspec
+- 'echo ''gem: --no-document'' > ~/.gemrc'
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+install:
+- travis_retry script/cached-bundle install --deployment --without development
 before_script:
 - psql -c 'create database "mpd-sl_test";' -U postgres
 - cp config/database.travis.yml config/database.yml
@@ -26,6 +31,9 @@ rvm:
 - 2.1.2
 addons:
   postgresql: '9.3'
+  code_climate:
+    repo_token:
+      secure: bhnsns5MbtkyeFp0L+H4QuwjiED4i65LOFriMqHVV3+ED6OKRuCrFCiGsv0UaWYDBb6ZaWIqaqjDtD3618RrrvHf13/guo9+68Uw6E6TZyL8+dJQ7RWWyzBko1Ep3JeyaeEbyBd6BChQKPRFvCZnUruAXe0yNntvT0O1AltZFEk
 deploy:
   provider: heroku
   strategy: git
@@ -37,6 +45,5 @@ deploy:
   run:
   - rake db:migrate
   - restart
-  - rake cleanup
   on:
     repo: slnz/mpd_tool
