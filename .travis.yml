@@ -26,7 +26,7 @@ deploy:
   provider: heroku
   strategy: git
   api_key:
-    secure: do1iO/YrB79aLEZp7WDU7fOwkZ09VUWEGDSE79cLkzR12Uojubh8YeGQO6Ogayqv6oTniCm7eGJy+DY++DuQjgamuG9mk3xLYgcytXimOqvfRTDMj3o1yphUVQ7RNSWxccIadYH02GrgP4kLLDDB/D7Tkkimi+N4Ec+RWCOnxrs=
+    secure: wotvZOHJIyxRpKwXmC6Ox++pGQWFT0dxA3t+QwxGkjslTdLyHOVra5Cy8JVyZmyib1pBk4pSS3zk4kpZy79eH8oAxR/+BAiPeUvhGQOuXggRenA2hfthAqcrfJnIHrYXJSMX65UaiMXaDixcKQ2IStNiBQC6HXsvRD+UBOFagbc=
   app:
     master: mpd-sl-staging
     production: mpd-sl-production
