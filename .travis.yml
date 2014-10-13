@@ -3,6 +3,11 @@ before_install:
 - 'echo ''gem: --no-document'' > ~/.gemrc'
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
+env:
+  global:
+  - SECRET_KEY_BASE=7b73a3310b9f96f79c8fec09fac558ebe2bc863a25da4eed0fbff524c7795f228247dafdfe09dd580f8b7e8c0f634815851d1d018e45341f768e8dca6e4fb5ec
+  - RAILS_ENV=test
+  - RACK_ENV=test
 before_script:
 - psql -c 'create database "mpd-sl_test";' -U postgres
 - cp config/database.travis.yml config/database.yml
