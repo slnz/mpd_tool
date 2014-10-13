@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: mpd-sl_test
+  username: postgres
