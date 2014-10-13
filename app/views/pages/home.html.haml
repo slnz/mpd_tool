@@ -1,0 +1,11 @@
+.hero
+  .hero-inner
+    .hero-logo
+      = fa_stacked_icon 'users inverse', base: 'square'
+    .hero-copy
+      %h1 Ministry Partner Development Tool
+      %p This tool helps you develop great Ministry Partners and get to Summer Project on time.
+    %a.btn{href: user_omniauth_authorize_path(:facebook) }
+      = fa_icon 'facebook'
+      &nbsp;
+      Sign In with Facebook

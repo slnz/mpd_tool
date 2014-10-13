@@ -1,0 +1,19 @@
+%header.navigation
+  .navigation-wrapper
+    %a.logo{href: "javascript:void(0)"}
+      = fa_stacked_icon 'users inverse', base: 'square'
+    %a#js-mobile-menu.navigation-menu-button{:href => ""} MENU
+    .nav
+      %ul#navigation-menu
+        %li.nav-link
+          %a{href: "javascript:void(0)"} 1. Namestorm
+        %li.nav-link
+          %a{href: "javascript:void(0)"} 2. Write & Mail
+        %li.nav-link
+          %a{href: "javascript:void(0)"} 3. Call
+        %li.nav-link
+          %a{href: "javascript:void(0)"} 4. Thank
+    .navigation-tools
+      %a.sign-out{href: destroy_session_path}
+        = fa_icon 'sign-out'
+        Sign Out

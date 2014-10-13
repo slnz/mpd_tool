@@ -3,8 +3,12 @@ before_install:
 - 'echo ''gem: --no-document'' > ~/.gemrc'
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
+env:
+  global:
+  - SECRET_KEY_BASE=7b73a3310b9f96f79c8fec09fac558ebe2bc863a25da4eed0fbff524c7795f228247dafdfe09dd580f8b7e8c0f634815851d1d018e45341f768e8dca6e4fb5ec
+  - RAILS_ENV=test
+  - RACK_ENV=test
 before_script:
-- cp .sample.env .env
 - psql -c 'create database "mpd-sl_test";' -U postgres
 - cp config/database.travis.yml config/database.yml
 - bundle exec rake db:migrate RAILS_ENV=test
@@ -26,7 +30,7 @@ deploy:
   provider: heroku
   strategy: git
   api_key:
-    secure: do1iO/YrB79aLEZp7WDU7fOwkZ09VUWEGDSE79cLkzR12Uojubh8YeGQO6Ogayqv6oTniCm7eGJy+DY++DuQjgamuG9mk3xLYgcytXimOqvfRTDMj3o1yphUVQ7RNSWxccIadYH02GrgP4kLLDDB/D7Tkkimi+N4Ec+RWCOnxrs=
+    secure: wotvZOHJIyxRpKwXmC6Ox++pGQWFT0dxA3t+QwxGkjslTdLyHOVra5Cy8JVyZmyib1pBk4pSS3zk4kpZy79eH8oAxR/+BAiPeUvhGQOuXggRenA2hfthAqcrfJnIHrYXJSMX65UaiMXaDixcKQ2IStNiBQC6HXsvRD+UBOFagbc=
   app:
     master: mpd-sl-staging
     production: mpd-sl-production
