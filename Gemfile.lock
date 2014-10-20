@@ -1,3 +1,21 @@
+GIT
+  remote: git://github.com/activeadmin/activeadmin.git
+  revision: aee5d5bd230ddad589d3e2c3d837b0ac3dfd018d
+  specs:
+    activeadmin (1.0.0.pre)
+      arbre (~> 1.0, >= 1.0.2)
+      bourbon
+      coffee-rails
+      formtastic (~> 3.0)
+      formtastic_i18n
+      inherited_resources (~> 1.4.1)
+      jquery-rails
+      jquery-ui-rails (~> 5.0)
+      kaminari (~> 0.15)
+      rails (>= 3.2, < 4.2)
+      ransack (~> 1.3)
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -14,6 +32,10 @@ GEM
       activesupport (= 4.1.6)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+    active_admin_import (2.1.1)
+      activeadmin (>= 0.6.0)
+      activerecord-import (~> 0.4, >= 0.4.1)
+      rubyzip (~> 1.0, >= 1.0.0)
     activemodel (4.1.6)
       activesupport (= 4.1.6)
       builder (~> 3.1)
@@ -21,6 +43,8 @@ GEM
       activemodel (= 4.1.6)
       activesupport (= 4.1.6)
       arel (~> 5.0.0)
+    activerecord-import (0.6.0)
+      activerecord (>= 3.0)
     activesupport (4.1.6)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
@@ -31,6 +55,8 @@ GEM
     airbrake (4.1.0)
       builder
       multi_json
+    arbre (1.0.2)
+      activesupport (>= 3.0.0)
     arel (5.0.1.20140414130214)
     ast (2.0.0)
     astrolabe (1.3.0)
@@ -44,6 +70,8 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     bourbon (3.2.3)
       sass (~> 3.2)
       thor
@@ -52,7 +80,7 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
-    capybara (2.4.3)
+    capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
@@ -66,7 +94,7 @@ GEM
     codeclimate-test-reporter (0.4.1)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
-    coffee-rails (4.0.1)
+    coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
     coffee-script (2.3.0)
@@ -93,9 +121,9 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    dotenv (1.0.1)
-    dotenv-rails (1.0.1)
-      dotenv (= 1.0.1)
+    dotenv (1.0.2)
+    dotenv-rails (1.0.2)
+      dotenv (= 1.0.2)
     easy_translate (0.5.0)
       json
       thread
@@ -105,21 +133,26 @@ GEM
     erubis (2.7.0)
     ethon (0.7.1)
       ffi (>= 1.3.0)
-    execjs (2.2.1)
-    factory_girl (4.4.0)
+    execjs (2.2.2)
+    factory_girl (4.5.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.4.1)
-      factory_girl (~> 4.4.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.9.1)
       faraday (>= 0.7.4, < 0.10)
-    ffi (1.9.5)
+    ffi (1.9.6)
     flutie (2.0.0)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
     formatador (0.2.5)
+    formtastic (3.0.0)
+      actionpack (>= 3.2.13)
+    formtastic_i18n (0.1.1)
     formulaic (0.1.2)
       activesupport
       capybara
@@ -159,6 +192,9 @@ GEM
       spring
     haml (4.0.5)
       tilt
+    has_scope (0.6.0.rc)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
     hashie (3.3.1)
     high_voltage (2.2.1)
     highline (1.6.21)
@@ -174,13 +210,29 @@ GEM
       slop (>= 3.5.0)
       term-ansicolor
       terminal-table
+    inherited_resources (1.4.1)
+      has_scope (~> 0.6.0.rc)
+      responders (~> 1.0.0.rc)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.2)
+      railties (>= 3.2.16)
     json (1.8.1)
     jwt (1.0.0)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    kaminari-bootstrap (3.0.1)
+      kaminari (>= 0.13.0)
+      rails
     launchy (2.4.2)
       addressable (~> 2.3)
+    letter_opener (1.2.0)
+      launchy (~> 2.2)
+    letter_opener_web (1.2.3)
+      letter_opener (~> 1.0)
+      rails (>= 3.2)
     listen (2.7.11)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -189,17 +241,15 @@ GEM
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
-    mime-types (2.4.1)
+    mime-types (2.4.2)
     mini_portile (0.6.0)
     minitest (5.4.2)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    neat (1.5.1)
-      bourbon (>= 3.1)
-      sass (~> 3.2.19)
     net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
+    netrc (0.8.0)
     newrelic_rpm (3.9.5.251)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
@@ -225,6 +275,8 @@ GEM
       ast (>= 1.1, < 3.0)
       slop (~> 3.4, >= 3.4.5)
     pg (0.17.1)
+    polyamorous (1.1.0)
+      activerecord (>= 3.0)
     powerpack (0.0.9)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -251,7 +303,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.6)
       sprockets-rails (~> 2.0)
-    rails_12factor (0.0.2)
+    rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.2)
@@ -263,14 +315,22 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.0.0)
     rake (10.3.2)
+    ransack (1.4.1)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.1)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     recipient_interceptor (0.1.2)
       mail
-    refills (0.0.2)
-    responders (1.1.1)
-      railties (>= 3.2, < 4.2)
+    responders (1.0.0)
+      railties (>= 3.2, < 5)
+    rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
@@ -298,6 +358,7 @@ GEM
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.4)
     ruby-progressbar (1.6.0)
+    rubyzip (1.1.6)
     safe_yaml (1.0.4)
     sass (3.2.19)
     sass-rails (4.0.3)
@@ -360,6 +421,7 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    vcr (2.9.3)
     warden (1.2.3)
       rack (>= 1.0)
     webmock (1.19.0)
@@ -373,11 +435,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_admin_import (= 2.1.1)
+  activeadmin!
   airbrake
   awesome_print
   better_errors
   binding_of_caller
-  bourbon (~> 3.2.1)
+  bootstrap-sass (~> 3.2.0)
   byebug
   capybara-webkit (>= 1.2.0)
   codeclimate-test-reporter
@@ -388,6 +452,7 @@ DEPENDENCIES
   dotenv-rails
   email_validator
   factory_girl_rails
+  faker
   flutie
   font-awesome-rails
   formulaic
@@ -400,11 +465,15 @@ DEPENDENCIES
   guard-rubocop
   guard-spring
   haml
+  has_scope
   high_voltage
   i18n-tasks
   jquery-rails
+  kaminari
+  kaminari-bootstrap
   launchy
-  neat (~> 1.5.1)
+  letter_opener
+  letter_opener_web
   newrelic_rpm (>= 3.7.3)
   normalize-rails (~> 3.0.0)
   omniauth-facebook
@@ -414,8 +483,9 @@ DEPENDENCIES
   rack-timeout
   rails (= 4.1.6)
   rails_12factor
+  ransack
   recipient_interceptor
-  refills (~> 0.0.2)
+  rest-client
   rspec-rails (~> 3.0.0)
   rubocop
   sass-rails (~> 4.0.3)
@@ -427,4 +497,5 @@ DEPENDENCIES
   title
   travis
   uglifier
+  vcr
   webmock
