@@ -11,4 +11,7 @@ class Donation < ActiveRecord::Base
   validates :project, presence: true
 
   belongs_to :project
+  belongs_to :contact
+
+  delegate :name, to: :contact
 end
