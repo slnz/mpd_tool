@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 gem 'airbrake'
-gem 'bourbon', '~> 3.2.1'
-gem 'neat', '~> 1.5.1'
-gem 'refills', '~> 0.0.2'
 gem 'coffee-rails'
 gem 'delayed_job_active_record'
 gem 'email_validator'
@@ -19,6 +16,7 @@ gem 'rack-timeout'
 gem 'rails', '4.1.6'
 gem 'recipient_interceptor'
 gem 'sass-rails', '~> 4.0.3'
+gem 'bootstrap-sass', '~> 3.2.0'
 gem 'simple_form'
 gem 'title'
 gem 'uglifier'
@@ -27,6 +25,13 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'haml'
 gem 'font-awesome-rails'
+gem 'rest-client'
+gem 'activeadmin', github: 'activeadmin'
+gem 'active_admin_import' , '2.1.1'
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+gem 'ransack'
+gem 'has_scope'
 
 group :development do
   gem 'spring'
@@ -41,6 +46,8 @@ group :development do
   gem 'travis'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'letter_opener'
+  gem 'letter_opener_web'
 end
 
 group :development, :test do
@@ -59,9 +66,11 @@ group :test do
   gem 'formulaic'
   gem 'launchy'
   gem 'shoulda-matchers', require: false
-  gem 'timecop'
+  gem 'vcr'
   gem 'webmock'
+  gem 'timecop'
   gem 'fuubar'
+  gem 'faker'
   gem 'codeclimate-test-reporter', require: nil
 end
 

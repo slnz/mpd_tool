@@ -1,10 +1,10 @@
 @charset 'utf-8';
 
 @import 'normalize-rails';
-@import 'bourbon';
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'lib/bootstrap-social';
 @import 'font-awesome';
-@import 'base/grid-settings';
-@import 'neat';
-@import 'base/base';
 
 @import 'style';
+@import 'users';

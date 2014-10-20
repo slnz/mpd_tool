@@ -38,5 +38,10 @@ Rails.application.configure do
   config.action_mailer.default_url_options =
     { host: 'dev.mpd.studentlife.org.nz:5000' }
 
+  config.action_controller.asset_host = 'http://dev.mpd.studentlife.org.nz:5000'
+  config.action_mailer.asset_host = config.action_controller.asset_host
+
+  config.action_mailer.delivery_method = :letter_opener
+
   BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
 end
