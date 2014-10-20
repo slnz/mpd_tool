@@ -13,7 +13,7 @@ class DonationsController < ApplicationController
 
   def load_donations
     @q ||= apply_scopes(donation_scope).search(params[:q])
-    @donations ||= @q.result(distinct: true).page(params[:page])
+    @donations ||= @q.result.includes(:contact).page(params[:page])
   end
 
   def load_donation

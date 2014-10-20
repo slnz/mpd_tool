@@ -37,12 +37,18 @@ class Donation
     def self.create_donation(data, project)
       Donation.where(global_id: data['DONATION_ID']).first_or_create(
         project: project,
-        contact_id: data['PEOPLE_ID'],
+        contact: contact(data),
         designation_id: data['DESIGNATION'],
         amount: data['TENDERED_AMOUNT'],
         display_date: Date.strptime(data['DISPLAY_DATE'], '%m/%d/%Y'),
         payment_method: data['PAYMENT_METHOD']
       )
+    end
+
+    def self.contact(data)
+      Contact.where(code: data['PEOPLE_ID'],
+                    designation_code: data['DESIGNATION'])
+             .first_or_create(name: data['ACCT_NAME'])
     end
   end
 end

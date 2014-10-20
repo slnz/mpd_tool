@@ -1,21 +1,27 @@
-
 .container
   .intro-text
     %h1 My Donations
     - current_user.projects.uniq.each do |project|
       %a{href: donations_path(project: project)}= project.title
+    %br/
+    %br/
+    = search_form_for @q, class: 'form-horizontal' do |f|
+      .input-group
+        = f.search_field :contact_name_cont, class: 'form-control', placeholder: 'Search by Name'
+        %span.input-group-btn
+          = f.button "#{fa_icon 'search'}".html_safe, class: 'btn btn-primary'
   %table.table.table-striped
     %thead
       %tr
         %th= sort_link(@q, :display_date, 'Date', default_order: :desc)
-        %th Name
+        %th= sort_link(@q, 'contact.name', 'Name')
         %th= sort_link(@q, :payment_method)
         %th= sort_link(@q, :amount)
     %tbody
       - @donations.each do |donation|
         %tr
           %td= donation.display_date.strftime('%d/%m/%y')
-          %td= donation.project.title
+          %td= donation.name
           %td= donation.payment_method
           %td= number_to_currency donation.amount
   .text-center

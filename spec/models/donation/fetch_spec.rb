@@ -26,7 +26,8 @@ RSpec.describe Donation::Fetch, type: :model do
     let(:data) do
       {
         'DONATION_ID' => donation[:global_id],
-        'PEOPLE_ID' => donation[:contact_id],
+        'PEOPLE_ID' => 3423,
+        'ACCT_NAME' => Faker::Name.name,
         'DESIGNATION' => donation[:designation_id],
         'TENDERED_AMOUNT' => donation[:amount],
         'DISPLAY_DATE' => donation[:display_date].strftime('%m/%d/%Y'),
@@ -41,6 +42,34 @@ RSpec.describe Donation::Fetch, type: :model do
         change { Donation.count }
       )
     end
+    it 'creates contact' do
+      expect { Donation::Fetch.create_donation data, create(:project) }.to(
+        change { Contact.count }.from(0).to(1)
+      )
+      expect { Donation::Fetch.create_donation data, create(:project) }.not_to(
+        change { Contact.count }
+      )
+    end
+  end
+
+  describe 'self#contact' do
+    let(:donation) { attributes_for(:donation) }
+    let(:data) do
+      {
+        'PEOPLE_ID' => donation[:contact_id],
+        'DESIGNATION' => donation[:designation_id],
+        'ACCT_NAME' => Faker::Name.name
+      }
+    end
+    it 'creates contact' do
+      expect { Donation::Fetch.contact data }.to(
+        change { Contact.count }.from(0).to(1)
+      )
+      expect { Donation::Fetch.contact data }.not_to(
+        change { Contact.count }
+      )
+    end
+
   end
 
   after do
