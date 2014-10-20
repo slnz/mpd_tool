@@ -29,6 +29,10 @@
           %td= donation.name
           %td= donation.payment_method
           %td= number_to_currency donation.amount
+    %tfoot
+      %tr
+        %td.text-right{colspan: 3} Total
+        %th= number_to_currency @donations.sum(:amount)
   .text-center
     = paginate @donations
   %p.text-muted
