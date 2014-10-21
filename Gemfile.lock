@@ -476,7 +476,7 @@ DEPENDENCIES
   launchy
   letter_opener
   letter_opener_web
-  newrelic_rpm (>= 3.7.3)
+  newrelic_rpm
   normalize-rails (~> 3.0.0)
   omniauth-facebook
   pg
