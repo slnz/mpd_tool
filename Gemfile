@@ -78,4 +78,5 @@ group :staging, :production do
   gem 'rails_12factor'
   gem 'airbrake'
   gem 'newrelic_rpm'
+  gem 'intercom-rails', '~> 0.2.26'
 end
