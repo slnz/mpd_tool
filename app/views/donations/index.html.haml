@@ -1,7 +1,8 @@
 .alert.alert-info
   .container
     Donations last processed on
-    = Donation.first.display_date.strftime('%A, %-d %b %Y')
+    - if Donation.first
+      = Donation.first.display_date.strftime('%A, %-d %b %Y')
 .container
   .intro-text
     %h1 My Donations
