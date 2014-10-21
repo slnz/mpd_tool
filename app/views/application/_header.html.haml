@@ -33,3 +33,7 @@
           %a.btn.btn-primary{href: destroy_session_path}
             = fa_icon 'sign-out'
             Sign Out
+      %ul.nav.navbar-nav.navbar-right
+        - if current_user.admin?
+          %li
+            %a{href: admin_root_path} Admin
