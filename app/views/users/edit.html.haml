@@ -4,7 +4,7 @@
       .intro-text
         %h1= "Hey #{@user.first_name},"
         %h4 Welcome to our Ministry Partner Development Tool. To get started enter your Activation Code.
-      %p You Activation Code should have come in your email. Didn't get an email? Contact the person coaching you through the MPD process.
+      %p Your Activation Code should have come in your email. Didn't get an email? Contact the person coaching you through the MPD process.
       = simple_form_for(@user, html: { class: 'form-horizontal' }) do |f|
         = f.input :activation_code
         = f.button :submit, class: 'btn btn-primary', value: 'Complete Sign Up'
