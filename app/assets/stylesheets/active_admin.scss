@@ -1,2 +1,35 @@
 @import 'active_admin/mixins';
 @import 'active_admin/base';
+
+$skinActiveColor: #b60c25;
+$skinHeaderBck: #222222;
+$panelHeaderBck: #222222;
+$skinLogo: image-url('logo.png') no-repeat 0 60% / contain;
+
+@import 'active_skin';
+
+#title_bar .action_items span.action_item > a, #title_bar .action_items span.action_item > .dropdown_menu > a {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  background: $skinActiveColor;
+  color: white;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  text-shadow: none;
+  border: none;
+  padding: 17px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+#header {
+  margin-left: 10px;
+  box-shadow: none;
+  text-transform: uppercase;
+}
+
+#header #utility_nav li#logout a {
+  text-decoration: none;
+}
