@@ -30,4 +30,8 @@ class User < ActiveRecord::Base
       Designation.find_by(activation_code: activation_code.upcase)
     super activation_code.upcase
   end
+
+  def name
+    "#{first_name} #{last_name}".strip
+  end
 end
