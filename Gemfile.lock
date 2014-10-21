@@ -36,6 +36,7 @@ GEM
       activeadmin (>= 0.6.0)
       activerecord-import (~> 0.4, >= 0.4.1)
       rubyzip (~> 1.0, >= 1.0.0)
+    active_skin (0.0.8)
     activemodel (4.1.6)
       activesupport (= 4.1.6)
       builder (~> 3.1)
@@ -436,6 +437,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_admin_import (= 2.1.1)
+  active_skin
   activeadmin!
   airbrake
   awesome_print
