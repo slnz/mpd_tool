@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'airbrake'
 gem 'coffee-rails'
 gem 'delayed_job_active_record'
 gem 'email_validator'
@@ -77,5 +76,6 @@ end
 
 group :staging, :production do
   gem 'rails_12factor'
-  gem 'newrelic_rpm', '>= 3.7.3'
+  gem 'airbrake'
+  gem 'newrelic_rpm'
 end
