@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: aee5d5bd230ddad589d3e2c3d837b0ac3dfd018d
+  revision: 46f94a16e430a2ff476f71ec19281df36dc85b5e
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -214,6 +214,8 @@ GEM
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
+    intercom-rails (0.2.26)
+      activesupport (> 3.0)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -251,7 +253,7 @@ GEM
     net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
     netrc (0.8.0)
-    newrelic_rpm (3.9.5.251)
+    newrelic_rpm (3.9.6.257)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     normalize-rails (3.0.1)
@@ -293,7 +295,7 @@ GEM
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rack-timeout (0.0.4)
+    rack-timeout (0.1.0)
     rails (4.1.6)
       actionmailer (= 4.1.6)
       actionpack (= 4.1.6)
@@ -470,6 +472,7 @@ DEPENDENCIES
   has_scope
   high_voltage
   i18n-tasks
+  intercom-rails (~> 0.2.26)
   jquery-rails
   kaminari
   kaminari-bootstrap

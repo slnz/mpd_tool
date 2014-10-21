@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'airbrake'
 gem 'coffee-rails'
 gem 'delayed_job_active_record'
 gem 'email_validator'
@@ -79,4 +78,5 @@ group :staging, :production do
   gem 'rails_12factor'
   gem 'airbrake'
   gem 'newrelic_rpm'
+  gem 'intercom-rails', '~> 0.2.26'
 end
