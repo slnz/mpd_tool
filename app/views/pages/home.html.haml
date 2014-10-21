@@ -1,0 +1,12 @@
+.jumbotron
+  .container.text-center
+    .logo= fa_stacked_icon 'users inverse', base: 'square'
+    %h2 My MPD
+    %p.copy
+      This tool helps you develop great Ministry Partners
+      %br
+      and get to Summer Project on time.
+    %a.btn.btn-social.btn-facebook{href: user_omniauth_authorize_path(:facebook) }
+      = fa_icon 'facebook'
+      &nbsp;
+      Sign In with Facebook

@@ -16,4 +16,4 @@ en:
         "%B %d"
 
   titles:
-    application: <%= app_name.humanize %>
+    application: Student Life - MPD Tool
