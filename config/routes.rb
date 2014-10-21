@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   end
 
   root to: 'high_voltage/pages#show', id: 'home'
+  get '*path', to: redirect('/')
 end

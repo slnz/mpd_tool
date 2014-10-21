@@ -2,6 +2,11 @@ class DonationsController < ApplicationController
   has_scope :project
 
   def index
+    unless current_user.designation
+      redirect_to edit_user_path
+      flash[:error] = 'You need to activate your account'
+      return
+    end
     load_donations
   end
 
