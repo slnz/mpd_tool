@@ -10,7 +10,7 @@ ActiveAdmin.register Donation do
         link_to donation.designation_id,
                 admin_designation_path(des)
       rescue
-        ''
+        designation_id
       end
     end
     column :project
@@ -18,11 +18,6 @@ ActiveAdmin.register Donation do
     column :amount
     actions
   end
-
-  filter :name
-  filter :designation
-  filter :project
-  filter :display_date
 
   action_item do
     link_to 'Fetch Donations', fetch_admin_donations_path
