@@ -10,4 +10,5 @@ RSpec.describe Donation, type: :model do
   it { is_expected.to validate_presence_of(:project) }
   it { is_expected.to have_db_column(:payment_method) }
   it { is_expected.to belong_to(:project) }
+  it { is_expected.to belong_to(:contact) }
 end
