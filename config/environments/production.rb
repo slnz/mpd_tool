@@ -82,7 +82,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'mpd.studentlife.org.nz' }
 
-  config.action_controller.asset_host = 'http://mpd.studentlife.org.nz'
+  config.action_controller.asset_host = '//mpd.studentlife.org.nz'
   config.action_mailer.asset_host = config.action_controller.asset_host
 
 
