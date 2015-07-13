@@ -2,9 +2,9 @@ ActiveAdmin.register Designation do
   active_admin_import(
     validate: true,
     template_object: ActiveAdminImport::Model.new(
-        hint: '<strong>Headers</strong><br>'\
-              'email, first_name, last_name, designation_code',
-        csv_headers: %w(email first_name last_name designation_code)
+      hint: '<strong>Headers</strong><br>'\
+            'email, first_name, last_name, designation_code',
+      csv_headers: %w(email first_name last_name designation_code)
     ),
     back: { action: :index },
     after_import: proc do

@@ -21,7 +21,7 @@ class Designation < ActiveRecord::Base
   def generate_activation_code
     loop do
       self.activation_code = SecureRandom.hex.upcase[0, 5]
-      break unless Designation.where(activation_code: activation_code).first
+      break unless Designation.find_by(activation_code: activation_code)
     end
   end
 end

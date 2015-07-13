@@ -31,7 +31,7 @@ class Donation
 
     def self.project(profile)
       Project.where(code: profile['PROFILE_CODE'])
-             .first_or_create(title: profile['PROFILE_DESCRIPTION'])
+        .first_or_create(title: profile['PROFILE_DESCRIPTION'])
     end
 
     def self.create_donation(data, project)
@@ -48,7 +48,7 @@ class Donation
     def self.contact(data)
       Contact.where(code: data['PEOPLE_ID'],
                     designation_code: data['DESIGNATION'])
-             .first_or_create(name: data['ACCT_NAME'])
+        .first_or_create(name: data['ACCT_NAME'])
     end
   end
 end

@@ -69,7 +69,6 @@ RSpec.describe Donation::Fetch, type: :model do
         change { Contact.count }
       )
     end
-
   end
 
   after do

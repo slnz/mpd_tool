@@ -3,5 +3,4 @@ FactoryGirl.define do
     title 'MyString'
     code 1
   end
-
 end

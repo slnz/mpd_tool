@@ -10,7 +10,7 @@ ActiveAdmin.register Donation do
         link_to donation.designation_id,
                 admin_designation_path(des)
       rescue
-        designation_id
+        donation.designation_id
       end
     end
     column :project
