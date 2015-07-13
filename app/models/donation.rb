@@ -2,7 +2,7 @@ class Donation < ActiveRecord::Base
   paginates_per 50
   default_scope do
     order('display_date desc')
-      .where('display_date > ?', Time.now.beginning_of_year)
+      .where('display_date > ?', Time.zone.now.beginning_of_year)
   end
   scope :project, -> project { where(project: project) }
   validates :global_id, presence: true, uniqueness: true

@@ -5,8 +5,8 @@ class Donation
       get(action: 'profiles').each do |profile|
         project = project(profile)
         get(profile: profile['PROFILE_CODE'],
-            datefrom: (Time.now - time_ago).strftime('%m/%d/%y'),
-            dateto: Time.now.strftime('%m/%d/%y'),
+            datefrom: (Time.zone.now - time_ago).strftime('%m/%d/%y'),
+            dateto: Time.zone.now.strftime('%m/%d/%y'),
             action: 'gifts').each do |row|
           create_donation(row, project)
         end

@@ -6,7 +6,7 @@ FactoryGirl.define do
     contact_id 1
     designation_id 1
     payment_method 'MyString'
-    display_date Time.now
+    display_date Time.zone.now
     amount '9.99'
   end
 end

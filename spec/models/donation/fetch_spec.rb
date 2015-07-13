@@ -4,7 +4,7 @@ RSpec.describe Donation::Fetch, type: :model do
   before do
     ENV['DATASERVE_USERNAME'] = 'projects@example.com'
     ENV['DATASERVE_PASSWORD'] = 'example_password'
-    Timecop.freeze(Time.parse('Oct 14 2014'))
+    Timecop.freeze(Time.zone.parse('Oct 14 2014'))
     VCR.insert_cassette 'models/donation/fetch'
   end
 
