@@ -7,6 +7,7 @@ class Designation < ActiveRecord::Base
   before_validation :generate_activation_code, on: :create
   after_create :send_activation_code
   belongs_to :user
+  belongs_to :campus
   has_many :donations, primary_key: :designation_code
 
   def send_activation_code
@@ -14,6 +15,14 @@ class Designation < ActiveRecord::Base
     DesignationMailer.send_activation_code(self).deliver
     self.email_sent = true
     save
+  end
+
+  def amount_raised
+    donations.sum(:amount)
+  end
+
+  def name
+    "#{first_name} #{last_name}".strip
   end
 
   protected

@@ -1,4 +1,6 @@
 ActiveAdmin.register Designation do
+  permit_params :email, :first_name, :last_name, :designation_code, :campus_id
+
   active_admin_import(
     validate: true,
     template_object: ActiveAdminImport::Model.new(
@@ -15,10 +17,10 @@ ActiveAdmin.register Designation do
   index do
     selectable_column
     id_column
-    column :email
-    column :first_name
-    column :last_name
     column :designation_code
+    column :name
+    column(:amount_raised) { |d| number_to_currency d.amount_raised }
+    column :campus
     actions
   end
 
@@ -26,6 +28,7 @@ ActiveAdmin.register Designation do
   filter :first_name
   filter :last_name
   filter :designation_code
+  filter :campus
 
   form do |f|
     f.inputs do
@@ -33,16 +36,8 @@ ActiveAdmin.register Designation do
       f.input :first_name
       f.input :last_name
       f.input :designation_code
+      f.input :campus
     end
     f.actions
-  end
-
-  controller do
-    def permitted_params
-      params.permit(
-        :utf8, :_method, :authenticity_token, :commit, :id,
-        designation: [:email, :first_name, :last_name, :designation_code]
-      )
-    end
   end
 end
