@@ -29,10 +29,11 @@
           = number_to_currency @user.designation.amount_raised
           of
           = number_to_currency @user.designation.goal
-      %h2
-        What is
-        ="#{@user.designation.project.title}?"
-      = simple_format @user.designation.project.description_with_name(@user.first_name)
+      - unless @user.designation.project.description.blank?
+        %h2
+          What is
+          ="#{@user.designation.project.title}?"
+        = simple_format @user.designation.project.description_with_name(@user.first_name)
       .going
         = "#{pluralize @user.designation.project.designations.count - 1, 'other person'} going to #{@user.designation.project.title}"
         .avatars

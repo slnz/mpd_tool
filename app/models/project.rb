@@ -6,6 +6,6 @@ class Project < ActiveRecord::Base
   has_many :users, through: :designations
 
   def description_with_name(name)
-    description.gsub! '%{name}', name
+    description.try(:gsub!, '%{name}', name) || ''
   end
 end
