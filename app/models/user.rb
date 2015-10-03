@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_permalink :name
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   devise :omniauthable, omniauth_providers: [:facebook]
 
   validates :uid, presence: true

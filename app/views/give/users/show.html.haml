@@ -19,7 +19,7 @@
         = "#{pluralize @user.designation.project.designations.count, 'person'} going to #{@user.designation.project.title.downcase}"
         .avatars
           - @user.designation.project.users.order("RANDOM()").limit(5).each do |user|
-            %a{href: give_user_path(id: user.permalink)}
+            %a{href: give_user_path(id: user.slug)}
               %img{src: user.image}
       %h2
         About

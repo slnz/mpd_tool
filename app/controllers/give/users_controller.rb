@@ -8,11 +8,11 @@ module Give
     protected
 
     def load_user
-      @user ||= user_scope.find_by(permalink: params[:id]) || fail(ActiveRecord::RecordNotFound)
+      @user ||= user_scope.find(params[:id]) || fail(ActiveRecord::RecordNotFound)
     end
 
     def user_scope
-      User
+      User.friendly
     end
   end
 end

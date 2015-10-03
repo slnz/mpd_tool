@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_db_column(:designation_id) }
   it { is_expected.to have_db_column(:activation_code) }
   it { is_expected.to have_db_column(:admin) }
-  it { is_expected.to have_db_column(:permalink) }
+  it { is_expected.to have_db_column(:slug) }
   it { is_expected.to validate_presence_of(:uid) }
   it { is_expected.to validate_presence_of(:provider) }
   it { is_expected.to validate_presence_of(:email) }
