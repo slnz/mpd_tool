@@ -138,7 +138,6 @@ footer {
         line-height: normal;
         font-weight: 700;
         color: #b3b5b9;
-        text-transform: lowercase;
       }
       .project {
         font-size: 34px;
@@ -187,9 +186,9 @@ footer {
         .avatars {
           margin-top: 2px;
           img {
-            margin-right: 2px;
             width: 32px;
             height: 32px;
+            border-radius: 5px;
           }
         }
       }
