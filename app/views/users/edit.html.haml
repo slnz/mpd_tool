@@ -2,9 +2,12 @@
   .row
     .col-md-6.col-md-offset-3
       .intro-text
-        %h1= "Hey #{@user.first_name},"
-        %h4 Welcome to our Ministry Partner Development Tool. To get started enter your Activation Code.
-      %p Your Activation Code should have come in your email. Didn't get an email? Contact the person coaching you through the MPD process.
-      = simple_form_for(@user, html: { class: 'form-horizontal' }) do |f|
-        = f.input :activation_code
-        = f.button :submit, class: 'btn btn-primary', value: 'Complete Sign Up'
+        %h4 My Profile
+      %p
+        Your personal giving page can be found at:
+        = link_to current_user.give_url, current_user.give_url, target: :blank
+      %p Update your profile that shows up on your personal giving page. Try writing a short 200-word story on why you want to go!
+      = simple_form_for(@user, url: user_path, html: { class: 'form-horizontal' }) do |f|
+        = f.input :description, input_html: { rows: 15 }, label: 'Why do you want to go on a Summer Project?'
+        = f.button :submit, class: 'btn btn-primary', value: 'Update'
+      %br

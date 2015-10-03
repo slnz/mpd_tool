@@ -6,6 +6,7 @@
     %meta{:content => 'initial-scale=1', :name => 'viewport'}/
     %title= title
     = stylesheet_link_tag :application, media: 'all'
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Lato:400,900,700'
     = csrf_meta_tags
   %body{:class => body_class}
     = render 'header' if user_signed_in?

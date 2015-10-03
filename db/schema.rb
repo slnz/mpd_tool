@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003032644) do
+ActiveRecord::Schema.define(version: 20151003045847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,11 +91,12 @@ ActiveRecord::Schema.define(version: 20151003032644) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title",      limit: 255
+    t.string   "title",       limit: 255
     t.integer  "code"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "goal"
+    t.text     "description"
   end
 
   create_table "users", force: :cascade do |t|
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 20151003032644) do
     t.string   "activation_code",    limit: 255
     t.boolean  "admin",                          default: false
     t.string   "slug"
+    t.text     "description"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -26,6 +26,14 @@ class Designation < ActiveRecord::Base
     "#{first_name} #{last_name}".strip
   end
 
+  def percentage_raised
+    (amount_raised / goal * 100).to_i
+  end
+
+  def goal
+    project.try(:goal) || amount_raised
+  end
+
   protected
 
   def generate_activation_code

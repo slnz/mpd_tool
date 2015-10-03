@@ -16,6 +16,8 @@
         - if current_user.designation
           %li{class: ('active' if current_page? donations_path)}
             %a{href: donations_path} Donations
+          %li{class: ('active' if current_page? edit_user_path)}
+            %a{href: edit_user_path} Profile
         - else
           %li{class: ('active' if current_page? edit_user_path)}
             %a{href: edit_user_path} Activation

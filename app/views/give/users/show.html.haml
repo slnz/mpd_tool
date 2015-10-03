@@ -12,17 +12,36 @@
     .divider
   .content
     .block
+      .mpd
+        .progress
+          .progress-bar.progress-bar-success{:style => "width: #{@user.designation.percentage_raised}%; min-width: 2em; text-align: left;"}
+            &nbsp;
+            = "#{@user.designation.percentage_raised}%"
+          -#
+            .progress-bar.progress-bar-warning.progress-bar-striped{:style => "width: 20%"}
+              %span.sr-only 20% Complete (warning)
+            .progress-bar.progress-bar-danger{:style => "width: 10%"}
+              %span.sr-only 10% Complete (danger)
+        .subtitle
+          To get there
+          = @user.first_name
+          has raised
+          = number_to_currency @user.designation.amount_raised
+          of
+          = number_to_currency @user.designation.goal
       %h2
-        About
-        =@user.name
-      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec magna sed augue porta eleifend. Donec id consequat nunc. Vestibulum condimentum eget leo nec laoreet. Quisque viverra massa ut tortor venenatis, nec pellentesque erat tincidunt. Proin fermentum lobortis eleifend. Nam iaculis bibendum cursus. Proin luctus lacus felis, ac pellentesque augue condimentum nec. Morbi eu interdum lectus, quis bibendum magna.
-      %h2
-        About
-        =@user.designation.project.title
-      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec magna sed augue porta eleifend. Donec id consequat nunc. Vestibulum condimentum eget leo nec laoreet. Quisque viverra massa ut tortor venenatis, nec pellentesque erat tincidunt. Proin fermentum lobortis eleifend. Nam iaculis bibendum cursus. Proin luctus lacus felis, ac pellentesque augue condimentum nec. Morbi eu interdum lectus, quis bibendum magna.
+        What is
+        ="#{@user.designation.project.title}?"
+      = simple_format @user.designation.project.description_with_name(@user.first_name)
       .going
-        = "#{pluralize @user.designation.project.designations.count - 1, 'other person'} going to #{@user.designation.project.title.downcase}"
+        = "#{pluralize @user.designation.project.designations.count - 1, 'other person'} going to #{@user.designation.project.title}"
         .avatars
           - @user.designation.project.users.where.not(id: @user.id).order("RANDOM()").limit(5).each do |user|
             %a{href: give_user_path(id: user.slug)}
               %img{src: user.image}
+      - unless @user.description.blank?
+        %h2
+          Why do I want to go?
+        = simple_format @user.description
+        .disclaimer
+          The views expressed above are strictly those of the author(s) and do not necessarily reflect Student Life.

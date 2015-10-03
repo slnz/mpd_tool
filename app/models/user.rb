@@ -36,4 +36,8 @@ class User < ActiveRecord::Base
   def name
     "#{first_name} #{last_name}".strip
   end
+
+  def give_url
+    "#{ENV['GIVE_URL']}/#{slug}"
+  end
 end

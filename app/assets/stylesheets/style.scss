@@ -104,7 +104,7 @@ footer {
 .img-rounded-square {
 }
 .give {
-  font-family: Slack-Lato,appleLogo,sans-serif;
+  font-family: 'Lato', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -163,6 +163,16 @@ footer {
     .block {
       max-width: 40pc;
       margin: 0 auto;
+      .mpd {
+        margin-bottom: 22px;
+        .progress {
+          margin-bottom: 5px;
+        }
+        .subtitle {
+          font-size: 12px;
+          color: #232323;
+        }
+      }
       h2 {
         font-size: 27px;
         font-weight: 700;
@@ -177,6 +187,14 @@ footer {
         line-height: 30px;
         min-height: 30px;
         margin: 0 0 24px 0;
+      }
+      .disclaimer {
+        font-size: 12px;
+        color: #999;
+        margin-bottom: 24px;
+      }
+      p + .disclaimer {
+        margin-top: -24px;
       }
       .going {
         color: #4e5665;
