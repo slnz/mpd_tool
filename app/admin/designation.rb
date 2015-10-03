@@ -1,5 +1,5 @@
 ActiveAdmin.register Designation do
-  permit_params :email, :first_name, :last_name, :designation_code, :campus_id
+  permit_params :email, :first_name, :last_name, :designation_code, :campus_id, :project_id
 
   active_admin_import(
     validate: true,
@@ -28,14 +28,26 @@ ActiveAdmin.register Designation do
     column :name
     column(:amount_raised) { |d| number_to_currency d.amount_raised }
     column :campus
+    column :project
     actions
   end
 
+  show do
+    attributes_table do
+      row :designation_code
+      row :name
+      row(:amount_raised) { |d| number_to_currency d.amount_raised }
+      row :campus
+      row :project
+      row :email_sent
+    end
+  end
   filter :email
   filter :first_name
   filter :last_name
   filter :designation_code
   filter :campus
+  filter :project
 
   form do |f|
     f.inputs do
@@ -44,6 +56,7 @@ ActiveAdmin.register Designation do
       f.input :last_name
       f.input :designation_code
       f.input :campus
+      f.input :project
     end
     f.actions
   end
@@ -54,6 +67,7 @@ ActiveAdmin.register Designation do
     column :last_name
     column :designation_code
     column(:campus) { |d| d.campus.try(:name) }
+    column(:project) { |d| d.campus.try(:title) }
     column(:amount_raised) { |d| number_to_currency d.amount_raised }
   end
 end

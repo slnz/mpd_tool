@@ -3,7 +3,6 @@ ActiveAdmin.register Donation do
   index do
     selectable_column
     id_column
-    column :name
     column(:designation) do |donation|
       begin
         des = Designation.find_by(designation_code: donation.designation_id)
@@ -19,12 +18,12 @@ ActiveAdmin.register Donation do
     actions
   end
 
-  action_item do
+  action_item :fetch_donations do
     link_to 'Fetch Donations', fetch_admin_donations_path
   end
 
   collection_action :fetch do
     Donation::Fetch.from_dataserve 1.month
-    redirect_to :index, notice: 'Fetched Donations'
+    redirect_to admin_donations_url, notice: 'Fetched Donations'
   end
 end

@@ -1,0 +1,27 @@
+.give
+  %header
+    .user-avatar
+      %img{src: @user.image}
+    .profile
+      .name
+        =@user.first_name
+        is going to
+      .project
+        =@user.designation.project.title
+    .divider
+  .content
+    .block
+      %h2
+        About
+        =@user.designation.project.title
+      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec magna sed augue porta eleifend. Donec id consequat nunc. Vestibulum condimentum eget leo nec laoreet. Quisque viverra massa ut tortor venenatis, nec pellentesque erat tincidunt. Proin fermentum lobortis eleifend. Nam iaculis bibendum cursus. Proin luctus lacus felis, ac pellentesque augue condimentum nec. Morbi eu interdum lectus, quis bibendum magna.
+      .going
+        = "#{pluralize @user.designation.project.designations.count, 'person'} going to #{@user.designation.project.title.downcase}"
+        .avatars
+          - @user.designation.project.users.order("RANDOM()").limit(5).each do |user|
+            %a{href: give_user_path(id: user.permalink)}
+              %img{src: user.image}
+      %h2
+        About
+        =@user.first_name
+      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec magna sed augue porta eleifend. Donec id consequat nunc. Vestibulum condimentum eget leo nec laoreet. Quisque viverra massa ut tortor venenatis, nec pellentesque erat tincidunt. Proin fermentum lobortis eleifend. Nam iaculis bibendum cursus. Proin luctus lacus felis, ac pellentesque augue condimentum nec. Morbi eu interdum lectus, quis bibendum magna.
