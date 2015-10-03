@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  has_permalink :name
   devise :omniauthable, omniauth_providers: [:facebook]
 
   validates :uid, presence: true

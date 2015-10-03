@@ -11,65 +11,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003004037) do
+ActiveRecord::Schema.define(version: 20151002035700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "campus", force: :cascade do |t|
-    t.string   "name",       limit: 255
+  create_table "campus", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "contacts", force: :cascade do |t|
-    t.string   "name",             limit: 255
-    t.string   "address",          limit: 255
-    t.string   "phone",            limit: 255
-    t.string   "email",            limit: 255
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "email"
     t.integer  "code"
     t.integer  "designation_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "delayed_jobs", force: :cascade do |t|
-    t.integer  "priority",               default: 0, null: false
-    t.integer  "attempts",               default: 0, null: false
-    t.text     "handler",                            null: false
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
     t.text     "last_error"
     t.datetime "run_at"
     t.datetime "locked_at"
     t.datetime "failed_at"
-    t.string   "locked_by",  limit: 255
-    t.string   "queue",      limit: 255
+    t.string   "locked_by"
+    t.string   "queue"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "designations", force: :cascade do |t|
-    t.string   "first_name",       limit: 255
-    t.string   "last_name",        limit: 255
-    t.string   "email",            limit: 255
+  create_table "designations", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
     t.integer  "designation_code"
-    t.string   "activation_code",  limit: 255
-    t.boolean  "email_sent",                   default: false
+    t.string   "activation_code"
+    t.boolean  "email_sent",       default: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "campus_id"
-    t.integer  "project_id"
   end
 
   add_index "designations", ["activation_code"], name: "index_designations_on_activation_code", unique: true, using: :btree
 
-  create_table "donations", force: :cascade do |t|
+  create_table "donations", force: true do |t|
     t.integer  "global_id"
     t.integer  "contact_id"
     t.integer  "designation_id"
-    t.string   "payment_method", limit: 255
+    t.string   "payment_method"
     t.date     "display_date"
     t.decimal  "amount"
     t.datetime "created_at"
@@ -77,31 +76,28 @@ ActiveRecord::Schema.define(version: 20151003004037) do
     t.integer  "project_id"
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string   "title",      limit: 255
+  create_table "projects", force: true do |t|
+    t.string   "title"
     t.integer  "code"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "goal"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",              limit: 255, default: "",    null: false
-    t.string   "encrypted_password", limit: 255, default: "",    null: false
+  create_table "users", force: true do |t|
+    t.string   "email",              default: "",    null: false
+    t.string   "encrypted_password", default: "",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider",           limit: 255
-    t.string   "uid",                limit: 255
-    t.string   "first_name",         limit: 255
-    t.string   "last_name",          limit: 255
-    t.string   "image",              limit: 255
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "image"
     t.integer  "designation_id"
-    t.string   "activation_code",    limit: 255
-    t.boolean  "admin",                          default: false
-    t.string   "permalink"
+    t.string   "activation_code"
+    t.boolean  "admin",              default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["permalink"], name: "index_users_on_permalink", using: :btree
 
 end

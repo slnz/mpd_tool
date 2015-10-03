@@ -8,8 +8,8 @@ AllCops:
     - script/**/*
     - vendor/**/*
     - bin/**/*
+
   RunRailsCops: true
+
 Documentation:
   Enabled: false
-LineLength:
-  Max: 120
