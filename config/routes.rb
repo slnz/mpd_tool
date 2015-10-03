@@ -3,6 +3,15 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  constraints subdomain: 'give' do
+    scope module: :give do
+      root to: 'projects#index', as: :give_root
+      get '/projects', to: redirect('/')
+      resources :projects, only: [:show]
+      get '/:id', to: 'users#show', as: :give_user
+    end
+  end
+
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 

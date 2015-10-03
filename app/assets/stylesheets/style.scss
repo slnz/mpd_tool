@@ -101,3 +101,98 @@ footer {
 .img-avatar {
   margin-right: 10px;
 }
+.img-rounded-square {
+}
+.give {
+  font-family: Slack-Lato,appleLogo,sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #555459;
+  font-size: 16px;
+  line-height: 24px;
+  header {
+    max-width: 50pc;
+    margin: 0 auto;
+    padding: 36px 5pc 0;
+    position: relative;
+    .divider {
+      width: 60px;
+      border-top: 1px solid #d8d8d8;
+    }
+    .user-avatar {
+      position: absolute;
+      left: .6rem;
+      margin-top: 3px;
+      img {
+        width: 51px;
+        height: 51px;
+        border-radius: 5px;
+      }
+    }
+    .profile {
+      .name {
+        display: block;
+        margin-top: 1px;
+        font-size: 15px;
+        line-height: normal;
+        font-weight: 700;
+        color: #b3b5b9;
+        text-transform: lowercase;
+      }
+      .project {
+        font-size: 34px;
+        line-height: 43px;
+        font-weight: 900;
+        letter-spacing: -1px;
+        padding: 0;
+        color: #232323;
+        text-rendering: optimizeSpeed;
+        margin: 0 0 22px;
+      }
+    }
+  }
+  .content {
+    display: block;
+    min-height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.65rem 5pc 4rem;
+    color: #232323;
+    text-rendering: optimizeSpeed;
+    outline: 0;
+    .block {
+      max-width: 40pc;
+      margin: 0 auto;
+      h2 {
+        font-size: 27px;
+        font-weight: 700;
+        line-height: 33px;
+        min-height: 33px;
+        letter-spacing: -1px;
+        margin: 0 0 7px 0;
+      }
+      p {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 30px;
+        min-height: 30px;
+        margin: 0 0 24px 0;
+      }
+      .going {
+        color: #4e5665;
+        font-size: 12px;
+        line-height: 16px;
+        margin-bottom: 24px;
+        .avatars {
+          margin-top: 2px;
+          img {
+            margin-right: 2px;
+            width: 32px;
+            height: 32px;
+          }
+        }
+      }
+    }
+  }
+}

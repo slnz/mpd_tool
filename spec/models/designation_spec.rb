@@ -10,6 +10,7 @@ RSpec.describe Designation, type: :model do
   it { is_expected.to validate_uniqueness_of(:email) }
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:campus) }
+  it { is_expected.to belong_to(:project) }
   it { is_expected.to have_many(:donations) }
   it { is_expected.to have_db_index(:activation_code).unique(true) }
   it 'sends an activation code email' do
