@@ -19,7 +19,7 @@ class Designation < ActiveRecord::Base
   end
 
   def amount_raised
-    donations.sum(:amount)
+    donations.where(project: project).sum(:amount)
   end
 
   def name
