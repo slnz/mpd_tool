@@ -81,10 +81,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: 'mpd.studentlife.org.nz' }
-
-  config.action_controller.asset_host = '//mpd.studentlife.org.nz'
-  config.action_mailer.asset_host = config.action_controller.asset_host
-
+  config.action_mailer.asset_host = 'https://mpd.studentlife.org.nz'
+  config.action_dispatch.tld_length = 2
 
   ActionMailer::Base.smtp_settings =
     { address: 'smtp.sendgrid.net',
