@@ -27,6 +27,7 @@ class Designation < ActiveRecord::Base
   end
 
   def percentage_raised
+    return 100 if goal == 0
     (amount_raised / goal * 100).to_i
   end
 
