@@ -1,14 +1,15 @@
 body {
+  font-family: 'Lato', sans-serif;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   color: #333333;
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
 .intro-text {
   margin: 48px 0;
   h1 {
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
     font-weight: 800;
     font-size: 48px;
     margin-bottom: 24px;
@@ -43,7 +44,6 @@ body {
     margin-bottom: 15px;
   }
   p.copy {
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
     margin: auto;
     margin-bottom: 3em;
     font-weight: lighter;
@@ -104,10 +104,6 @@ footer {
 .img-rounded-square {
 }
 .give {
-  font-family: 'Lato', sans-serif;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   color: #555459;
   font-size: 16px;
   line-height: 24px;
@@ -156,7 +152,7 @@ footer {
     min-height: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 1.65rem 5pc 4rem;
+    padding: 1.65rem 5pc 1.65rem;
     color: #232323;
     text-rendering: optimizeSpeed;
     outline: 0;
@@ -164,13 +160,13 @@ footer {
       max-width: 40pc;
       margin: 0 auto;
       .mpd {
-        margin-bottom: 22px;
         .progress {
           margin-bottom: 5px;
         }
         .subtitle {
-          font-size: 12px;
-          color: #232323;
+          h1 {
+            margin-bottom: 0;
+          }
         }
       }
       h2 {
@@ -180,6 +176,15 @@ footer {
         min-height: 33px;
         letter-spacing: -1px;
         margin: 0 0 7px 0;
+      }
+      h3 {
+        font-size: 20px;
+        font-weight: lighter;
+        line-height: 33px;
+        min-height: 33px;
+        letter-spacing: -1px;
+        margin: 24px 0 7px 0;
+        text-transform: uppercase;
       }
       p {
         font-size: 18px;
@@ -208,6 +213,90 @@ footer {
             height: 32px;
             border-radius: 5px;
           }
+        }
+      }
+    }
+    .details {
+      border: 1px solid #ccc;
+      border-bottom: 0;
+      .help-inline {
+        display: none;
+      }
+      .row {
+        border-bottom: 1px solid #ccc;
+        margin: 0;
+        [class^="col-md-"]:first-child {
+          border-right: 1px solid #ccc;
+        }
+      }
+      > .form-group {
+        border-bottom: 1px solid #ccc;
+        padding: 0 15px;
+        &.error {
+          background-color: #f2dede;
+          label.control-label {
+            color: #a94442;
+          }
+        }
+      }
+      .form-group {
+        margin-bottom: 0;
+      }
+      label.control-label {
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 12px;
+        margin-bottom: 0;
+        margin-top: 10px;
+      }
+      input[type=text], input[type=email], input[type=tel], input[type=number]   {
+        &.form-control {
+          border: 0;
+          box-shadow: none;
+          padding: 0;
+          border-radius: 0;
+          background-color: transparent;
+          &:focus {
+            border: 0;
+            box-shadow: none;
+          }
+        }
+      }
+      .form-group.boolean {
+        padding: 10px 15px;
+        label.control-label {
+          margin: 0;
+        }
+        .checkbox {
+          margin: 0 10px 0 0;
+          display: inline-block;
+          input[type=checkbox].form-control {
+            position: static;
+            display: inline-block;
+            margin: 0;
+            width: auto;
+            height: auto;
+          }
+        }
+      }
+    }
+    .submit {
+      margin-top: 20px;
+      padding: 20px 15px;
+      background-color: #eee;
+      text-align: right;
+    }
+    &.special {
+      background-color: #e51937;
+      text-align: center;
+      .block {
+        margin: 40px auto;
+        .btn-primary {
+          border: 3px solid #fff;
+          border-radius: 0;
+          background-color: #e51937;
+          text-decoration: none;
+          margin-right: 10px;
         }
       }
     }

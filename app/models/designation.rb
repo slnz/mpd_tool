@@ -6,10 +6,11 @@ class Designation < ActiveRecord::Base
   validates :activation_code, presence: true
   before_validation :generate_activation_code, on: :create
   after_create :send_activation_code
-  belongs_to :user
+  belongs_to :donee, class_name: 'User::Donee'
   belongs_to :campus
   belongs_to :project
   has_many :donations, primary_key: :designation_code
+  has_many :pledges, dependent: :destroy
 
   def send_activation_code
     generate_activation_code unless activation_code

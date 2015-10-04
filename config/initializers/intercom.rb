@@ -82,7 +82,6 @@ if Rails.env.production? && ENV['INTERCOM_APP_ID']
     # has a plan, it will set the 'total value' of that plan appropriately.
     #
     # config.company.monthly_spend = Proc.new { |current_company| current_company.plan.price }
-    # config.company.monthly_spend = Proc.new { |current_company| (current_company.plan.price - current_company.subscription.discount) }
 
     # == Inbox Style
     # This enables the Intercom inbox which allows your users to read their

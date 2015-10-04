@@ -4,7 +4,6 @@ AllCops:
     - config.ru
   Exclude:
     - db/**/*
-    - config/**/*
     - script/**/*
     - vendor/**/*
     - bin/**/*

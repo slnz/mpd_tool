@@ -1,5 +1,4 @@
 ActiveAdmin.setup do |config|
-
   # == Site Title
   #
   # Set the title that is displayed on the main layout
@@ -102,7 +101,6 @@ ActiveAdmin.setup do |config|
   # Default:
   # config.logout_link_method = :get
 
-
   # == Root
   #
   # Set the action to call for the root path. You can set different
@@ -110,7 +108,6 @@ ActiveAdmin.setup do |config|
   #
   # Default:
   # config.root_to = 'dashboard#index'
-
 
   # == Admin Comments
   #
@@ -125,13 +122,11 @@ ActiveAdmin.setup do |config|
   # You can change the name under which comments are registered:
   # config.comments_registration_name = 'AdminComment'
 
-
   # == Batch Actions
   #
   # Enable and disable Batch Actions
   #
   config.batch_actions = true
-
 
   # == Controller Filters
   #
@@ -140,11 +135,9 @@ ActiveAdmin.setup do |config|
   #
   # config.before_filter :do_something_awesome
 
-
   # == Setting a Favicon
   #
   # config.favicon = '/assets/favicon.ico'
-
 
   # == Removing Breadcrumbs
   #
@@ -152,7 +145,6 @@ ActiveAdmin.setup do |config|
   # resources or you can disable them globally from here.
   #
   # config.breadcrumb = false
-
 
   # == Register Stylesheets & Javascripts
   #
@@ -169,7 +161,6 @@ ActiveAdmin.setup do |config|
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
 
-
   # == CSV options
   #
   # Set the CSV builder separator
@@ -177,7 +168,6 @@ ActiveAdmin.setup do |config|
   #
   # Force the use of quotes
   # config.csv_options = { :force_quotes => true }
-
 
   # == Menu System
   #
@@ -221,7 +211,6 @@ ActiveAdmin.setup do |config|
   #
   #   end
 
-
   # == Pagination
   #
   # Pagination is enabled by default for all resources.
@@ -229,10 +218,9 @@ ActiveAdmin.setup do |config|
   #
   # config.default_per_page = 30
 
-
   # == Filters
   #
-  # By default the index screen includes a “Filters” sidebar on the right
+  # By default the index screen includes a "Filters" sidebar on the right
   # hand side with a filter for each attribute of the registered model.
   # You can enable or disable them for all resources here.
   #

@@ -1,5 +1,5 @@
 module Give
-  class ProjectsController < ApplicationController
+  class ProjectsController < GiveController
     def index
     end
 

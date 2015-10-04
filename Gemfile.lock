@@ -49,9 +49,16 @@ GEM
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
     active_skin (0.0.9)
+    active_type (0.4.0)
+      activerecord (>= 3.2)
     activejob (4.2.4)
       activesupport (= 4.2.4)
       globalid (>= 0.3.0)
+    activemerchant (1.54.0)
+      activesupport (>= 3.2.14, < 5.0.0)
+      builder (>= 2.1.2, < 4.0.0)
+      i18n (>= 0.6.9)
+      nokogiri (~> 1.4)
     activemodel (4.2.4)
       activesupport (= 4.2.4)
       builder (~> 3.1)
@@ -217,7 +224,6 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hashie (3.4.2)
-    high_voltage (2.4.0)
     highline (1.7.7)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -471,7 +477,9 @@ PLATFORMS
 DEPENDENCIES
   active_admin_import!
   active_skin
+  active_type
   activeadmin!
+  activemerchant
   airbrake
   awesome_print
   better_errors
@@ -500,7 +508,6 @@ DEPENDENCIES
   guard-rubocop
   haml
   has_scope
-  high_voltage
   i18n-tasks
   intercom-rails
   jquery-rails

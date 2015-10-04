@@ -1,0 +1,32 @@
+.give
+  = render 'top_section'
+  .content
+    .block
+      %p
+        Thanks for your interest in helping
+        = @user.first_name
+        get to Summer Project!
+
+      %h1
+        How to Help
+        = @user.first_name
+      %p
+        I will need all the support I can get from a team of people who love the Lord, desire to reach the lost, and are
+        willing to partner with me in this endeavour either through finances and/or prayer. In order to make this all
+        possible, there is a one off of
+        = number_to_currency @designation.goal, precision: 0
+        I have to raise to cover the costs for the duration of the project,
+        such as food, transport, training resources and administration.
+      %p
+        I’d love for you to support me through prayer and I’m also looking for people who will invest between $50-200.
+        However, any amount would be deeply appreciated! All donations are tax rebatable (33.3%).
+      %h2
+        Will you consider partnering with me in this endeavour for Christ and be a part of His team?
+
+      %p
+        I also want to let you know please do not feel any pressure to give.
+        I know that God has the resources and can supply my need.
+        I’m excited to see what God will do; in and through me, with your support, at this Project.
+      %p
+        Thanks for taking the time to consider being a part of it.
+  = render 'help'

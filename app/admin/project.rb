@@ -1,5 +1,5 @@
 ActiveAdmin.register Project do
-  permit_params :title, :code, :goal, :description
+  permit_params :title, :code, :goal, :description, :date
 
   index do
     selectable_column
@@ -7,6 +7,7 @@ ActiveAdmin.register Project do
     column :title
     column :code
     column :goal
+    column :date
     actions
   end
 

@@ -4,13 +4,15 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  config.secret_key = 'bf207386908fbd0c9d33c15dc43f7050a5241bcbe65d2dd988f913fc83a909d4bffcc5ede610b35844e9c8c46735785048a4b1daca4664be759f16d281e1d3ff'
+  config.secret_key =
+    'bf207386908fbd0c9d33c15dc43f7050a5241bcbe65d2dd988f913fc83a909d4bffcc5ede610b3'\
+    '5844e9c8c46735785048a4b1daca4664be759f16d281e1d3ff'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'projects@studentlife.org.nz'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -41,12 +43,12 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [ :email ]
+  config.case_insensitive_keys = [:email]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
-  config.strip_whitespace_keys = [ :email ]
+  config.strip_whitespace_keys = [:email]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -97,7 +99,9 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'dbe654f90db7555924d390b20d40cc307c6308c432415f4426b8168f4b43f26a85f4136de549329479a2abfb8b92ceffeebb08bd97a65a3fe0b4e071d7a8eb0d'
+  config.pepper =
+    'dbe654f90db7555924d390b20d40cc307c6308c432415f4426b8168f4b43f26a'\
+    '85f4136de549329479a2abfb8b92ceffeebb08bd97a65a3fe0b4e071d7a8eb0d'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003045847) do
+ActiveRecord::Schema.define(version: 20151004224943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20151003045847) do
     t.integer  "designation_code"
     t.string   "activation_code",  limit: 255
     t.boolean  "email_sent",                   default: false
-    t.integer  "user_id"
+    t.integer  "donee_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "campus_id"
@@ -90,6 +90,27 @@ ActiveRecord::Schema.define(version: 20151003045847) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "pledges", force: :cascade do |t|
+    t.integer  "designation_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.decimal  "amount"
+    t.boolean  "anonymous",      default: false
+    t.string   "email"
+    t.string   "phone"
+    t.string   "organization"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "postcode"
+    t.integer  "method"
+    t.boolean  "terms",          default: false
+    t.boolean  "prayer_only",    default: false
+    t.boolean  "newsletter",     default: true
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "title",       limit: 255
     t.integer  "code"
@@ -97,6 +118,7 @@ ActiveRecord::Schema.define(version: 20151003045847) do
     t.datetime "updated_at"
     t.decimal  "goal"
     t.text     "description"
+    t.date     "date"
   end
 
   create_table "users", force: :cascade do |t|

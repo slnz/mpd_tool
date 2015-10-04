@@ -1,0 +1,24 @@
+%header.navbar.navbar-inverse
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#header-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{href: root_path}
+        = fa_stacked_icon 'users inverse', base: 'square'
+        Give
+    #header-collapse.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li{class: ('active' if current_page? root_path)}
+          %a{href: root_path} Home
+      %ul.nav.navbar-nav.navbar-right.navbar-form
+        .form-group
+          %a.btn.btn-primary{href: destroy_session_path}
+            = fa_icon 'sign-out'
+            Sign Out
+      %ul.nav.navbar-nav.navbar-right
+        - if current_user.admin?
+          %li
+            %a{href: admin_root_path} Admin
