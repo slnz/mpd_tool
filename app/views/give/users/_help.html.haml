@@ -1,9 +1,0 @@
-.content.special
-  .block
-    %a.btn-primary.btn-lg{href: new_user_pledges_path(@user)}
-      Help in Prayer and Finance
-    %a.btn-primary.btn-lg{href: new_user_pledges_path(@user, prayer_only: true)}
-      Help in Prayer
-    - unless current_page?(about_user_pledges_path(@user))
-      %a.btn-primary.btn-lg{href: about_user_pledges_path(@user)}
-        More Info

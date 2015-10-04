@@ -1,7 +1,8 @@
 module Give
-  module Users
-    class PledgesController < UsersController
-      before_action :load_user, :load_designation, :load_project
+  module Donees
+    class PledgesController < DoneesController
+      decorates_assigned :pledge
+      before_action :load_donee, :load_designation, :load_project
 
       def new
         build_pledge

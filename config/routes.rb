@@ -13,8 +13,8 @@ Rails.application.routes.draw do
       root to: 'projects#index', as: :give_root
       get '/projects', to: redirect('/')
       resources :projects, only: [:show]
-      resources :users, only: [:show], path: '' do
-        scope module: :users do
+      resources :donees, only: [:show], path: '' do
+        scope module: :donees do
           resource :pledges, only: [:create, :new] do
             collection do
               get 'about'

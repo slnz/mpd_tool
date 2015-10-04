@@ -32,6 +32,7 @@ gem 'has_scope'
 gem 'friendly_id', '~> 5.1.0'
 gem 'activemerchant'
 gem 'active_type'
+gem 'draper'
 group :development do
   gem 'spring'
   gem 'spring-commands-rspec'

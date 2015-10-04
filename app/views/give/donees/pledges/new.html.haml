@@ -4,9 +4,9 @@
     .block
       %p
         Thanks for your interest in supporting
-        = @user.first_name
+        = donee.first_name
         get to Summer Project!
-      = simple_form_for [@user, @pledge], url: user_pledges_path(@user, @pledge, prayer_only: !params[:prayer_only].nil?) do |f|
+      = simple_form_for [donee, pledge], url: donee_pledges_path(donee, pledge, prayer_only: !params[:prayer_only].nil?) do |f|
         - if f.object.errors.any?
           .alert.alert-danger
             Your pledge form contains #{pluralize(f.object.errors.count, "error")}.
@@ -42,4 +42,4 @@
           = f.input :newsletter, wrapper: :inline_checkbox, label: 'Receive Prayer Newsletter'
           = f.input :terms, wrapper: :inline_checkbox, label: 'I Agree to the terms and conditions'
         .submit
-          = f.button :submit, class: 'btn btn-primary', value: "Help #{@user.first_name}"
+          = f.button :submit, class: 'btn btn-primary', value: "Help #{donee.first_name}"
