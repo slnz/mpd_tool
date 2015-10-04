@@ -1,6 +1,6 @@
 ActiveAdmin.register Designation do
   permit_params :email, :first_name, :last_name, :designation_code, :campus_id, :project_id
-
+  decorate_with Decorator::DesignationDecorator
   active_admin_import(
     validate: true,
     headers_rewrites: { campus: :campus_id },
