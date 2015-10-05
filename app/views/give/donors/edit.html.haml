@@ -1,0 +1,44 @@
+
+.content
+  .container
+    - unless donor.active?
+      %h2
+        Thanks for signing up to give to Students on our Summer Projects.
+      %p
+        Your continued support is paramount to sending hundreds of students every year to projects all over the world. In order to start giving you'll need to setup your profile below.
+    = simple_form_for @donor, url: donor_path do |f|
+      - if f.object.errors.any?
+        .alert.alert-danger
+          Your profile form contains #{pluralize(f.object.errors.count, "error")}.
+          %ul
+            - f.object.errors.full_messages.each do |msg|
+              %li
+                #{msg}
+        %br
+      %h3 Personal Details
+      %p
+        Information about how we can contact you.
+      .details
+        .row
+          .col-md-6
+            = f.input :first_name
+          .col-md-6
+            = f.input :last_name
+        = f.input :email
+        = f.input :phone
+      %h3 Address Details
+      %p
+        Address to send you tax receipts and relevant giving information.
+      .details
+        = f.input :address_line_1
+        = f.input :address_line_2
+        .row
+          .col-md-8
+            = f.input :city
+          .col-md-4
+            = f.input :postcode
+      %br
+      .details
+        = f.input :terms, wrapper: :inline_checkbox, label: 'I Agree to the <a href="https://www.studentlife.org.nz/privacy-policy/" target="_blank">privacy policy</a>'.html_safe
+      .submit
+        = f.button :submit, class: 'btn btn-primary', value: 'Save My Profile'

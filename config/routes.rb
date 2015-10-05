@@ -16,6 +16,9 @@ Rails.application.routes.draw do
           end
         end
       end
+      authenticated :user do
+        resource :donor, only: [:edit, :update]
+      end
     end
   end
 

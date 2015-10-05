@@ -1,19 +1,16 @@
-module Mpd
-  class DoneesController < MpdController
+module Give
+  class DonorsController < GiveController
     decorates_assigned :donor
+    skip_before_action :validate_current_user
     def edit
       load_donor
-      render 'activate' unless @donor.designation
     end
 
     def update
       load_donor
       build_donor
-      if save_donor
-        flash[:success] = 'Your Profile has updated'
-      else
-        flash[:error] = @donor.errors.full_messages.join('. ')
-      end
+      return render action: :edit unless save_donor
+      flash[:success] = 'Your profile has been updated'
       redirect_to action: :edit
     end
 
@@ -25,6 +22,7 @@ module Mpd
 
     def build_donor
       @donor.attributes = donor_params
+      @donor.donor_state = User::Donor.donor_states[:active]
     end
 
     def save_donor
@@ -36,9 +34,11 @@ module Mpd
     end
 
     def donor_params
-      donor_params = params[:donor]
+      donor_params = params[:user]
       return {} unless donor_params
-      donor_params.permit(:activation_code, :description)
+      donor_params.permit(
+        :first_name, :last_name, :email, :phone, :address_line_1, :address_line_2, :city, :postcode, :terms
+      )
     end
   end
 end

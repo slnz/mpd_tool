@@ -36,7 +36,7 @@ module Mpd
     end
 
     def donee_params
-      donee_params = params[:donee]
+      donee_params = params[:user]
       return {} unless donee_params
       donee_params.permit(:activation_code, :description)
     end

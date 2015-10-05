@@ -15,6 +15,8 @@
           %a{href: root_path} Home
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
+          %li{class: ('active' if current_page? edit_donor_path)}
+            %a{href: edit_donor_path} Profile
           - if current_user.admin?
             %li
               %a{href: admin_root_path} Admin
