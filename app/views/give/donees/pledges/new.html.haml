@@ -1,45 +1,45 @@
-.give
-  = render 'top_section'
-  .content
-    .block
-      %p
-        Thanks for your interest in supporting
-        = donee.first_name
-        get to Summer Project!
-      = simple_form_for [donee, pledge], url: donee_pledges_path(donee, pledge, prayer_only: !params[:prayer_only].nil?) do |f|
-        - if f.object.errors.any?
-          .alert.alert-danger
-            Your pledge form contains #{pluralize(f.object.errors.count, "error")}.
-            %ul
-              - f.object.errors.full_messages.each do |msg|
-                %li
-                  #{msg}
-          %br
-        %h3 Personal Details
+= render 'top'
+= render 'state'
+.content
+  .container
+    %p
+      Thanks for your interest in supporting
+      = donee.first_name
+      get to Summer Project!
+    = simple_form_for [donee, pledge], url: donee_pledges_path(donee, pledge, prayer_only: !params[:prayer_only].nil?) do |f|
+      - if f.object.errors.any?
+        .alert.alert-danger
+          Your pledge form contains #{pluralize(f.object.errors.count, "error")}.
+          %ul
+            - f.object.errors.full_messages.each do |msg|
+              %li
+                #{msg}
+        %br
+      %h3 Personal Details
+      .details
+        .row
+          .col-md-6
+            = f.input :first_name
+          .col-md-6
+            = f.input :last_name
+        = f.input :email
+        = f.input :phone
+        = f.input :address_line_1
+        = f.input :address_line_2
+        .row
+          .col-md-8
+            = f.input :city
+          .col-md-4
+            = f.input :postcode
+      - unless params[:prayer_only] && params[:prayer_only] == true
+        %h3 Giving Details
         .details
-          .row
-            .col-md-6
-              = f.input :first_name
-            .col-md-6
-              = f.input :last_name
-          = f.input :email
-          = f.input :phone
-          = f.input :address_line_1
-          = f.input :address_line_2
-          .row
-            .col-md-8
-              = f.input :city
-            .col-md-4
-              = f.input :postcode
-        - unless params[:prayer_only] && params[:prayer_only] == true
-          %h3 Giving Details
-          .details
-            = f.input :amount
-        - else
-          = f.input :prayer_only, as: :hidden, input_html: { value: true }
-        %h3 Misc Details
-        .details
-          = f.input :newsletter, wrapper: :inline_checkbox, label: 'Receive Prayer Newsletter'
-          = f.input :terms, wrapper: :inline_checkbox, label: 'I Agree to the terms and conditions'
-        .submit
-          = f.button :submit, class: 'btn btn-primary', value: "Help #{donee.first_name}"
+          = f.input :amount
+      - else
+        = f.input :prayer_only, as: :hidden, input_html: { value: true }
+      %h3 Misc Details
+      .details
+        = f.input :newsletter, wrapper: :inline_checkbox, label: 'Receive Prayer Newsletter'
+        = f.input :terms, wrapper: :inline_checkbox, label: 'I Agree to the terms and conditions'
+      .submit
+        = f.button :submit, class: 'btn btn-primary', value: "Help #{donee.first_name}"

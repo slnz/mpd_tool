@@ -1,0 +1,15 @@
+.top{class: "color#{donee.id % 5}"}
+  .container
+    .avatar
+      %img{src: donee.image}
+    .profile
+      .name
+        - if project.date
+          On the
+          = project.date.strftime("#{project.date.day.ordinalize} %b %Y")
+        - else
+          Not long now until
+      .project
+        = donee.first_name
+        is going to
+        = project.title

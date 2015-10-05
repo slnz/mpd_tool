@@ -5,9 +5,9 @@
         %h4 My Profile
       %p
         Your personal giving page can be found at:
-        = link_to current_user.give_url, current_user.give_url, target: :blank
+        = link_to donee.give_url, donee.give_url, target: :blank
       %p Update your profile that shows up on your personal giving page. Try writing a short 200-word story on why you want to go!
-      = simple_form_for(@user, url: '/user', html: { class: 'form-horizontal' }) do |f|
+      = simple_form_for(donee, url: '/donee', html: { class: 'form-horizontal' }) do |f|
         = f.input :description, input_html: { rows: 15 }, label: 'Why do you want to go on a Summer Project?'
         = f.button :submit, class: 'btn btn-primary', value: 'Update'
       %br

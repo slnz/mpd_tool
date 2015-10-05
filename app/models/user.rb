@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
-  devise :omniauthable, omniauth_providers: [:facebook]
+  devise :database_authenticatable, :recoverable, :registerable,
+         :rememberable, :trackable, :omniauthable, omniauth_providers: [:facebook]
+  validates :email, uniqueness: true
 
   def self.from_omniauth(auth)
     where(provider: auth[:provider], uid: auth[:uid]).first_or_create(

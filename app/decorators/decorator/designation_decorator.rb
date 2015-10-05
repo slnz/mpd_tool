@@ -1,5 +1,7 @@
 module Decorator
   class DesignationDecorator < ApplicationDecorator
+    decorates_association :project
+
     def amount_raised
       donations.where(project: project).sum(:amount)
     end

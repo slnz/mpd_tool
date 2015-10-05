@@ -1,22 +1,22 @@
-.give
-  = render 'top_section'
-  = render 'help'
-  .content
-    .block
-      - unless project.description.blank?
-        %h2
-          What is
-          ="#{project.title}?"
-        = simple_format project.description_with_name(donee.first_name)
-      - unless donee.description.blank?
-        %h2
-          Why do I want to go?
-        = simple_format donee.description
-        .disclaimer
-          The views expressed above are strictly those of the author(s) and do not necessarily reflect Student Life.
-      .going
-        = "#{pluralize project.designations.count - 1, 'other person'} going to #{project.title}"
-        .avatars
-          - project.donees.where.not(id: donee.id).order("RANDOM()").limit(5).each do |donee|
-            %a{href: donee_path(id: donee.slug)}
-              %img{src: donee.image}
+= render 'top'
+= render 'state'
+= render 'help'
+.content
+  .container
+    - unless project.description.blank?
+      %h2
+        What is
+        ="#{project.title}?"
+      = simple_format project.description_with_name(donee.first_name)
+    - unless donee.description.blank?
+      %h2
+        Why do I want to go?
+      = simple_format donee.description
+      .disclaimer
+        The views expressed above are strictly those of the author(s) and do not necessarily reflect Student Life.
+    .going
+      = "#{pluralize project.designations.count - 1, 'other person'} going to #{project.title}"
+      .avatars
+        - project.donees.where.not(id: donee.id).order("RANDOM()").limit(5).each do |donee|
+          %a{href: donee_path(id: donee.slug)}
+            %img{src: donee.image}
