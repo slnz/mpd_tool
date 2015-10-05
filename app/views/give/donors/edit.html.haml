@@ -6,6 +6,9 @@
         Thanks for signing up to give to Students on our Summer Projects.
       %p
         Your continued support is paramount to sending hundreds of students every year to projects all over the world. In order to start giving you'll need to setup your profile below.
+    - else
+      %h2
+        My Profile
     = simple_form_for @donor, url: donor_path do |f|
       - if f.object.errors.any?
         .alert.alert-danger

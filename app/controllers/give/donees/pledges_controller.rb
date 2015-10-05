@@ -4,15 +4,18 @@ module Give
       decorates_assigned :pledge
       before_action :load_donee, :load_designation, :load_project
       before_action :authenticate_user!, only: [:create]
-
+      add_breadcrumb 'Help', proc { |c| c.new_donee_pledges_path(donee_id: c.donee.slug) }
       def new
         build_pledge
+        add_breadcrumb 'New', new_donee_pledges_path(donee_id: donee.slug)
       end
 
       def about
+        add_breadcrumb 'About', about_donee_pledges_path(donee_id: donee.slug)
       end
 
       def thanks
+        add_breadcrumb 'Thanks', thanks_donee_pledges_path(donee_id: donee.slug)
       end
 
       def create

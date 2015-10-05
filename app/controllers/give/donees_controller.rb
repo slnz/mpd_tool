@@ -1,6 +1,7 @@
 module Give
   class DoneesController < GiveController
     decorates_assigned :donee, :designation, :project
+    add_breadcrumb proc { |c| c.donee.name }, proc { |c| c.donee_path(id: c.donee.slug) }
     def show
       load_donee
       load_designation

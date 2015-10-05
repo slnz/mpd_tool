@@ -33,6 +33,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'activemerchant'
 gem 'active_type'
 gem 'draper'
+gem 'breadcrumbs_on_rails'
 group :development do
   gem 'spring'
   gem 'spring-commands-rspec'

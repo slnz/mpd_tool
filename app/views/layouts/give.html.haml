@@ -11,6 +11,7 @@
     = csrf_meta_tags
   %body{class: body_class}
     = render 'header'
+    = render 'breadcrumbs' unless current_page? root_path
     = render 'flashes'
     = yield
     = render 'footer'

@@ -59,3 +59,17 @@ header.navbar.navbar-inverse {
     }
   }
 }
+.breadcrumbs {
+  background-color: #eb455e;
+  font-size: 12px;
+  ol.breadcrumb {
+    color: #fff;
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    a, a:link, a:visited {
+      color: #fff;
+    }
+  }
+}

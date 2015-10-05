@@ -7,6 +7,7 @@ module Give
 
     def show
       load_project
+      add_breadcrumb @project.title, project_path(id: @project.slug)
     end
 
     protected
