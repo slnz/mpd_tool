@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005032831) do
+ActiveRecord::Schema.define(version: 20151005043737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,19 +92,10 @@ ActiveRecord::Schema.define(version: 20151005032831) do
 
   create_table "pledges", force: :cascade do |t|
     t.integer  "designation_id"
-    t.string   "first_name"
-    t.string   "last_name"
     t.decimal  "amount"
-    t.boolean  "anonymous",      default: false
-    t.string   "email"
-    t.string   "phone"
-    t.string   "organization"
-    t.string   "address_line_1"
-    t.string   "address_line_2"
-    t.string   "city"
-    t.string   "postcode"
     t.integer  "method"
-    t.boolean  "terms",          default: false
+    t.integer  "donor_id"
+    t.boolean  "anonymous",      default: false
     t.boolean  "prayer_only",    default: false
     t.boolean  "newsletter",     default: true
     t.datetime "created_at",                     null: false

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
           resource :pledges, only: [:create, :new] do
             collection do
               get 'about'
+              get 'thanks'
             end
           end
         end
