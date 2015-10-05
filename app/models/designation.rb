@@ -19,6 +19,10 @@ class Designation < ActiveRecord::Base
     save
   end
 
+  def project
+     super.try(:opened?) ? super : nil
+  end
+
   protected
 
   def generate_activation_code

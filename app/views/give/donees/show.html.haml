@@ -15,7 +15,10 @@
       .disclaimer
         The views expressed above are strictly those of the author(s) and do not necessarily reflect Student Life.
     .going
-      = "#{pluralize project.designations.count - 1, 'other person'} going to #{project.title}"
+      = "#{pluralize project.designations.count - 1, 'other person'}"
+      going to
+      %a{href: project_path(id: project.slug)}
+        = project.title
       .avatars
         - project.donees.where.not(id: donee.id).order("RANDOM()").limit(5).each do |donee|
           %a{href: donee_path(id: donee.slug)}

@@ -1,0 +1,15 @@
+= render 'top'
+.content
+  .container
+    - unless project.description.blank?
+      %h2
+        What is
+        ="#{project.title}?"
+      = simple_format project.description_with_name('students')
+    %h2= "#{pluralize project.designations.count, 'person'} going to #{project.title}"
+    %p Find out more and consider partnering with them!
+    .going.large
+      .avatars
+        - project.donees.each do |donee|
+          %a{href: donee_path(id: donee.slug)}
+            %img{src: donee.large_image}

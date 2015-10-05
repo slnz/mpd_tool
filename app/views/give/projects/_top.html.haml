@@ -1,0 +1,17 @@
+%a.clean{href: project_path(id: project.slug)}
+  .top{class: "color#{project.id % 5}"}
+    .container
+      %h1= project.title
+      %h2
+        = "#{pluralize project.designations.count, 'person'}"
+        going
+        - if project.date
+          on the
+          = project.date.strftime("#{project.date.day.ordinalize} %b %Y")
+        - else
+          soon
+      - if current_page? root_path
+        %br
+        %span.btn.btn-primary.btn-light
+          = fa_icon 'angle-right'
+          Find out more

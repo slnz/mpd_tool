@@ -1,7 +1,7 @@
 module Decorator
   class ProjectDecorator < ApplicationDecorator
-    def title
-      "#{super} #{Time.current.year}"
+    def name
+      "#{title} #{Time.current.year}"
     end
 
     def description_with_name(name)

@@ -28,5 +28,9 @@ class User
     def image
       super.try(:gsub!, 'http://', 'https://')
     end
+
+    def large_image
+      "#{image}?width=160&height=160"
+    end
   end
 end
