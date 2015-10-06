@@ -9,8 +9,12 @@
     = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Lato:400,900,700'
     = csrf_meta_tags
   %body{:class => body_class}
-    = render 'header' if user_signed_in?
+    = render 'header'
     = render 'flashes'
-    = yield
+    .content
+      .container
+        = yield
+    %br
+    %br
     = render 'footer'
     = render 'javascript'

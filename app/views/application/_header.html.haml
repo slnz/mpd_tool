@@ -1,0 +1,30 @@
+%header.navbar.navbar-inverse
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#header-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{href: root_path}
+        Student Life
+    #header-collapse.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li{class: ('active' if current_page? root_path)}
+          %a{href: root_path} Home
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li{class: ('active' if current_page? edit_donor_path)}
+            %a{href: edit_donor_path} Profile
+          - if current_user.admin?
+            %li
+              %a{href: admin_root_path} Admin
+          %li
+            = link_to 'Sign Out', destroy_user_session_path, method: :delete
+        - else
+          %li
+            %a{href: 'https://giving.studentlife.org.nz'} Giving
+          %li
+            %a{href: 'https://mpd.studentlife.org.nz'} MPD
+          %li
+            = link_to 'Sign In', user_session_path
