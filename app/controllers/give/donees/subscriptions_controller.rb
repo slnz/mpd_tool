@@ -17,7 +17,8 @@ module Give
       def create
         build_subscription
         save_subscription
-        flash[:success] = "You've successfully signed up to receive prayer updates for #{donee.first_name} on #{project.title}"
+        flash[:success] =
+          "You've successfully signed up to receive prayer updates for #{donee.first_name} on #{project.title}"
         redirect_to action: :index
       end
 
