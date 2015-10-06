@@ -1,16 +1,21 @@
 require 'csv'
 class Donation
   class Fetch
-    def self.from_dataserve(time_ago)
+    def self.from_dataserve
+      Donation.where('created_at > ?', datefrom).destroy_all
       get(action: 'profiles').each do |profile|
         project = project(profile)
         get(profile: profile['PROFILE_CODE'],
-            datefrom: (Time.zone.now - time_ago).strftime('%m/%d/%y'),
-            dateto: Time.zone.now.strftime('%m/%d/%y'),
+            datefrom: datefrom.strftime('%m/%d/%y'),
+            dateto: Time.current.strftime('%m/%d/%y'),
             action: 'gifts').each do |row|
           create_donation(row, project)
         end
       end
+    end
+
+    def self.datefrom
+      Time.current.beginning_of_year + 4.months
     end
 
     def self.get(params)

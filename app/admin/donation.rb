@@ -23,7 +23,7 @@ ActiveAdmin.register Donation do
   end
 
   collection_action :fetch do
-    Donation::Fetch.from_dataserve 1.month
+    Donation::Fetch.from_dataserve
     redirect_to admin_donations_url, notice: 'Fetched Donations'
   end
 end

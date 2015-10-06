@@ -1151,4 +1151,409 @@ http_interactions:
         cmUgaW5jb3JyZWN0Lg==
     http_version: 
   recorded_at: Mon, 13 Oct 2014 11:00:00 GMT
+- request:
+    method: get
+    uri: https://tntdataserverasia.com/dataserver/nzl/dataquery/tntquery.aspx?action=gifts&datefrom=05/01/14&dateto=10/14/14&password=example_password&profile=1248788755&username=projects@example.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/octet-stream; charset=utf-8
+      Expires:
+      - Tue, 06 Oct 2015 22:09:34 GMT
+      Server:
+      - Microsoft-IIS/8.0
+      Content-Disposition:
+      - attachment; filename=error.txt
+      X-Aspnet-Version:
+      - 4.0.30319
+      Set-Cookie:
+      - ASP.NET_SessionId=dti0omf4kb0lnhzs4qdex3tg; path=/; HttpOnly
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 06 Oct 2015 22:10:54 GMT
+      Content-Length:
+      - '58'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        77u/RVJST1INCkVpdGhlciB5b3VyIHVzZXJuYW1lIG9yIHBhc3N3b3JkIHdl
+        cmUgaW5jb3JyZWN0Lg==
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 00:00:00 GMT
+- request:
+    method: get
+    uri: https://tntdataserverasia.com/dataserver/nzl/dataquery/tntquery.aspx?action=gifts&datefrom=05/01/14&dateto=10/14/14&password=example_password&profile=1248788751&username=projects@example.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/octet-stream; charset=utf-8
+      Expires:
+      - Tue, 06 Oct 2015 22:09:55 GMT
+      Server:
+      - Microsoft-IIS/8.0
+      Set-Cookie:
+      - ASP.NET_SessionId=1rj44wtwv5lmaogaohzu2cnf; path=/; HttpOnly
+      Content-Disposition:
+      - attachment; filename=error.txt
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 06 Oct 2015 22:10:59 GMT
+      Content-Length:
+      - '58'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        77u/RVJST1INCkVpdGhlciB5b3VyIHVzZXJuYW1lIG9yIHBhc3N3b3JkIHdl
+        cmUgaW5jb3JyZWN0Lg==
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 00:00:00 GMT
+- request:
+    method: get
+    uri: https://tntdataserverasia.com/dataserver/nzl/dataquery/tntquery.aspx?action=gifts&datefrom=05/01/14&dateto=10/14/14&password=example_password&profile=1248788752&username=projects@example.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/octet-stream; charset=utf-8
+      Expires:
+      - Tue, 06 Oct 2015 22:10:00 GMT
+      Server:
+      - Microsoft-IIS/8.0
+      Set-Cookie:
+      - ASP.NET_SessionId=at4f4yul5gqvwwdeudceqmht; path=/; HttpOnly
+      Content-Disposition:
+      - attachment; filename=error.txt
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 06 Oct 2015 22:11:04 GMT
+      Content-Length:
+      - '58'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        77u/RVJST1INCkVpdGhlciB5b3VyIHVzZXJuYW1lIG9yIHBhc3N3b3JkIHdl
+        cmUgaW5jb3JyZWN0Lg==
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 00:00:00 GMT
+- request:
+    method: get
+    uri: https://tntdataserverasia.com/dataserver/nzl/dataquery/tntquery.aspx?action=gifts&datefrom=05/01/14&dateto=10/14/14&password=example_password&profile=1248788749&username=projects@example.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/octet-stream; charset=utf-8
+      Expires:
+      - Tue, 06 Oct 2015 22:10:04 GMT
+      Server:
+      - Microsoft-IIS/8.0
+      Set-Cookie:
+      - ASP.NET_SessionId=4kk4el1gxanu5hh2rb0bwqwo; path=/; HttpOnly
+      Content-Disposition:
+      - attachment; filename=error.txt
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 06 Oct 2015 22:11:08 GMT
+      Content-Length:
+      - '58'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        77u/RVJST1INCkVpdGhlciB5b3VyIHVzZXJuYW1lIG9yIHBhc3N3b3JkIHdl
+        cmUgaW5jb3JyZWN0Lg==
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 00:00:00 GMT
+- request:
+    method: get
+    uri: https://tntdataserverasia.com/dataserver/nzl/dataquery/tntquery.aspx?action=gifts&datefrom=05/01/14&dateto=10/14/14&password=example_password&profile=1490040741&username=projects@example.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/octet-stream; charset=utf-8
+      Expires:
+      - Tue, 06 Oct 2015 22:10:09 GMT
+      Server:
+      - Microsoft-IIS/8.0
+      Set-Cookie:
+      - ASP.NET_SessionId=eogzsf4wnpnsascjjdepdf4c; path=/; HttpOnly
+      Content-Disposition:
+      - attachment; filename=error.txt
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 06 Oct 2015 22:11:12 GMT
+      Content-Length:
+      - '58'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        77u/RVJST1INCkVpdGhlciB5b3VyIHVzZXJuYW1lIG9yIHBhc3N3b3JkIHdl
+        cmUgaW5jb3JyZWN0Lg==
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 00:00:00 GMT
+- request:
+    method: get
+    uri: https://tntdataserverasia.com/dataserver/nzl/dataquery/tntquery.aspx?action=gifts&datefrom=05/01/14&dateto=10/14/14&password=example_password&profile=2074168822&username=projects@example.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/octet-stream; charset=utf-8
+      Expires:
+      - Tue, 06 Oct 2015 22:10:13 GMT
+      Server:
+      - Microsoft-IIS/8.0
+      Set-Cookie:
+      - ASP.NET_SessionId=1otltk2sujeht1jhjdwriwjq; path=/; HttpOnly
+      Content-Disposition:
+      - attachment; filename=error.txt
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 06 Oct 2015 22:11:17 GMT
+      Content-Length:
+      - '58'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        77u/RVJST1INCkVpdGhlciB5b3VyIHVzZXJuYW1lIG9yIHBhc3N3b3JkIHdl
+        cmUgaW5jb3JyZWN0Lg==
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 00:00:00 GMT
+- request:
+    method: get
+    uri: https://tntdataserverasia.com/dataserver/nzl/dataquery/tntquery.aspx?action=gifts&datefrom=05/01/14&dateto=10/14/14&password=example_password&profile=237257741&username=projects@example.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/octet-stream; charset=utf-8
+      Expires:
+      - Tue, 06 Oct 2015 22:10:18 GMT
+      Server:
+      - Microsoft-IIS/8.0
+      Set-Cookie:
+      - ASP.NET_SessionId=5hya4ih4buobjw23faao2r1p; path=/; HttpOnly
+      Content-Disposition:
+      - attachment; filename=error.txt
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 06 Oct 2015 22:11:21 GMT
+      Content-Length:
+      - '58'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        77u/RVJST1INCkVpdGhlciB5b3VyIHVzZXJuYW1lIG9yIHBhc3N3b3JkIHdl
+        cmUgaW5jb3JyZWN0Lg==
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 00:00:00 GMT
+- request:
+    method: get
+    uri: https://tntdataserverasia.com/dataserver/nzl/dataquery/tntquery.aspx?action=gifts&datefrom=05/01/14&dateto=10/14/14&password=example_password&profile=&username=projects@example.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/octet-stream; charset=utf-8
+      Expires:
+      - Tue, 06 Oct 2015 22:10:22 GMT
+      Server:
+      - Microsoft-IIS/8.0
+      Set-Cookie:
+      - ASP.NET_SessionId=vrqsb0buxixvxadm4vwapr0l; path=/; HttpOnly
+      Content-Disposition:
+      - attachment; filename=error.txt
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 06 Oct 2015 22:11:26 GMT
+      Content-Length:
+      - '58'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        77u/RVJST1INCkVpdGhlciB5b3VyIHVzZXJuYW1lIG9yIHBhc3N3b3JkIHdl
+        cmUgaW5jb3JyZWN0Lg==
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 00:00:00 GMT
+- request:
+    method: get
+    uri: https://tntdataserverasia.com/dataserver/nzl/dataquery/tntquery.aspx?action=gifts&datefrom=05/01/14&dateto=10/14/14&password=example_password&profile=1248788753&username=projects@example.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/octet-stream; charset=utf-8
+      Expires:
+      - Tue, 06 Oct 2015 22:10:27 GMT
+      Server:
+      - Microsoft-IIS/8.0
+      Set-Cookie:
+      - ASP.NET_SessionId=33qjnpuyn4bib1w3rqmhbhwp; path=/; HttpOnly
+      Content-Disposition:
+      - attachment; filename=error.txt
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 06 Oct 2015 22:11:30 GMT
+      Content-Length:
+      - '58'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        77u/RVJST1INCkVpdGhlciB5b3VyIHVzZXJuYW1lIG9yIHBhc3N3b3JkIHdl
+        cmUgaW5jb3JyZWN0Lg==
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 00:00:00 GMT
 recorded_with: VCR 2.9.3

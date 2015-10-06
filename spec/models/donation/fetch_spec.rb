@@ -10,12 +10,12 @@ RSpec.describe Donation::Fetch, type: :model do
 
   describe 'self#from_dataserve' do
     it 'generates projects' do
-      expect { Donation::Fetch.from_dataserve(1.month) }.to(
+      expect { Donation::Fetch.from_dataserve }.to(
         change { Project.count }.from(0).to(8)
       )
     end
     it 'is successful' do
-      expect { Donation::Fetch.from_dataserve(1.month) }.to(
+      expect { Donation::Fetch.from_dataserve }.to(
         change { Donation.count }.from(0).to(288)
       )
     end
