@@ -15,7 +15,12 @@ class Donation
     end
 
     def self.datefrom
-      Time.current.beginning_of_year + 4.months
+      return year_start + 4.months if (year_start + 4.months).past?
+      year_start - 1.year + 4.months
+    end
+
+    def self.year_start
+      Time.current.beginning_of_year
     end
 
     def self.get(params)
