@@ -9,10 +9,13 @@ Rails.application.routes.draw do
       resources :projects, only: [:show]
       resources :donees, only: [:show], path: '' do
         scope module: :donees do
-          resource :pledges, only: [:create, :new] do
+          resources :pledges, path: 'giving', except: [:destroy] do
             collection do
               get 'about'
-              get 'thanks'
+            end
+            member do
+              get 'success'
+              get 'failure'
             end
           end
         end

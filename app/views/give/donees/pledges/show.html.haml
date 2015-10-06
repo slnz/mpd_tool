@@ -1,0 +1,12 @@
+= render 'top'
+= render 'state'
+.container
+  .content
+    - if pledge.prayer_only?
+      Thanks for praying
+    - elsif pledge.success?
+      Donation received thanks!
+    - elsif pledge.failure?
+      Looks like that didn't work out
+    - elsif pledge.pending?
+      This pledge is still processing.

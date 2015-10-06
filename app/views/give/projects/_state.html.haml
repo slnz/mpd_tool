@@ -1,0 +1,19 @@
+.state
+  .container
+    .progress
+      .progress-bar.progress-bar-success{style: "width: #{project.percentage_raised}%; min-width: 2em; text-align: left;"}
+        &nbsp;
+        = "#{project.percentage_raised}%"
+    .subtitle
+      .row
+        .col-md-4
+          %h1= number_to_currency project.amount_raised, precision: 0
+          given of
+          = number_to_currency project.total_goal, precision: 0
+          goal
+        .col-md-3
+          %h1= project.donations.count
+          backers
+        .col-md-3
+          %h1= project.days_until
+          days to go

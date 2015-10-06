@@ -21,9 +21,25 @@ body {
 .color4, .blue-gray {
   background: #607D8B;
 }
-
+.color5, .indigo {
+  background: #3F51B5;
+}
 a.clean:hover {
   text-decoration: none;
+}
+.alert + a.clean {
+  margin-top: -20px;
+  display: block;
+}
+.authenticate {
+  color: #fff;
+  padding: 20px 0 50px 0;
+  h2 {
+    font-weight: 900;
+  }
+  p {
+    margin-bottom: 30px;
+  }
 }
 .top {
   padding: 20px 0;
@@ -214,6 +230,24 @@ a.clean:hover {
         background-color: transparent;
         &:focus {
           border: 0;
+          box-shadow: none;
+        }
+      }
+    }
+    .form-group.enum_radio_buttons {
+      padding-bottom: 10px;
+      span.radio {
+        label {
+          padding: 0;
+        }
+        input[type="radio"] {
+          position: static;
+          margin: 0 10px 0 0;
+          display: inline-block;
+          width: auto;
+          height: auto;
+          border: 0;
+          border-radius: 0;
           box-shadow: none;
         }
       }

@@ -20,7 +20,7 @@ class Designation < ActiveRecord::Base
   end
 
   def project
-     super.try(:opened?) ? super : nil
+    super.try(:opened?) ? super : nil
   end
 
   protected

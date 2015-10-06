@@ -1,10 +1,10 @@
 .help{class: "color0"}
   .container
     %h2= "How can you help #{donee.first_name}?"
-    %a.btn-primary.btn-lg{href: new_donee_pledges_path(donee)}
+    %a.btn-primary.btn-lg{href: new_donee_pledge_path(donee)}
       = fa_icon 'angle-right'
       In Prayer and Finance
-    %a.btn-primary.btn-lg{href: new_donee_pledges_path(donee, prayer_only: true)}
+    %a.btn-primary.btn-lg{href: new_donee_pledge_path(donee, prayer_only: true)}
       = fa_icon 'angle-right'
       In Prayer
     - unless current_page?(about_donee_pledges_path(donee))

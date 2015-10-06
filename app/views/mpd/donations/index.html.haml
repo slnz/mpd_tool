@@ -1,14 +1,13 @@
-.alert.alert-info
+.content
   .container
-    Donations last processed on
-    - if Donation.first
-      = Donation.first.display_date.strftime('%A, %-d %b %Y')
-.container
-  .intro-text
     %h1 My Donations
-    %a.label{href: donations_path, class: (!params[:project] ? 'label-primary' : 'label-default')} All
+    %p
+      Donations last processed on
+      - if Donation.first
+        = Donation.first.display_date.strftime('%A, %-d %b %Y')
+    %a.label{href: donations_path, class: (!params[:project_id] ? 'label-primary' : 'label-default')} All
     - current_user.projects.uniq.each do |project|
-      %a.label.label-default{href: donations_path(project: project), class: (current_page?(donations_path(project: project)) ? 'label-primary' : 'label-default')}= project.title
+      %a.label.label-default{href: donations_path(project_id: project.id), class: (current_page?(donations_path(project_id: project.id)) ? 'label-primary' : 'label-default')}= project.title
     %br/
     %br/
     = search_form_for @q, class: 'form-horizontal' do |f|
@@ -16,25 +15,25 @@
         = f.search_field :contact_name_cont, class: 'form-control', placeholder: 'Search by Name'
         %span.input-group-btn
           = f.button "#{fa_icon 'search'}".html_safe, class: 'btn btn-primary'
-  %table.table.table-striped
-    %thead
-      %tr
-        %th= sort_link(@q, :display_date, 'Date', default_order: :desc)
-        %th= sort_link(@q, 'contact.name', 'Name')
-        %th= sort_link(@q, :payment_method)
-        %th= sort_link(@q, :amount)
-    %tbody
-      - @donations.each do |donation|
+    %table.table.table-striped
+      %thead
         %tr
-          %td= donation.display_date.strftime('%d/%m/%y')
-          %td= donation.name
-          %td= donation.payment_method
-          %td= number_to_currency donation.amount
-    %tfoot
-      %tr
-        %td.text-right{colspan: 3} Total
-        %th= number_to_currency @donations.sum(:amount)
-  .text-center
-    = paginate @donations
-  %p.text-muted
-    %small Donations take a minimum of 4 days to process. Note that internal transfers (some donations from staff members, and money given through Cru) won't show here.
+          %th= sort_link(@q, :display_date, 'Date', default_order: :desc)
+          %th= sort_link(@q, 'contact.name', 'Name')
+          %th= sort_link(@q, :payment_method)
+          %th= sort_link(@q, :amount)
+      %tbody
+        - @donations.each do |donation|
+          %tr
+            %td= donation.display_date.strftime('%d/%m/%y')
+            %td= donation.name
+            %td= donation.payment_method
+            %td= number_to_currency donation.amount
+      %tfoot
+        %tr
+          %td.text-right{colspan: 3} Total
+          %th= number_to_currency @donations.sum(:amount)
+    .text-center
+      = paginate @donations
+    %p.text-muted
+      %small Donations take a minimum of 4 days to process. Note that internal transfers (some donations from staff members, and money given through Cru) won't show here.

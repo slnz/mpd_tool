@@ -14,5 +14,6 @@
     = render 'breadcrumbs' unless current_page? root_path
     = render 'flashes'
     = yield
+    = render 'authenticate' unless user_signed_in?
     = render 'footer'
     = render 'javascript'

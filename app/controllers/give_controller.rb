@@ -1,6 +1,5 @@
 class GiveController < ApplicationController
   before_action :validate_current_user, if: :signed_in?
-   add_breadcrumb 'Home', :root_path
   layout 'give'
   def current_user
     super.try(:becomes, User::Donor)

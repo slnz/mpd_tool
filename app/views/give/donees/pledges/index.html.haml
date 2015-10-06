@@ -1,0 +1,19 @@
+= render 'top'
+= render 'state'
+= render 'help'
+- if user_signed_in?
+  .container
+    .content
+      %h2 Giving History
+      %table.table.table-striped
+        %thead
+        %tr
+          %td #
+          %td Amount
+          %td Date Given
+        %tbody
+        - pledges.each_with_index do |pledge, index|
+          %tr
+            %td= index + 1
+            %td= number_to_currency pledge.amount
+            %td= pledge.created_at.strftime '%d/%m/%y'

@@ -1,6 +1,5 @@
 = render 'top'
 = render 'state'
-= render 'help'
 .content
   .container
     - unless project.description.blank?
@@ -23,18 +22,4 @@
         - project.donees.where.not(id: donee.id).order("RANDOM()").limit(5).each do |donee|
           %a{href: donee_path(id: donee.slug)}
             %img{src: donee.image}
-    - if user_signed_in?
-      - unless current_user.pledges.where(designation: designation).empty?
-        %h2 Giving History
-        %table.table.table-striped
-          %thead
-            %tr
-              %td #
-              %td Amount
-              %td Date Given
-          %tbody
-            - current_user.pledges.where(designation: designation, prayer_only: false).order(:created_at).each_with_index do |pledge, index|
-              %tr
-                %td= index + 1
-                %td= number_to_currency pledge.amount
-                %td= pledge.created_at.strftime '%d/%m/%y'
+= render 'help'

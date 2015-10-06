@@ -2,7 +2,7 @@
 = render 'state'
 .content
   .container
-    %p
+    %h2
       Thanks for your interest in supporting
       = donee.first_name
       get to Summer Project!
@@ -20,6 +20,11 @@
           %h3 Giving Details
           .details
             = f.input :amount
+            = f.input :giving_method, as: :radio_buttons
+          .text-right
+            %small.text-muted Payments provided by
+            %br
+            = image_tag 'px_logo.png'
         - else
           = f.input :prayer_only, as: :hidden, input_html: { value: true }
         %h3 Misc Details
@@ -28,13 +33,4 @@
         .submit
           = f.button :submit, class: 'btn btn-primary', value: "Help #{donee.first_name}"
     - else
-      %h2
-        Sign In or Sign Up
-      %p
-        By getting a giving account you can save information to speed up future giving. You can also see all your historic giving info. What are you waiting for? Get started by signing in or signing up.
-      %a.btn-primary.btn-lg{href: new_user_session_path}
-        = fa_icon 'angle-right'
-        Sign In
-      %a.btn-primary.btn-lg{href: new_user_registration_path}
-        = fa_icon 'angle-right'
-        Sign Up
+      %p In order to get started you'll need to sign in or sign up with a giving account.
