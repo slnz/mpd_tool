@@ -11,6 +11,18 @@ class Pledge
     protected
 
     def update_pledge
+      send(pledge.giving_method.parameterize.underscore)
+    end
+
+    def credit_card
+      pxpay
+    end
+
+    def internet_banking
+      pxpay
+    end
+
+    def pxpay
       response = Pxpay::Response.new(params).response.to_hash
       return pledge.success! if response[:success] == '1'
       pledge.failure!

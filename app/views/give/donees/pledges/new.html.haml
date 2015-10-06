@@ -7,7 +7,7 @@
       = donee.first_name
       get to Summer Project!
     - if user_signed_in?
-      = simple_form_for [donee, pledge], url: donee_pledges_path(donee, pledge, prayer_only: params['prayer_only']) do |f|
+      = simple_form_for [donee, pledge], url: donee_pledges_path(donee, pledge) do |f|
         - if f.object.errors.any?
           .alert.alert-danger
             Your pledge form contains #{pluralize(f.object.errors.count, "error")}.
@@ -16,20 +16,17 @@
                 %li
                   #{msg}
           %br
-        - unless params['prayer_only'] && params['prayer_only'] == 'true'
-          %h3 Giving Details
-          .details
-            = f.input :amount
-            = f.input :giving_method, as: :radio_buttons
-          .text-right
-            %small.text-muted Payments provided by
-            %br
-            = image_tag 'px_logo.png'
-        - else
-          = f.input :prayer_only, as: :hidden, input_html: { value: true }
+        %h3 Giving Details
+        .details
+          = f.input :amount
+          = f.input :giving_method, as: :radio_buttons
+        .text-right
+          %small.text-muted Payments provided by
+          %br
+          = image_tag 'px_logo.png'
         %h3 Misc Details
         .details
-          = f.input :newsletter, wrapper: :inline_checkbox, label: 'Receive Prayer Newsletter'
+          = f.input :newsletter, wrapper: :inline_checkbox, label: 'Receive Prayer Updates'
         .submit
           = f.button :submit, class: 'btn btn-primary', value: "Help #{donee.first_name}"
     - else

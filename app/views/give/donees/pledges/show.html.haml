@@ -2,8 +2,6 @@
 = render 'state'
 .container
   .content
-    - if pledge.prayer_only?
-      Thanks for praying
     - elsif pledge.success?
       Donation received thanks!
     - elsif pledge.failure?

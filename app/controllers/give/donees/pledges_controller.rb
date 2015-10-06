@@ -75,7 +75,7 @@ module Give
       def pledge_params
         pledge_params = params[:pledge]
         return {} unless pledge_params
-        pledge_params.permit(:prayer_only, :newsletter, :amount, :giving_method)
+        pledge_params.permit(:newsletter, :amount, :giving_method)
       end
     end
   end

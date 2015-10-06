@@ -26,7 +26,7 @@ class Pledge
     end
 
     def generate_reference_address
-      self.reference_address = send(pledge.giving_method.parameterize.underscore)
+      self.reference_address ||= send(pledge.giving_method.parameterize.underscore)
     end
 
     def credit_card
