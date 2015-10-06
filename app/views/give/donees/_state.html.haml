@@ -7,14 +7,14 @@
           = "#{designation.percentage_raised}%"
       .subtitle
         .row
-          .col-md-4
+          .col-xs-6.col-sm-4
             %h1= number_to_currency designation.amount_raised, precision: 0
             given of
             = number_to_currency designation.goal, precision: 0
             goal
-          .col-md-3
+          .col-xs-3.col-sm-3
             %h1= designation.donations.count
             backers
-          .col-md-3
+          .col-xs-3.col-sm-3
             %h1= project.days_until
             days to go
