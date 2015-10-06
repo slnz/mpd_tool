@@ -12,6 +12,7 @@ class Pledge
 
     def update_pledge
       send(pledge.giving_method.parameterize.underscore)
+      pledge.create_subscription if pledge.success?
     end
 
     def credit_card

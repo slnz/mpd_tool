@@ -1,9 +1,18 @@
 = render 'top'
 = render 'state'
-= render 'help'
-- if user_signed_in?
-  .container
-    .content
+.container
+  .content
+    %h2
+      Thanks for partnering with
+      = donee.first_name
+      in prayer and Finance!
+    %br
+    %a.btn.btn-primary.btn-lg{href: new_donee_pledge_path(donee)}
+      = fa_icon 'angle-right'
+      Partner in Prayer and Finance
+    - if user_signed_in? && !pledges.blank?
+      %br
+      %br
       %h2 Giving History
       %table.table.table-striped
         %thead
@@ -11,9 +20,12 @@
           %td #
           %td Amount
           %td Date Given
+          %td Project
         %tbody
         - pledges.each_with_index do |pledge, index|
           %tr
             %td= index + 1
             %td= number_to_currency pledge.amount
             %td= pledge.created_at.strftime '%d/%m/%y'
+            %td= pledge.project.try(:title)
+= render 'help'

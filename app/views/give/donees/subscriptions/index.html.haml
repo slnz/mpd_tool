@@ -1,0 +1,39 @@
+= render 'top'
+= render 'state'
+.container
+  .content
+    %h2
+      Thanks for partnering with
+      = donee.first_name
+      in prayer!
+    - if user_signed_in?
+      - if current_subscription
+        %p
+          You are already a prayer partner for
+          = donee.first_name
+          on
+          = project.title
+      - else
+        %br
+        %a.btn.btn-primary.btn-lg{href: new_donee_subscription_path(donee)}
+          = fa_icon 'angle-right'
+          Partner in Prayer
+        %br
+        %br
+        - unless subscriptions.blank?
+          %h2 Prayer Partner History
+          %table.table.table-striped
+            %thead
+            %tr
+              %td #
+              %td Date Started
+              %td Project
+            %tbody
+            - subscriptions.each_with_index do |subscription, index|
+              %tr
+                %td= index + 1
+                %td= subscription.created_at.strftime '%d/%m/%y'
+                %td= subscription.project.try(:title)
+    - else
+      %p In order to get started you'll need to sign in or sign up with an account.
+= render 'help'

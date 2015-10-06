@@ -3,9 +3,11 @@ class Project < ActiveRecord::Base
   friendly_id :title, use: :slugged
   validates :title, presence: true
   validates :code, presence: true
-  has_many :donations
-  has_many :designations
+  has_many :donations, dependent: :nullify
+  has_many :designations, dependent: :nullify
+  has_many :pledges, dependent: :nullify
   has_many :donees, through: :designations, class_name: 'User::Donee'
+  has_many :subscriptions, dependent: :destroy
   scope :opened, -> { where('date >= ?', Time.current) }
 
   def opened?

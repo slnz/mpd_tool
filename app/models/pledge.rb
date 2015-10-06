@@ -1,8 +1,8 @@
 class Pledge < ActiveRecord::Base
   belongs_to :designation
+  belongs_to :project
   belongs_to :donor, class_name: 'User::Donor'
-  validates :donor, presence: true
-  validates :amount, :giving_method, presence: true
+  validates :donor, :project, :amount, :giving_method, presence: true
   enum status: { 'pending' => 0, 'success' => 1, 'failure' => 2 }
   enum giving_method: { 'credit card' => 0, 'internet banking' => 1 }
 
@@ -12,5 +12,10 @@ class Pledge < ActiveRecord::Base
 
   def create_response(options = {})
     Pledge::Response.create(options.merge(pledge: self))
+  end
+
+  def create_subscription
+    return unless newsletter?
+    Subscription.find_or_create_by(donor: donor, designation: designation, project: designation.project)
   end
 end

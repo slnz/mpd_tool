@@ -8,11 +8,12 @@ Rails.application.routes.draw do
       get '/projects', to: redirect('/')
       resources :projects, only: [:show]
       resources :donees, only: [:show], path: '' do
+        member do
+          get 'about'
+        end
         scope module: :donees do
+          resources :subscriptions
           resources :pledges, path: 'giving', except: [:destroy] do
-            collection do
-              get 'about'
-            end
             member do
               get 'success'
               get 'failure'

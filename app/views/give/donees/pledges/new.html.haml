@@ -3,9 +3,9 @@
 .content
   .container
     %h2
-      Thanks for your interest in supporting
+      Thanks for partnering with
       = donee.first_name
-      get to Summer Project!
+      in prayer and finance!
     - if user_signed_in?
       = simple_form_for [donee, pledge], url: donee_pledges_path(donee, pledge) do |f|
         - if f.object.errors.any?
@@ -30,4 +30,5 @@
         .submit
           = f.button :submit, class: 'btn btn-primary', value: "Help #{donee.first_name}"
     - else
-      %p In order to get started you'll need to sign in or sign up with a giving account.
+      %p In order to get started you'll need to sign in or sign up with an account.
+= render 'help'

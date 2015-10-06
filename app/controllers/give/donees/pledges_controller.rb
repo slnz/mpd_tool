@@ -2,8 +2,8 @@ module Give
   module Donees
     class PledgesController < DoneesController
       decorates_assigned :pledges, :pledge
-      before_action :load_donee, :load_designation, :load_project
       before_action :authenticate_user!, except: [:about, :index, :new]
+      before_action :check_project, except: [:index]
       add_breadcrumb 'Giving', proc { |c| c.donee_pledges_path(donee_id: c.donee.slug) }
 
       def index
@@ -12,16 +12,12 @@ module Give
 
       def show
         load_pledge
-        add_breadcrumb 'Pledge', donee_pledge_path(donee_id: donee.slug, id: @pledge.id)
+        add_breadcrumb 'Donation', donee_pledge_path(donee_id: donee.slug, id: @pledge.id)
       end
 
       def new
         build_pledge if user_signed_in?
         add_breadcrumb 'New', new_donee_pledge_path(donee_id: donee.slug)
-      end
-
-      def about
-        add_breadcrumb 'About', about_donee_pledges_path(donee_id: donee.slug)
       end
 
       def create
@@ -50,6 +46,7 @@ module Give
         @pledge ||= pledge_scope.build
         @pledge.attributes = pledge_params
         @pledge.designation = @designation
+        @pledge.project = @project
       end
 
       def save_pledge

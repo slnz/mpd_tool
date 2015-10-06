@@ -27,7 +27,7 @@ body {
 a.clean:hover {
   text-decoration: none;
 }
-.alert + a.clean {
+.alert + a.clean, .alert + .top {
   margin-top: -20px;
   display: block;
 }

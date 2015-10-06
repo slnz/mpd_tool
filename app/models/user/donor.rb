@@ -5,5 +5,6 @@ class User
     validates :terms, acceptance: { accept: true }, if: :active?
     enum donor_state: { setup: 0, active: 1 }
     has_many :pledges
+    has_many :subscriptions, dependent: :destroy
   end
 end

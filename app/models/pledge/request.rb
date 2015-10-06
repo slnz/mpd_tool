@@ -53,7 +53,7 @@ class Pledge
     end
 
     def pxpay
-      request = Pxpay::Request.new(designation.designation_code, pledge.amount, pxpay_options)
+      request = Pxpay::Request.new("#{pledge.id}_#{designation.designation_code}", pledge.amount, pxpay_options)
       request.url
     end
   end

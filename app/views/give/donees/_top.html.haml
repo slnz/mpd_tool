@@ -1,16 +1,27 @@
-.top{class: "color#{donee.id % 5}"}
-  .container
-    .avatar
-      %img{src: donee.image}
-    .profile
-      %h2
-        - if project.date
-          On the
-          = project.date.strftime("#{project.date.day.ordinalize} %b %Y")
-        - else
-          Not long now until
-      %h1
-        = donee.first_name
-        is going to
-        %a{href: project_path(id: project.slug)}
-          = project.title
+- if project
+  .top{class: "color#{donee.id % 5}"}
+    .container
+      .avatar
+        %img{src: donee.image}
+      .profile
+        %h2
+          - if project.date
+            On the
+            = project.date.strftime("#{project.date.day.ordinalize} %b %Y")
+          - else
+            Not long now until
+        %h1
+          = donee.first_name
+          is going to
+          %a{href: project_path(id: project.slug)}
+            = project.title
+- else
+  .top{class: "color#{donee.id % 5}"}
+    .container
+      .avatar
+        %img{src: donee.image}
+      .profile
+        %h2
+          Not Assigned to a Summer Project
+        %h1
+          = donee.name
