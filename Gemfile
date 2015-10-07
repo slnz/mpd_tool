@@ -36,6 +36,7 @@ gem 'active_type'
 gem 'draper'
 gem 'breadcrumbs_on_rails'
 gem 'pxpay'
+gem 'rails4-autocomplete'
 group :development do
   gem 'spring'
   gem 'spring-commands-rspec'

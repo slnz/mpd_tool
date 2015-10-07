@@ -1,0 +1,7 @@
+.top.orange
+  .container
+    %h1 Find a friend going on Summer Project.
+    .search
+      = form_tag id: 'donee_search' do
+        = fa_icon 'search'
+        = autocomplete_field_tag 'name', '', autocomplete_donee_name_donees_path, autocomplete: 'off', id: 'donee_name_search'

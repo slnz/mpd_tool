@@ -356,6 +356,8 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails4-autocomplete (1.1.1)
+      rails (>= 3.0)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -540,6 +542,7 @@ DEPENDENCIES
   pxpay
   rack-timeout
   rails (= 4.2.4)
+  rails4-autocomplete
   rails_12factor
   ransack
   recipient_interceptor

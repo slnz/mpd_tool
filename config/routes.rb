@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       get '/projects', to: redirect('/')
       resources :projects, only: [:show]
       resources :donees, only: [:show], path: '' do
+        collection do
+          get :autocomplete_donee_name
+        end
         member do
           get 'about'
         end

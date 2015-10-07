@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :registerable,
          :rememberable, :trackable, :omniauthable, omniauth_providers: [:facebook]
   validates :email, uniqueness: true, presence: true
+  before_save :set_name
 
   def self.from_omniauth(auth)
     where(provider: auth[:provider], uid: auth[:uid]).first_or_create(
@@ -14,8 +15,8 @@ class User < ActiveRecord::Base
     )
   end
 
-  def name
-    "#{first_name} #{last_name}".strip
+  def set_name
+    self.name = "#{first_name} #{last_name}".strip
   end
 
   def reference_name
