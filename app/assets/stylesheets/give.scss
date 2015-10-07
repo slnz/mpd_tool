@@ -101,6 +101,9 @@ a.clean:hover {
 }
 .projects {
   padding-top: 20px;
+  a, a:link, a:visited {
+    text-decoration: none;
+  }
   .project-container {
     margin-bottom: 30px;
     .project {
