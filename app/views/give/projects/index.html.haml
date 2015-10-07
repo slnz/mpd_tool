@@ -12,5 +12,5 @@
           See the Summer Projects we are sending and partner with students as they Go!
           %br
           %br
-- projects.each do |project|
-  = render partial: 'top', locals: { project: project }
+- projects.each_with_index do |project, index|
+  = render partial: 'top', locals: { project: project, index: index }

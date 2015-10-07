@@ -1,5 +1,5 @@
 %a.clean{href: project_path(id: project.slug)}
-  .top{class: "color#{project.id % 5}"}
+  .top{class: "color#{(params[:action] == 'index' ? index : nil) || project.id % 5}"}
     .container
       %h1= project.title
       %h2
