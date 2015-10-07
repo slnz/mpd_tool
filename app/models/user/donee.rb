@@ -25,10 +25,6 @@ class User
       super activation_code.upcase
     end
 
-    def give_url
-      "#{ENV['GIVE_URL']}/#{slug}"
-    end
-
     def image
       super.try(:gsub!, 'http://', 'https://')
     end
