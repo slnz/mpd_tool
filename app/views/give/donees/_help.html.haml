@@ -1,7 +1,7 @@
 - if project
   .help{class: "color0"}
     .container
-      %h2= "How can #{'else ' unless current_page?(donee_path(donee))}you help #{donee.first_name}?"
+      %h2= "How #{'else ' unless current_page?(donee_path(donee))}can you help #{donee.first_name}?"
       - unless params[:controller] == 'give/donees/pledges'
         %a.btn-primary.btn-lg{href: new_donee_pledge_path(donee)}
           = fa_icon 'angle-right'
