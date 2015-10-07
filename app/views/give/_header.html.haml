@@ -20,6 +20,9 @@
           - if current_user.admin?
             %li
               %a{href: admin_root_path} Admin
+          - if current_donee.active?
+            %li
+              %a{href: root_url} MPD
           %li
             = link_to 'Sign Out', destroy_user_session_path, method: :delete
         - else
