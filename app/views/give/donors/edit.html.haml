@@ -1,15 +1,18 @@
-.content
-  .container
-    - unless donor.active? && !donor.donor_state_changed?
+- unless donor.active? && !donor.donor_state_changed?
+  .content
+    .container
       %h2
         Thanks for signing up to give to Students on our Summer Projects.
       %p
         Your continued support is paramount to sending hundreds of students every year to projects all over the world. In order to start giving you'll need to setup your profile below.
-    - else
+- else
+  = render 'search'
+  .content
+    .container
       %h2
         My Profile
-    = simple_form_for @donor, url: '/me' do |f|
-      = render partial: 'errors', locals: { f: f }
-      = render partial: 'profile', locals: { f: f }
-      .submit
-        = f.button :submit, class: 'btn btn-primary', value: 'Save My Profile'
+      = simple_form_for @donor, url: '/me' do |f|
+        = render partial: 'errors', locals: { f: f }
+        = render partial: 'profile', locals: { f: f }
+        .submit
+          = f.button :submit, class: 'btn btn-primary', value: 'Save My Profile'
