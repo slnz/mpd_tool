@@ -19,6 +19,7 @@ footer {
   }
   .navbar-nav {
     > li {
+      display: inline-block;
       > a {
         -webkit-transition: color 0.1s linear;
         -moz-transition: color 0.1s linear;
