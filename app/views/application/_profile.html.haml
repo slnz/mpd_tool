@@ -23,4 +23,4 @@
       = f.input :postcode
 %br
 .details
-  = f.input :terms, wrapper: :inline_checkbox, label: 'I Agree to the <a href="https://www.studentlife.org.nz/privacy-policy/" target="_blank">privacy policy</a>'.html_safe
+  = f.input :terms, as: :boolean, wrapper: :inline_checkbox, label: 'I Agree to the <a href="https://www.studentlife.org.nz/privacy-policy/" target="_blank">privacy policy</a>'.html_safe
