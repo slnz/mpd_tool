@@ -14,13 +14,17 @@
         = simple_format donee.description
         .disclaimer
           The views expressed above are strictly those of the author(s) and do not necessarily reflect Student Life.
-      .going
+      %h2
         = "#{pluralize project.designations.count - 1, 'other person'}"
         going to
         %a{href: project_path(id: project.slug)}
           = project.title
+      .going.clearfix
         .avatars
           - project.donees.where.not(id: donee.id).order("RANDOM()").limit(5).each do |donee|
-            %a{href: donee_path(id: donee.slug)}
-              %img{src: donee.image}
+            %a
+              %img{src: donee.large_image}
+          - if project.designations.count > 5
+            .additional
+              = "+#{project.designations.count - 6}"
 = render 'help'

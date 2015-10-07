@@ -142,21 +142,28 @@ header.navbar.navbar-inverse {
     line-height: 16px;
     margin-bottom: 24px;
     .avatars {
-      margin-top: 2px;
-      img {
-        width: 32px;
-        height: 32px;
-        border-radius: 5px;
-      }
-    }
-    &.large {
-      .avatars {
+      line-height: 50px;
+      a {
+        height: 50px;
+        height: 50px;
+        float: left;
+        margin-right: 5px;
         img {
-          margin-right: 5px;
           width: 50px;
           height: 50px;
           border-radius: 5px;
         }
+      }
+      .additional {
+        display: inline-block;
+        background-color: #aaa;
+        color: #fff;
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 900;
       }
     }
   }

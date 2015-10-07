@@ -8,9 +8,11 @@
         ="#{project.title}?"
       = simple_format project.description_with_name('students')
     %h2= "#{pluralize project.designations.count, 'person'} going to #{project.title}"
-    %p Find out more and consider partnering with them!
-    .going.large
+    .going.clearfix
       .avatars
-        - project.donees.each do |donee|
-          %a{href: donee_path(id: donee.slug)}
+        - project.donees.order("RANDOM()").limit(10).each do |donee|
+          %a
             %img{src: donee.large_image}
+        - if project.designations.count > 10
+          .additional
+            = "+#{project.designations.count - 10}"
