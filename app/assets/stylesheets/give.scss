@@ -107,19 +107,22 @@ a.clean:hover {
     }
   }
 }
-.project-container {
-  margin-bottom: 30px;
-  .project {
-    padding: 20px;
-    color: #fff;
-    h1 {
-      margin-top: 0;
-      font-size: 22px;
-    }
-    h2 {
-      font-size: 16px;
-      letter-spacing: normal;
-      margin-bottom: 20px;
+.projects {
+  padding-top: 20px;
+  .project-container {
+    margin-bottom: 30px;
+    .project {
+      padding: 20px;
+      color: #fff;
+      h1 {
+        margin-top: 0;
+        font-size: 22px;
+      }
+      h2 {
+        font-size: 16px;
+        letter-spacing: normal;
+        margin-bottom: 20px;
+      }
     }
   }
 }

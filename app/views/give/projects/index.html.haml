@@ -14,7 +14,7 @@
           %br
 .content
   .container
-    .row
+    .row.projects
       - projects.each_with_index do |project, index|
         %a{href: project_path(id: project.slug)}
           .col-sm-6.project-container
