@@ -1,5 +1,5 @@
 ActiveAdmin.register Project do
-  permit_params :title, :code, :goal, :description, :date
+  permit_params :title, :code, :goal, :description, :date, :slug
   decorate_with Decorator::ProjectDecorator
 
   index do
@@ -14,7 +14,7 @@ ActiveAdmin.register Project do
 
   filter :title
   filter :code
-  
+
   controller do
     def find_resource
       Project.friendly.find(params[:id])
