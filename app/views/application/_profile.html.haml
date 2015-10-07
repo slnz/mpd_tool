@@ -1,0 +1,26 @@
+
+%h3 Personal Details
+%p
+  Information about how we can contact you.
+.details
+  .row
+    .col-md-6
+      = f.input :first_name
+    .col-md-6
+      = f.input :last_name
+  = f.input :email
+  = f.input :phone
+%h3 Address Details
+%p
+  Address to send you tax receipts and relevant information.
+.details
+  = f.input :address_line_1
+  = f.input :address_line_2
+  .row
+    .col-md-8
+      = f.input :city
+    .col-md-4
+      = f.input :postcode
+%br
+.details
+  = f.input :terms, wrapper: :inline_checkbox, label: 'I Agree to the <a href="https://www.studentlife.org.nz/privacy-policy/" target="_blank">privacy policy</a>'.html_safe

@@ -1,19 +1,16 @@
 module Mpd
   class DoneesController < MpdController
     decorates_assigned :donee
+    skip_before_action :validate_current_user
     def edit
       load_donee
-      render 'activate' unless @donee.designation
     end
 
     def update
       load_donee
       build_donee
-      if save_donee
-        flash[:success] = 'Your Profile has updated'
-      else
-        flash[:error] = @donee.errors.full_messages.join('. ')
-      end
+      return render action: :edit unless save_donee
+      flash[:success] = 'Your profile has been updated'
       redirect_to action: :edit
     end
 
@@ -25,6 +22,7 @@ module Mpd
 
     def build_donee
       @donee.attributes = donee_params
+      @donee.donee_state = User::Donee.donee_states[:active]
     end
 
     def save_donee
@@ -38,7 +36,8 @@ module Mpd
     def donee_params
       donee_params = params[:user]
       return {} unless donee_params
-      donee_params.permit(:activation_code, :description)
+      donee_params.permit(:activation_code, :description, :first_name, :last_name,
+                          :email, :phone, :address_line_1, :address_line_2, :city, :postcode, :terms)
     end
   end
 end

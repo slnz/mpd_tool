@@ -14,25 +14,12 @@
         %li{class: ('active' if current_page? root_path)}
           %a{href: root_path} Home
         - if user_signed_in?
-          - if current_user.designation
-            %li{class: ('active' if current_page? donations_path)}
-              %a{href: donations_path} Donations
-            %li{class: ('active' if current_page? edit_donee_path)}
-              %a{href: edit_donee_path} Profile
-          - else
-            %li{class: ('active' if current_page? edit_donee_path)}
-              %a{href: edit_donee_path} Activation
-          -#
-            %li
-              %a{href: '#'} 1. Namestorm
-            %li
-              %a{href: '#'} 2. Write & Mail
-            %li
-              %a{href: '#'} 3. Call
-            %li
-              %a{href: '#'} 4. Thank
+          %li{class: ('active' if current_page? donations_path)}
+            %a{href: donations_path} Donations
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
+          %li{class: ('active' if current_page? edit_donee_path)}
+            %a{href: edit_donee_path} Profile
           - if current_user.admin?
             %li
               %a{href: admin_root_path} Admin

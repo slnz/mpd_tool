@@ -22,7 +22,7 @@ Rails.application.routes.draw do
         end
       end
       authenticated :user do
-        resource :donor, only: [:edit, :update]
+        resource :donor, path: 'me', only: [:edit, :update]
       end
     end
   end
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     scope module: :mpd do
       authenticated :user do
         root to: 'pages#show', id: 'dash/home', as: :authenticated_root
-        resource :donee, only: [:edit, :update]
+        resource :donee, path: 'me', only: [:edit, :update]
         resources :donations, only: [:index, :show]
       end
       get '*path', to: redirect('/')

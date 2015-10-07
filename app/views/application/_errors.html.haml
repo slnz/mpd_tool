@@ -1,0 +1,7 @@
+- if f.object.errors.any?
+  .alert.alert-danger
+    Your profile form contains #{pluralize(f.object.errors.count, "error")}.
+    %ul
+      - f.object.errors.full_messages.each do |msg|
+        %li
+          #{msg}

@@ -1,5 +1,8 @@
 class User
   class Donee < ActiveType::Record[User]
+    validates :first_name, :last_name, :email, :phone, :address_line_1, :city, presence: true, if: :active?
+    validates :email, email: true, if: :active?
+    validates :terms, acceptance: { accept: true }, if: :active?
     validates :uid, presence: true
     validates :provider, presence: true
     validates :email, presence: true
@@ -8,6 +11,7 @@ class User
     has_one :designation, dependent: :nullify
     has_many :donations, through: :designation
     has_many :projects, through: :donations
+    enum donee_state: { setup: 0, active: 1 }
 
     def check_activation_code
       return unless activation_code

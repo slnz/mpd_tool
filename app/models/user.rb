@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   friendly_id :name, use: :slugged
   devise :database_authenticatable, :recoverable, :registerable,
          :rememberable, :trackable, :omniauthable, omniauth_providers: [:facebook]
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true, presence: true
 
   def self.from_omniauth(auth)
     where(provider: auth[:provider], uid: auth[:uid]).first_or_create(
