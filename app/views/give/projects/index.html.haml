@@ -12,5 +12,22 @@
           See the Summer Projects we are sending and partner with students as they Go!
           %br
           %br
-- projects.each_with_index do |project, index|
-  = render partial: 'top', locals: { project: project, index: index }
+.content
+  .container
+    .row
+      - projects.each_with_index do |project, index|
+        %a{href: project_path(id: project.slug)}
+          .col-sm-6.project-container
+            .project{class: "color#{index % 5}"}
+              %h1= project.title
+              %h2
+                = "#{pluralize project.designations.count, 'person'}"
+                going
+                - if project.date
+                  on the
+                  = project.date.strftime("#{project.date.day.ordinalize} %b %Y")
+                - else
+                  soon
+              %span.btn.btn-primary.btn-light.btn-lg
+                = fa_icon 'angle-right'
+                Find out more

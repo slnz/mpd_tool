@@ -1,5 +1,5 @@
 %a.clean{href: project_path(id: project.slug)}
-  .top{class: "color#{(params[:action] == 'index' ? index : nil) || project.id % 5}"}
+  .top{class: "color#{project.id % 5}"}
     .container
       %h1= project.title
       %h2
@@ -10,8 +10,3 @@
           = project.date.strftime("#{project.date.day.ordinalize} %b %Y")
         - else
           soon
-      - if current_page? root_path
-        %br
-        %span.btn.btn-primary.btn-light.btn-lg
-          = fa_icon 'angle-right'
-          Find out more
