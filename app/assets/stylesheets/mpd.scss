@@ -1,0 +1,9 @@
+#q_contact_name_cont {
+  border: 2px solid #ccc;
+  border-right-width: 0;
+  border-radius: 0;
+  height: 36px;
+  &:focus {
+    box-shadow: none;
+  }
+}

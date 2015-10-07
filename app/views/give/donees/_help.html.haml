@@ -18,3 +18,13 @@
         %a.btn-primary.btn-lg{href: donee_path(donee)}
           = fa_icon 'angle-right'
           See Profile
+- if me?(donee)
+  .authenticate.indigo
+    .container
+      %h2
+        Your Personalised MPD Site
+      %p
+        Track your MPD progress as you journey towards your Summer Project.
+      %a.btn-primary.btn-lg.btn-light{href: root_url}
+        = fa_icon 'angle-right'
+        Go To My MPD Site

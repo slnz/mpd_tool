@@ -1,4 +1,6 @@
 class MpdController < ApplicationController
+  decorates_assigned :donee, :designation, :project
+  before_action :load_donee, :load_designation, :load_project, if: :signed_in?
   before_action :validate_current_user, if: :signed_in?
   layout 'mpd'
   def current_user
@@ -7,5 +9,19 @@ class MpdController < ApplicationController
 
   def validate_current_user
     redirect_to edit_donee_path unless current_user.active?
+  end
+
+  protected
+
+  def load_donee
+    @donee ||= current_user
+  end
+
+  def load_designation
+    @designation ||= load_donee.try(:designation)
+  end
+
+  def load_project
+    @project ||= load_designation.try(:project)
   end
 end

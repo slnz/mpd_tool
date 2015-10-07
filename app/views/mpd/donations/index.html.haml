@@ -1,10 +1,18 @@
+= render 'top'
+= render 'state'
 .content
   .container
-    %h1 My Donations
+    %h2 My Donations
     %p
-      Donations last processed on
       - if Donation.first
+        Donations last processed on
         = Donation.first.display_date.strftime('%A, %-d %b %Y')
+        %br
+      %small.text-muted
+        Donations take a minimum of 4 days to process.
+        %br
+        Note: Internal transfers (some donations from staff) won't show here.
+
     %a.label{href: donations_path, class: (!params[:project_id] ? 'label-primary' : 'label-default')} All
     - current_user.projects.uniq.each do |project|
       %a.label.label-default{href: donations_path(project_id: project.id), class: (current_page?(donations_path(project_id: project.id)) ? 'label-primary' : 'label-default')}= project.title
@@ -15,6 +23,7 @@
         = f.search_field :contact_name_cont, class: 'form-control', placeholder: 'Search by Name'
         %span.input-group-btn
           = f.button "#{fa_icon 'search'}".html_safe, class: 'btn btn-primary'
+    %br
     %table.table.table-striped
       %thead
         %tr
@@ -35,5 +44,4 @@
           %th= number_to_currency @donations.sum(:amount)
     .text-center
       = paginate @donations
-    %p.text-muted
-      %small Donations take a minimum of 4 days to process. Note that internal transfers (some donations from staff members, and money given through Cru) won't show here.
+= render 'give_site'

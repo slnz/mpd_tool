@@ -1,66 +1,58 @@
-.container
-  .intro-text
-    %h1
-      %img.img-circle{src: current_user.image}
-      = "Hey #{current_user.first_name},"
-    %h4
+= render 'top'
+= render 'state'
+= render 'give_site'
+.content
+  .container
+    %h2
       You are embarking on an incredible adventure! You have accepted the challenge of helping reach the world for Christ by joining other students on a Student Life Summer Project. This could very well be one of the most exciting summers of your life!
-  .row
-    .col-md-6
-      %p
-        My name is Joseph Gibbs and I serve as the Projects Director for Student Life. Church history is filled with accounts of students taking the Gospel to domestic and foreign fields. You are now taking up the baton to run with passion in making a difference in our world by being Christ's ambassador. The Lord will bless you through your summer project experience and you will be a blessing to others.
-      %p
-        I know it was that way for me when I participated on my first mission outreach at our  Beach Project. This project was my first opportunity to trust God to provide the necessary funding for my participation. Seeing God provide then became the foundation for trusting him for many years as it relates to the financial provision for the ministry to which I've been called.
-      %p
-        As "Christ's ambassador" (2 Corinthians 5:20) you are in a unique position to invite others to partner financially in His cause. In Student Life, we call this Ministry Partner Development. As you offer individuals the chance to invest in the mission of Student Life, you will be giving them the unparalleled opportunity of partnering with you in investing in eternity (Matthew 6:19-21).
-      %p
-        King David gave Israel such an opportunity when he challenged the people to underwrite the cost of building a temple for the Lord.
-      %p
-        Because David knew that all the world's wealth ultimately belonged to God, he boldly challenged others to channel their resources toward building a physical testimony to the Lord, a temple. As you raise funds, you will be allowing God to channel the resources of His people toward building a human testimony, a witness for Christ. You are in a sense, challenging people to be good stewards of their resources.
-      %p
-        Keep in mind that not only you will benefit from people's generosity, but those who partner with you will also receive a blessing. The Scriptures confirm this over and over—the Lord blesses those who are faithful in giving. In Acts 20:35, Jesus is referenced by Luke to have said, It is more blessed to give than to receive. In Philippians 4:17 we see this reflected in Paul's remarks to the church in reference to their gift to him. He says, Not that I am looking for a gift, but I am looking for what may be credited to your account.
-      %p
-        What a great ministry you will have as you give people an opportunity to be good stewards with God's resources. I can't think of a better investment than giving to that which enables the Gospel to be proclaimed!
-    .col-md-6
-      %p
-        The following strategy for raising support can be summarized in four sections:
-      %p
-        .row
-          .col-sm-12
-            .panel.panel-default
-              .panel-heading
-                %h3.panel-title 1. Namestorm
-              .panel-body
-                Brainstorm as many names to ask as possible, today. Be excited because you’re giving them a chance to be involved in the Great Commission!
-          .col-sm-12
-            .panel.panel-default
-              .panel-heading
-                %h3.panel-title 2. Write
-              .panel-body
-                Write letters to those people using the template we’ve provided & Send them. We’ve found the template to be the very effective.
-          .col-sm-12
-            .panel.panel-default
-              .panel-heading
-                %h3.panel-title 3. Call
-              .panel-body
-                Call these people to ask for a decision, using the straight-forward scripts provided! These scripts will help you stay on topic.
-          .col-sm-12
-            .panel.panel-default
-              .panel-heading
-                %h3.panel-title 4. Collect & Thank
-              .panel-body
-                Follow up to ensure their donation. After you've received it, send them a thank you message encouraging them to pray for your project.
-      %p
-        As you place your trust in God and carefully implement each of these four steps, you will see success!
-      %p
-        As you raise support, don't limit yourself to thinking you are raising support for this summer only. It is my prayer that the Lord will continue to use Student Life in your life and there will be other opportunities for you to serve with us. Consider your first efforts of raising support as the initial process of cultivating an on-going ministry partner team.
-      %p
-        I can't even describe how excited I am for you, knowing that your summer will be life-changing. May the Lord bless and keep you as you trust him for things way outside your comfort zone.
-      %p
-        Warmly in Christ,
-      %p
-        %strong Joseph Gibbs
-        %br/
-        Projects Director
-        %br/
-        %small Student Life
+    %br
+    %p
+      My name is Joseph Gibbs and I serve as the Projects Director for Student Life. Church history is filled with accounts of students taking the Gospel to domestic and foreign fields. You are now taking up the baton to run with passion in making a difference in our world by being Christ's ambassador. The Lord will bless you through your summer project experience and you will be a blessing to others.
+    %p
+      I know it was that way for me when I participated on my first mission outreach at our  Beach Project. This project was my first opportunity to trust God to provide the necessary funding for my participation. Seeing God provide then became the foundation for trusting him for many years as it relates to the financial provision for the ministry to which I've been called.
+    %p
+      As "Christ's ambassador" (2 Corinthians 5:20) you are in a unique position to invite others to partner financially in His cause. In Student Life, we call this Ministry Partner Development. As you offer individuals the chance to invest in the mission of Student Life, you will be giving them the unparalleled opportunity of partnering with you in investing in eternity (Matthew 6:19-21).
+    %p
+      King David gave Israel such an opportunity when he challenged the people to underwrite the cost of building a temple for the Lord.
+    %p
+      Because David knew that all the world's wealth ultimately belonged to God, he boldly challenged others to channel their resources toward building a physical testimony to the Lord, a temple. As you raise funds, you will be allowing God to channel the resources of His people toward building a human testimony, a witness for Christ. You are in a sense, challenging people to be good stewards of their resources.
+    %p
+      Keep in mind that not only you will benefit from people's generosity, but those who partner with you will also receive a blessing. The Scriptures confirm this over and over—the Lord blesses those who are faithful in giving. In Acts 20:35, Jesus is referenced by Luke to have said, It is more blessed to give than to receive. In Philippians 4:17 we see this reflected in Paul's remarks to the church in reference to their gift to him. He says, Not that I am looking for a gift, but I am looking for what may be credited to your account.
+    %p
+      What a great ministry you will have as you give people an opportunity to be good stewards with God's resources. I can't think of a better investment than giving to that which enables the Gospel to be proclaimed!
+    %p
+      The following strategy for raising support can be summarized in four sections:
+    .panel.panel-default
+      .panel-heading
+        .panel-title 1. Namestorm
+      .panel-body
+        Brainstorm as many names to ask as possible, today. Be excited because you’re giving them a chance to be involved in the Great Commission!
+    .panel.panel-default
+      .panel-heading
+        .panel-title 2. Write
+      .panel-body
+        Write letters to those people using the template we’ve provided & Send them. We’ve found the template to be the very effective.
+    .panel.panel-default
+      .panel-heading
+        .panel-title 3. Call
+      .panel-body
+        Call these people to ask for a decision, using the straight-forward scripts provided! These scripts will help you stay on topic.
+    .panel.panel-default
+      .panel-heading
+        .panel-title 4. Collect & Thank
+      .panel-body
+        Follow up to ensure their donation. After you've received it, send them a thank you message encouraging them to pray for your project.
+    %p
+      As you place your trust in God and carefully implement each of these four steps, you will see success!
+    %p
+      As you raise support, don't limit yourself to thinking you are raising support for this summer only. It is my prayer that the Lord will continue to use Student Life in your life and there will be other opportunities for you to serve with us. Consider your first efforts of raising support as the initial process of cultivating an on-going ministry partner team.
+    %p
+      I can't even describe how excited I am for you, knowing that your summer will be life-changing. May the Lord bless and keep you as you trust him for things way outside your comfort zone.
+    %p
+      Warmly in Christ,
+    %p
+      %strong Joseph Gibbs
+      %br/
+      Projects Director
+      %br/
+      %small Student Life

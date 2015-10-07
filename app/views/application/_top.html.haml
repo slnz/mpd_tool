@@ -11,9 +11,12 @@
           - else
             Not long now until
         %h1
-          = donee.first_name
-          is going to
-          %a{href: project_path(id: project.slug)}
+          - if me?(donee)
+            You are going to
+          - else
+            = donee.first_name
+            is going to
+          %a{href: project_url(id: project.slug)}
             = project.title
 - else
   .top{class: "color#{donee.id % 5}"}
@@ -22,6 +25,10 @@
         %img{src: donee.image}
       .profile
         %h2
-          Not Assigned to a Summer Project
+          - if me?(donee)
+            You are not assigned to a Summer Project
+          - else
+            = donee.first_name
+            isn't assigned to a Summer Project
         %h1
           = donee.name
