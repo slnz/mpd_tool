@@ -1,0 +1,13 @@
+.top.blue
+  .container
+    %h1
+      404.
+      %a That’s an error.
+.content
+  .container
+    %p
+      The requested URL
+      = request.path
+      was not found on this server.
+      %span.text-muted That’s all we know.
+= render 'search'

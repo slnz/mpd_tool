@@ -1,6 +1,6 @@
 module Give
   class DoneesController < GiveController
-    autocomplete :donee, :name, class_name: User::Donee, extra_data: [:slug]
+    autocomplete :donee, :name, class_name: User::Donee, extra_data: [:slug], scope: [:active]
     decorates_assigned :donee, :designation, :project
     before_action :load_donee, :load_designation, :load_project, except: [:autocomplete_donee_name, :find_donee]
     before_action :check_project, except: [:show, :autocomplete_donee_name, :find_donee]
