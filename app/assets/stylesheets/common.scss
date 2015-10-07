@@ -279,7 +279,7 @@ a.clean:hover {
 .alert {
   border: 0;
 }
-.alert + a.clean, .alert + .top {
+.alert + a.clean, .alert + .top, .alert + .jumbotron {
   margin-top: -20px;
   display: block;
 }
@@ -357,5 +357,27 @@ a.clean:hover {
     &:hover, &:active:focus {
       border-color: #fff;
     }
+  }
+}
+.intro {
+  background: image-url('car_bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  margin-bottom: 0;
+  padding: 50px 0;
+  text-align: center;
+  h2 {
+    font-size: 29px;
+    line-height: 36px;
+    margin-bottom: 15px;
+  }
+  p.copy {
+    margin: auto;
+    margin-bottom: 3em;
+    font-weight: lighter;
+    line-height: 24px;
+    font-size: 18px;
   }
 }

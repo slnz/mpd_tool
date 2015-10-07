@@ -1,2 +1,16 @@
+.intro
+  .container
+    .row
+      .col-sm-6
+        = image_tag 'otj.png', height: 250
+      .col-sm-6
+        %br
+        %h2
+          Summer Projects with Student Life
+          %br
+        %p.copy
+          See the Summer Projects we are sending and partner with students as they Go!
+          %br
+          %br
 - projects.each do |project|
   = render partial: 'top', locals: { project: project }

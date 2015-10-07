@@ -1,14 +1,16 @@
-.jumbotron
-  .container.text-center
-    .logo= fa_stacked_icon 'users inverse', base: 'square'
-    %h2
-      Student Life
-      MPD
-    %p.copy
-      This tool helps you develop great Ministry Partners
-      %br
-      and get to Summer Project on time.
-    %a.btn.btn-social.btn-facebook{href: user_omniauth_authorize_path(:facebook) }
-      = fa_icon 'facebook'
-      &nbsp;
-      Sign In with Facebook
+.intro
+  .container
+    .row
+      .col-sm-6
+        = image_tag 'otj.png', height: 250
+      .col-sm-6
+        %h2
+          Ministry Partner Development Tool
+        %p.copy
+          This tool helps you develop great partners and get to Summer Project on time.
+          %br
+          %br
+          %a.btn.btn-social.btn-facebook{href: user_omniauth_authorize_path(:facebook) }
+            = fa_icon 'facebook'
+            &nbsp;
+            Sign In with Facebook
