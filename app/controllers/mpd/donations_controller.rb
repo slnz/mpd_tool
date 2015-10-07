@@ -1,13 +1,9 @@
 module Mpd
   class DonationsController < MpdController
     has_scope :project
+    add_breadcrumb 'Donations', proc { |c| c.donations_path }
 
     def index
-      unless current_user.designation
-        redirect_to edit_user_path
-        flash[:error] = 'You need to activate your account'
-        return
-      end
       load_donations
     end
 

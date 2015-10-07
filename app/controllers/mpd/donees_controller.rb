@@ -3,6 +3,7 @@ module Mpd
     decorates_assigned :donee
     skip_before_action :validate_current_user
     def edit
+      add_breadcrumb 'Profile', edit_donor_path
       load_donee
     end
 
