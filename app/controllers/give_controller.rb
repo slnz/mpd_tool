@@ -5,7 +5,7 @@ class GiveController < ApplicationController
     super.try(:becomes, User::Donor)
   end
 
-  rescue_from ActiveRecord::RecordNotFound do |exception|
+  rescue_from ActiveRecord::RecordNotFound do |_exception|
     render 'not_found'
   end
 
