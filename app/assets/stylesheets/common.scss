@@ -279,7 +279,7 @@ a.clean:hover {
 .alert {
   border: 0;
 }
-.alert + a.clean, .alert + .top, .alert + .jumbotron {
+.alert + a.clean, .alert + .top, .alert + .jumbotron, .alert + .intro {
   margin-top: -20px;
   display: block;
 }
