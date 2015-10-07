@@ -30,5 +30,10 @@
         .submit
           = f.button :submit, class: 'btn btn-primary', value: "Help #{donee.first_name}"
     - else
-      %p In order to get started you'll need to sign in or sign up with an account.
+      %p
+        In order to get started you'll need to
+        = link_to 'sign in', new_user_session_path
+        or
+        = link_to 'sign up', new_user_registration_path
+        with an account.
 = render 'help'
