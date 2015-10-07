@@ -1,9 +1,10 @@
-%h3 Log in
+%h3 Sign in
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .form-inputs
     = f.input :email, required: false, autofocus: true
     = f.input :password, required: false
     = f.input :remember_me, wrapper: :inline_checkbox, as: :boolean if devise_mapping.rememberable?
   .form-actions
-    = f.button :submit, 'Log in', class: 'btn btn-primary'
+    = render 'devise/shared/social'
+    = f.button :submit, 'Sign in', class: 'btn btn-primary'
 = render "devise/shared/links"

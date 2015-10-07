@@ -1,0 +1,11 @@
+- if devise_mapping.omniauthable?
+  - resource_class.omniauth_providers.each do |provider|
+    %a.btn.btn-social.btn-facebook{href: omniauth_authorize_path(resource_name, provider), class: "btn-#{provider.to_s}" }
+      = fa_icon provider.to_s
+      &nbsp;
+      - if controller_name != 'registrations'
+        Sign In with
+      - else
+        Sign Up with
+      = provider.to_s.titleize
+    &nbsp;
