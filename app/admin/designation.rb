@@ -3,18 +3,23 @@ ActiveAdmin.register Designation do
   decorate_with Decorator::DesignationDecorator
   active_admin_import(
     validate: true,
-    headers_rewrites: { campus: :campus_id },
+    headers_rewrites: { campus: :campus_id, project: :project_id },
     template_object: ActiveAdminImport::Model.new(
       hint: '<strong>Headers</strong><br>'\
-            'email, first_name, last_name, designation_code, campus',
-      csv_headers: %w(email first_name last_name designation_code campus)
+            'email, first_name, last_name, designation_code, campus, project',
+      csv_headers: %w(email first_name last_name designation_code campus project)
     ),
     back: { action: :index },
     before_batch_import: proc do |importer|
       campus_names = importer.values_at(:campus_id)
       campuses = Campus.where(name: campus_names).pluck(:name, :id)
-      options = Hash[*campuses.flatten]
-      importer.batch_replace(:campus_id, options)
+      campus_options = Hash[*campuses.flatten]
+      importer.batch_replace(:campus_id, campus_options)
+
+      project_names = importer.values_at(:project_id)
+      projects = Project.where(title: project_names).pluck(:title, :id)
+      project_options = Hash[*projects.flatten]
+      importer.batch_replace(:project_id, project_options)
     end,
     after_import: proc do
       Designation.where(email_sent: false).each(&:send_activation_code)
