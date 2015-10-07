@@ -126,11 +126,12 @@ a.clean:hover {
   position: relative;
   .input {
     position: absolute;
-    left: 45px;
-    right: 0;
+    left: 0;
+    right: 35px;
     input[type=text] {
       display: block;
       border: 2px solid #000;
+      border-right-width: 0;
       padding: 5px 10px;
       height: 42px;
       box-shadow: none;
@@ -143,9 +144,10 @@ a.clean:hover {
   }
   .fa {
     border: 2px solid #000;
+    border-left-width: 0;
     background: #fff;
     line-height: 38px;
-    float: left;
+    float: right;
     padding: 0 10px;
     width: 40px;
   }
