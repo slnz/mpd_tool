@@ -40,4 +40,10 @@ ActiveAdmin.register User do
     flash[:notice] = 'Toggled Admin Status'
     redirect_to admin_users_path
   end
+
+  controller do
+    def find_resource
+      User.friendly.find(params[:id])
+    end
+  end
 end

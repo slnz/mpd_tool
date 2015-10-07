@@ -14,4 +14,10 @@ ActiveAdmin.register Project do
 
   filter :title
   filter :code
+  
+  controller do
+    def find_resource
+      Project.friendly.find(params[:id])
+    end
+  end
 end
