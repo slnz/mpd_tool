@@ -5,15 +5,19 @@ class Donation < ActiveRecord::Base
       .where('display_date > ?', Time.zone.now.beginning_of_year)
   end
   scope :project, -> project { where(project: project) }
-  validates :global_id, presence: true, uniqueness: true
-  validates :contact_id, presence: true
-  validates :designation_id, presence: true
-  validates :amount, presence: true
-  validates :display_date, presence: true
-  validates :project, presence: true
-
+  enum payment_type: { 'STAFF' => 0,
+                       'TRANSFER' => 1,
+                       'CASH' => 2,
+                       'CHEQUE' => 3,
+                       'CREDITCARD' => 4,
+                       'BT' => 5,
+                       'FLOW-THRU' => 6,
+                       'AMEX' => 7,
+                       'AP' => 8 }
+  validates :global_id, presence: true, uniqueness: true, unless: lambda { |o| o.payment_type == 'STAFF' }
+  validates :project, :display_date, :amount, :designation_id, :contact, presence: true
   belongs_to :project
   belongs_to :contact
-
+  belongs_to :designation, foreign_key: :designation_code
   delegate :name, to: :contact
 end

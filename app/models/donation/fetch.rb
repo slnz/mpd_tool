@@ -2,7 +2,7 @@ require 'csv'
 class Donation
   class Fetch
     def self.from_dataserve
-      Donation.where('created_at > ?', datefrom).destroy_all
+      Donation.where('created_at > ?', datefrom).where.not(payment_type: Donation.payment_types['TRANSFER']).destroy_all
       get(action: 'profiles').each do |profile|
         project = project(profile)
         get(profile: profile['PROFILE_CODE'],
@@ -51,14 +51,12 @@ class Donation
         designation_id: data['DESIGNATION'],
         amount: data['TENDERED_AMOUNT'],
         display_date: Date.strptime(data['DISPLAY_DATE'], '%m/%d/%Y'),
-        payment_method: data['PAYMENT_METHOD']
+        payment_type: Donation.payment_types[data['PAYMENT_METHOD']]
       )
     end
 
     def self.contact(data)
-      Contact.where(code: data['PEOPLE_ID'],
-                    designation_code: data['DESIGNATION'])
-        .first_or_create(name: data['ACCT_NAME'])
+      Contact.where(code: data['PEOPLE_ID']).first_or_create(name: data['ACCT_NAME'])
     end
   end
 end

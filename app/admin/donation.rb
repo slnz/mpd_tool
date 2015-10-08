@@ -1,5 +1,5 @@
 ActiveAdmin.register Donation do
-  actions :index
+  permit_params :project_id, :contact_id, :designation_id, :display_date, :amount
   index do
     selectable_column
     id_column
@@ -14,7 +14,8 @@ ActiveAdmin.register Donation do
     end
     column :project
     column :display_date
-    column :amount
+    column(:amount) { |d| number_to_currency d.amount }
+    column :payment_type
     actions
   end
 
@@ -25,5 +26,31 @@ ActiveAdmin.register Donation do
   collection_action :fetch do
     Donation::Fetch.from_dataserve
     redirect_to admin_donations_url, notice: 'Fetched Donations'
+  end
+
+  show do
+    attributes_table do
+      row :id
+      row :global_id
+      row(:amount) { |d| number_to_currency d.amount }
+      row :display_date
+      row :project
+      row :payment_type
+      row :designation
+    end
+  end
+
+  form do |f|
+    f.inputs do
+      f.input :project
+      f.input :contact, collection: (Contact.select(:id, :name).distinct.order(:name))
+      f.input :designation_id,
+              as: :select,
+              collection:
+                Designation.order(:last_name).all.map { |d| ["#{d.last_name}, #{d.first_name}", d.designation_code] }
+      f.input :display_date
+      f.input :amount
+    end
+    f.actions
   end
 end

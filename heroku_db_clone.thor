@@ -17,7 +17,7 @@ module Heroku
       puts "(2/4) downloading snapshot..."
       puts `curl -o #{options[:dump]} \`heroku pg:backups public-url -a #{options[:remote]}\``
       puts "(3/4) restoring snapshot..."
-      puts `pg_restore --verbose --clean --no-acl --no-owner -h #{options[:host]} -U #{options[:user]} -d #{options[:dbname] || dbname} #{options[:dump]}`
+      puts `pg_restore --verbose --clean --no-acl --no-owner -h #{options[:host]} -U #{options[:user].gsub('\n', '')} -d #{options[:dbname] || dbname} #{options[:dump]}`
       unless options[:keep]
         puts "(4/4) cleaning up..."
         puts `rm #{options[:dump]}`
