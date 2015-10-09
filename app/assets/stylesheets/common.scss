@@ -396,3 +396,15 @@ a.clean:hover {
     font-size: 18px;
   }
 }
+@media (max-width: 991px) {
+  .content {
+    .details, .form-inputs {
+      .row {
+        [class^="col-md-"]:first-child {
+          border-right: 0;
+          border-bottom: 1px solid #ccc;
+        }
+      }
+    }
+  }
+}
