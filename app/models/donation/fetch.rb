@@ -2,7 +2,7 @@ require 'csv'
 class Donation
   class Fetch
     def self.from_dataserve
-      Donation.where('created_at > ?', datefrom).where.not(payment_type: Donation.payment_types['TRANSFER']).offline.destroy_all
+      Donation.refreshable(datefrom).destroy_all
       get(action: 'profiles').each do |profile|
         project = project(profile)
         get(profile: profile['PROFILE_CODE'],
