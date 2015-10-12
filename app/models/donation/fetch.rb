@@ -2,7 +2,7 @@ require 'csv'
 class Donation
   class Fetch
     def self.from_dataserve
-      Donation.where('created_at > ?', datefrom).where.not(payment_type: Donation.payment_types['TRANSFER']).destroy_all
+      Donation.where('created_at > ?', datefrom).where.not(payment_type: Donation.payment_types['TRANSFER']).offline.destroy_all
       get(action: 'profiles').each do |profile|
         project = project(profile)
         get(profile: profile['PROFILE_CODE'],
@@ -45,6 +45,7 @@ class Donation
     end
 
     def self.create_donation(data, project)
+      destroy_online_donation(Donation.find_by(id: data['MEMO']))
       Donation.where(global_id: data['DONATION_ID']).first_or_create(
         project: project,
         contact: contact(data),
@@ -53,6 +54,12 @@ class Donation
         display_date: Date.strptime(data['DISPLAY_DATE'], '%m/%d/%Y'),
         payment_type: Donation.payment_types[data['PAYMENT_METHOD']]
       )
+    end
+
+    def self.destroy_online_donation(donation)
+      return unless donation
+      donation.pledge.complete!
+      donation.destroy!
     end
 
     def self.contact(data)
