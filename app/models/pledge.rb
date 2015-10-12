@@ -8,6 +8,7 @@ class Pledge < ActiveRecord::Base
   enum giving_method: { 'credit card' => 0, 'internet banking' => 1 }
   validates :donor, :project, :amount, :giving_method, presence: true
   validates :donation, :contact, presence: true, if: :success?
+  validates_format_of :amount, with: /^\d+$/
   before_validation :generate_contact, :generate_donation, if: :success?
   before_destroy :destroy_donation
 
