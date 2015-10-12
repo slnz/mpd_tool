@@ -17,5 +17,9 @@ module Decorator
     def giving_method
       object.giving_method.try(:titleize)
     end
+
+    def display_date
+      created_at.strftime('%m/%d/%Y')
+    end
   end
 end
