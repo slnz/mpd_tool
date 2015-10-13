@@ -44,6 +44,7 @@ class Pledge < ActiveRecord::Base
   end
 
   def create_response(options = {})
+    pledge.update(params: options[:params]) if options[:params]
     Pledge::Response.create(options.merge(pledge: self))
   end
 
