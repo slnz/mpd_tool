@@ -66,7 +66,7 @@ module Give
       end
 
       def create_response
-        @response ||= @pledge.create_response(params: params)
+        @response ||= @pledge.create_response(params)
       end
 
       def pledge_params

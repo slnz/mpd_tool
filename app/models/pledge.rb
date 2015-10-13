@@ -43,9 +43,9 @@ class Pledge < ActiveRecord::Base
     Pledge::Request.create(options.merge(pledge: self))
   end
 
-  def create_response(options = {})
-    pledge.update(params: options[:params]) if options[:params]
-    Pledge::Response.create(options.merge(pledge: self))
+  def create_response(params)
+    pledge.update(params: params) if params
+    Pledge::Response.create(pledge: self)
   end
 
   def create_subscription
