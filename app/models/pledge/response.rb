@@ -25,7 +25,7 @@ class Pledge
 
     def pxpay
       response = Pxpay::Response.new(params).response.to_hash
-      pledge.update(payload: response)
+      pledge.update(payload: response, params: params)
       return pledge.success! if response[:success] == '1'
       pledge.failure!
     end
