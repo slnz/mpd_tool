@@ -5,6 +5,6 @@ To get started click the link below, sign in with Facebook, then enter your acti
 If you have any questions, please contact the person coaching you through the MPD process.
 
 Your Activation Code is:
-<%= @designation.activation_code %>
+<%= @donee.activation_code %>
 
-Go to the MPD Site [<%= root_url %>]
+Activate My Account [<%= root_url(redirect_to: edit_donee_url(activation_code: @donee.activation_code)) %>]

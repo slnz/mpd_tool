@@ -12,6 +12,11 @@ class User
     has_many :donations, through: :designation
     has_many :projects, through: :donations
     enum donee_state: { setup: 0, active: 1 }
+    after_update :send_welcome_notification, if: -> { donee_state_changed? && active? }
+
+    def send_welcome_notification
+      Mpd::DoneesMailer.welcome(self).deliver_now
+    end
 
     def check_activation_code
       return unless activation_code
