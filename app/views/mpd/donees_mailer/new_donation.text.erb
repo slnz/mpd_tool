@@ -1,0 +1,10 @@
+You received a <%= number_to_currency @donation.amount %> donation from <%= @donor.name %>. Why not send them a thank you message at [<%= @donor.email %>].
+<% if @project %>
+
+Currently you've raised <%= @designation.percentage_raised %>%.
+That's <%= number_to_currency @designation.amount_raised, precision: 0 %> given of <%= number_to_currency @designation.goal, precision: 0 %>.
+You've had <%= @designation.donations.count %> donations given for this project.
+There is <%= @project.days_until %> days to go until you need to report to <%= @project.name %>.
+<% end %>
+
+See more of your donations at the MPD Site [<%= donations_url %>]

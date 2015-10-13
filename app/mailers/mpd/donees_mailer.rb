@@ -5,11 +5,14 @@ module Mpd
       mail to: @donee.email, subject: 'Thanks for Signing up to track your MPD'
     end
 
-    def notify_of_new_pledge(pledge)
-      @donee = pledge.donee.decorate
-      @donor = pledge.donor.decorate
-      @pledge = pledge.decorate
-      mail to: donee.email, subject: "New Donation from #{@donor.name}"
+
+    def new_donation(donee, donor, donation, designation, project)
+      @donee = donee.decorate
+      @donor = donor.decorate
+      @donation = donation.decorate
+      @designation = designation.decorate
+      @project = project.try(:decorate)
+      mail to: @donee.email, subject: "New Donation from #{@donor.name}"
     end
 
     def send_activation_code(donee)

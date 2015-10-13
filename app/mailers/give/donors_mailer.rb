@@ -5,11 +5,13 @@ module Give
       mail to: donor.email, subject: 'Thanks for partnering with Summer Projects'
     end
 
-    def thanks_for_pledge(pledge)
-      @donee = pledge.donee.decorate
-      @donor = pledge.donor.decorate
-      @pledge = pledge.decorate
-      mail to: donor.email, subject: 'Thanks for partnering with Summer Projects'
+    def new_donation(donee, donor, donation, designation, project)
+      @donee = donee.decorate
+      @donor = donor.decorate
+      @donation = donation.decorate
+      @designation = designation.decorate
+      @project = project.try(:decorate)
+      mail to: @donor.email, subject: "Thanks for your donation to #{@donee.first_name}"
     end
   end
 end

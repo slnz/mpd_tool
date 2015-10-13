@@ -1,0 +1,15 @@
+<p style="Margin-top: 0;text-rendering: optimizeLegibility;font-family: sans-serif;color: #60666d;Margin-bottom: 24px;font-size: 15px;line-height: 24px">
+  You received a <%= number_to_currency @donation.amount %> donation from <%= @donor.name %>. Why not send them a thank you message at <%= mail_to @donor.email %>.
+</p>
+<% if @project %>
+<p style="Margin-top: 0;text-rendering: optimizeLegibility;font-family: sans-serif;color: #60666d;Margin-bottom: 24px;font-size: 15px;line-height: 24px">
+  Currently you've raised <%= @designation.percentage_raised %>%.
+  That's <%= number_to_currency @designation.amount_raised, precision: 0 %> given of <%= number_to_currency @designation.goal, precision: 0 %>.
+  You've had <%= @designation.donations.count %> donations given for this project.
+  There is <%= @project.days_until %> days to go until you need to report to <%= @project.name %>.
+</p>
+<% end %>
+<p style="Margin-top: 0;text-rendering: optimizeLegibility;font-family: sans-serif;color: #60666d;Margin-bottom: 24px;font-size: 15px;line-height: 24px">
+  See more of your donations at <%= link_to donations_url, donations_url %>
+</p>
+<%= render partial: 'button', locals: { text: 'View Donations', link: donations_url } %>

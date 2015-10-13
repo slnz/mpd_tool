@@ -1,0 +1,11 @@
+Thanks for donating <%= number_to_currency @donation.amount %> to <%= @donee.name %>.
+Your partnership is a critical part of sending people like <%= @donee.first_name %> to Summer Project.
+We appreciate you partnering with us in an effort to fulfill the Great Commission.
+
+<% if @project %>
+Currently you've helped <%= @donee.first_name %> to raise <%= @designation.percentage_raised %>%.
+That's <%= number_to_currency @designation.amount_raised, precision: 0 %> given of <%= number_to_currency @designation.goal, precision: 0 %>.
+<%= @donee.first_name %> has had <%= @designation.donations.count %> donations given for this project.
+There is <%= @project.days_until %> days to go until <%= @donee.first_name %> needs to report to <%= @project.name %>.
+<% end %>
+View <%= @donee.first_name %>'s Progress [<%= donee_url(@donee) %>]

@@ -11,6 +11,13 @@ class Pledge < ActiveRecord::Base
   validates :amount, format: { with: /\A\d+[\.0]*\Z/i, message: 'can only be whole dollars' }
   before_validation :generate_contact, :generate_donation, if: :success?
   before_destroy :destroy_donation
+  delegate :donee, to: :designation
+  after_update :send_notifications, if: -> { status_changed? && success? }
+
+  def send_notifications
+    Mpd::DoneesMailer.new_donation(donee, donor, donation, designation, project).deliver_now
+    Give::DonorsMailer.new_donation(donee, donor, donation, designation, project).deliver_now
+  end
 
   def generate_contact
     self.contact ||= Contact.create_with(code: id).find_or_create_by(
