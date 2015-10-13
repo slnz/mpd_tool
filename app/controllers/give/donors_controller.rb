@@ -12,7 +12,8 @@ module Give
       build_donor
       return render action: :edit unless save_donor
       flash[:success] = 'Your profile has been updated'
-      redirect_to action: :edit
+      redirect_to session[:redirect_to] || edit_donor_path
+      session.delete(:redirect_to) if session[:redirect_to]
     end
 
     protected

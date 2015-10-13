@@ -12,6 +12,8 @@ class GiveController < ApplicationController
   protected
 
   def validate_current_user
-    redirect_to edit_donor_path unless current_user.active?
+    return if current_user.active?
+    session[:redirect_to] = request.fullpath
+    redirect_to edit_donor_path
   end
 end
