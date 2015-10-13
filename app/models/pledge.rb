@@ -13,6 +13,7 @@ class Pledge < ActiveRecord::Base
   before_destroy :destroy_donation
   delegate :donee, to: :designation
   after_update :send_notifications, if: -> { status_changed? && success? }
+  serialize :payload
 
   def send_notifications
     Mpd::DoneesMailer.new_donation(donee, donor, donation, designation, project).deliver_now

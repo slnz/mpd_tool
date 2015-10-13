@@ -1,8 +1,12 @@
 ActiveAdmin.register Pledge do
-  scope :all, default: true
+  scope :all
+  scope :pending
+  scope :failure
+  scope :success, default: true
+  scope :complete
   config.per_page = 100
   decorate_with Decorator::PledgeDecorator
-  actions :index, :destroy
+  actions :index, :destroy, :show
   index do
     selectable_column
     id_column
@@ -18,7 +22,7 @@ ActiveAdmin.register Pledge do
 
   controller do
     def scoped_collection
-      Pledge.success
+      Pledge
     end
   end
 end
