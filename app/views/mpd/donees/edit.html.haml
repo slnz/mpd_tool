@@ -15,7 +15,7 @@
         %h3 Donation Details
         %p Your Activation Code should have come in your email. Didn't get an email? Contact the person coaching you through the MPD process.
         .details
-          = f.input :activation_code
+          = f.input :activation_code, input_html: { value: f.object.activation_code || params[:activation_code] }
       = render partial: 'profile', locals: { f: f }
       %h3 Personalised Giving Site
       %p Share with your potential partners information about your Summer Project.
