@@ -35,7 +35,9 @@ ActiveAdmin.register User::Donee, as: 'donee' do
   filter :first_name
   filter :last_name
 
-  batch_action :email, form: { subject: :text, message: :textarea }, confirm: 'Please enter the subject and the message below' do |ids, inputs|
+  batch_action :email,
+               form: { subject: :text, message: :textarea },
+               confirm: 'Please enter the subject and the message below' do |ids, inputs|
     scoped_collection.find(ids).each do |donee|
       Mpd::DoneesMailer.update(donee, inputs[:subject], inputs[:message]).deliver
     end
