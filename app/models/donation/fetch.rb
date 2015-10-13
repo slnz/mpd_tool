@@ -7,7 +7,7 @@ class Donation
         project = project(profile)
         get(profile: profile['PROFILE_CODE'],
             datefrom: datefrom.strftime('%m/%d/%y'),
-            dateto: Time.current.strftime('%m/%d/%y'),
+            dateto: Date.tomorrow.strftime('%m/%d/%y'),
             action: 'gifts').each do |row|
           create_donation(row, project)
         end
