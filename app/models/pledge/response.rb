@@ -4,7 +4,7 @@ class Pledge
 
     belongs_to :pledge
 
-    validates :pledge, :params, presence: true
+    validates :pledge, presence: true
     after_validation :update_pledge
 
     protected
