@@ -15,7 +15,7 @@ class Designation < ActiveRecord::Base
 
   def send_activation_code
     generate_activation_code unless activation_code
-    DesignationMailer.send_activation_code(self).deliver_now
+    Mpd::DoneesMailer.send_activation_code(self).deliver_now
     self.email_sent = true
     save
   end
