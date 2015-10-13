@@ -14,6 +14,21 @@
         to Summer Project.
         We appreciate you partnering with us in an effort to fulfill the Great Commission.
     - elsif pledge.failure?
+      %h2
+        Looks like your donation to
+        = donee.name
+        Failed
+      %p
+        Help us by checking that your financial contribution was taken from your account.
+        If it has then please contact
+        = mail_to 'projects@studentlife.org.nz'
+        as soon as possible to resolve this issue.
+        Otherwise try again in five minutes.
+      %p
+        Your partnership is a critical part of sending people like
+        = donee.first_name
+        to Summer Project.
+        We appreciate you partnering with us in an effort to fulfill the Great Commission.
       Looks like that didn't work out.
     - elsif pledge.pending?
       This pledge is still processing.
