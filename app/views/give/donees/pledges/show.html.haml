@@ -3,7 +3,16 @@
 .container
   .content
     - if pledge.success?
-      Donation received thanks!
+      %h2
+        Thanks for donating
+        = number_to_currency pledge.amount
+        to
+        = donee.name
+      %p
+        Your partnership is a critical part of sending people like
+        = donee.first_name
+        to Summer Project.
+        We appreciate you partnering with us in an effort to fulfill the Great Commission.
     - elsif pledge.failure?
       Looks like that didn't work out.
     - elsif pledge.pending?
