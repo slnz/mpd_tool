@@ -1,4 +1,5 @@
 ActiveAdmin.register Donation do
+  menu parent: 'settings'
   permit_params :project_id, :contact_id, :designation_id, :display_date, :amount
   index do
     selectable_column

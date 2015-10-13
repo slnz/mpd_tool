@@ -1,4 +1,5 @@
 ActiveAdmin.register Contact do
+  menu parent: 'settings'
   permit_params :name
 
   index do

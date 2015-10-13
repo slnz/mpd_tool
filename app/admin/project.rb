@@ -1,4 +1,5 @@
 ActiveAdmin.register Project do
+  menu parent: 'settings'
   permit_params :title, :code, :goal, :description, :date, :slug
   decorate_with Decorator::ProjectDecorator
 

@@ -1,4 +1,7 @@
 ActiveAdmin.register User do
+  scope :all, default: true
+  scope(:donee) { |scope| scope.where(donee_state: 1) }
+  scope(:donor) { |scope| scope.where(donor_state: 1) }
   actions :index, :show
   index do
     selectable_column
@@ -12,8 +15,8 @@ ActiveAdmin.register User do
     end
     column(:designation) do |user|
       begin
-        link_to user.designation.try(:designation_code),
-                admin_designation_path(user.designation)
+        link_to user.becomes(User::Donee).designation.try(:designation_code),
+                admin_designation_path(user.becomes(User::Donee).designation)
       rescue
         ''
       end

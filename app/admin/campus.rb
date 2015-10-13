@@ -1,4 +1,5 @@
 ActiveAdmin.register Campus do
+  menu parent: 'settings'
   permit_params :name
 
   index do
