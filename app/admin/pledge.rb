@@ -1,4 +1,6 @@
 ActiveAdmin.register Pledge do
+  scope :all, default: true
+  config.per_page = 100
   decorate_with Decorator::PledgeDecorator
   actions :index, :destroy
   index do

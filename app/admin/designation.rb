@@ -1,4 +1,8 @@
 ActiveAdmin.register Designation do
+  config.per_page = 100
+  scope :all, default: true
+  scope(:active) { |scope| scope.where.not(donee: nil) }
+  scope(:inactive) { |scope| scope.where(donee: nil) }
   permit_params :email, :first_name, :last_name, :designation_code, :campus_id, :project_id
   decorate_with Decorator::DesignationDecorator
   active_admin_import(
@@ -74,5 +78,12 @@ ActiveAdmin.register Designation do
     column(:campus) { |d| d.campus.try(:name) }
     column(:project) { |d| d.campus.try(:title) }
     column(:amount_raised) { |d| number_to_currency d.amount_raised }
+  end
+
+  batch_action :email, form: { subject: :text, message: :textarea }, confirm: 'Please enter the subject and the message below' do |ids, inputs|
+    scoped_collection.find(ids).each do |donee|
+      Mpd::DoneesMailer.update(donee, inputs[:subject], inputs[:message]).deliver
+    end
+    redirect_to collection_path, notice: 'The batch email has been sent to all the users you selected.'
   end
 end

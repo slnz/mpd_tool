@@ -1,5 +1,7 @@
 ActiveAdmin.register User do
   scope :all, default: true
+  config.per_page = 100
+  scope :all, default: true
   scope(:donee) { |scope| scope.where(donee_state: 1) }
   scope(:donor) { |scope| scope.where(donor_state: 1) }
   actions :index, :show

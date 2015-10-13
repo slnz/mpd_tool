@@ -1,4 +1,6 @@
 ActiveAdmin.register Project do
+  scope :all, default: true
+  config.per_page = 100
   menu parent: 'settings'
   permit_params :title, :code, :goal, :description, :date, :slug
   decorate_with Decorator::ProjectDecorator

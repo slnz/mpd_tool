@@ -1,4 +1,6 @@
 ActiveAdmin.register Donation do
+  config.per_page = 100
+  scope :all, default: true
   menu parent: 'settings'
   permit_params :project_id, :contact_id, :designation_id, :display_date, :amount
   index do

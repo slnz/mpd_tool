@@ -5,7 +5,6 @@ module Mpd
       mail to: @donee.email, subject: 'Thanks for Signing up to track your MPD'
     end
 
-
     def new_donation(donee, donor, donation, designation, project)
       @donee = donee.decorate
       @donor = donor.decorate
@@ -17,7 +16,13 @@ module Mpd
 
     def send_activation_code(donee)
       @donee = donee.decorate
-      mail to: @donee.email, subject: 'Go Summer Project: Get Started with MPD'
+      mail to: @donee.email, subject: 'Get Started with Summer Project MPD'
+    end
+
+    def update(donee, subject, message)
+      @donee = donee.decorate
+      @message = message
+      mail to: @donee.email, subject: subject
     end
   end
 end
