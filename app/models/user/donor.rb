@@ -6,5 +6,10 @@ class User
     enum donor_state: { setup: 0, active: 1 }
     has_many :pledges
     has_many :subscriptions, dependent: :destroy
+    after_update :send_welcome_notification, if: -> { donor_state_changed? && active? }
+
+    def send_welcome_notification
+      Give::DonorsMailer.welcome(self).deliver_now
+    end
   end
 end
