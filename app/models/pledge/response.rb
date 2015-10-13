@@ -16,10 +16,14 @@ class Pledge
     end
 
     def credit_card
+      Pxpay::Base.pxpay_user_id = ENV.fetch('PXPAY_CC_USER_ID')
+      Pxpay::Base.pxpay_key = ENV.fetch('PXPAY_CC_KEY')
       pxpay
     end
 
     def internet_banking
+      Pxpay::Base.pxpay_user_id = ENV.fetch('PXPAY_IB_USER_ID')
+      Pxpay::Base.pxpay_key = ENV.fetch('PXPAY_IB_KEY')
       pxpay
     end
 
