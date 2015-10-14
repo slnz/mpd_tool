@@ -8,27 +8,12 @@ class User
     validates :email, presence: true
     validate :check_activation_code, if: :active?
 
-    belongs_to :designation
+    has_one :designation, dependent: :nullify
     has_many :donations, through: :designation
     has_many :deposits, through: :designation
     has_many :projects, through: :donations
     enum donee_state: { setup: 0, active: 1 }
     after_update :send_welcome_notification, if: -> { donee_state_changed? && active? }
-    before_validation :link_designation
-
-    def activation_code=(activation_code)
-      super activation_code.upcase
-    end
-
-    def image
-      super.try(:gsub!, 'http://', 'https://')
-    end
-
-    def large_image
-      "#{image}?width=160&height=160"
-    end
-
-    protected
 
     def send_welcome_notification
       Mpd::DoneesMailer.welcome(self).deliver_now
@@ -38,8 +23,18 @@ class User
       errors.add(:activation_code, 'is not valid') unless designation
     end
 
-    def link_designation
-      self.designation ||= Designation.find_by(activation_code: activation_code)
+    def activation_code=(activation_code)
+      self.designation =
+        Designation.find_by(activation_code: activation_code.upcase)
+      super activation_code.upcase
+    end
+
+    def image
+      super.try(:gsub!, 'http://', 'https://')
+    end
+
+    def large_image
+      "#{image}?width=160&height=160"
     end
   end
 end

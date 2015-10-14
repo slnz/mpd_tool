@@ -6,7 +6,7 @@ class Designation < ActiveRecord::Base
   validates :activation_code, presence: true
   before_validation :generate_activation_code, on: :create
   after_create :send_activation_code
-  has_one :donee, dependent: :nullify, class_name: 'User::Donee'
+  belongs_to :donee, class_name: 'User::Donee'
   belongs_to :campus
   belongs_to :project
   has_many :donations, primary_key: :designation_code
