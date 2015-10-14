@@ -1,0 +1,10 @@
+- if deposit.complete?
+  .label.label-success
+    = fa_icon 'check'
+    Completed
+- if deposit.pending?
+  .label.label-warning
+    = fa_icon 'clock-o'
+    Pending
+%br
+%br

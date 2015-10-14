@@ -38,7 +38,8 @@ Rails.application.routes.draw do
       authenticated :user do
         root to: 'pages#show', id: 'dash/home', as: :authenticated_root
         resource :donee, path: 'me', only: [:edit, :update]
-        resources :donations, only: [:index, :show]
+        resources :donations, only: [:index]
+        resources :deposits
       end
       get '*path', to: redirect('/')
       root to: 'pages#show', id: 'home'

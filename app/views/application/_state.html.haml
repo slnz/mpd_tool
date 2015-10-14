@@ -2,19 +2,21 @@
   .state
     .container
       .progress
-        .progress-bar.progress-bar-success{style: "width: #{designation.percentage_raised}%; min-width: 2em; text-align: left;"}
+        .progress-bar.progress-bar-success{style: "width: #{designation.percentage_raised}%; min-width: 15px; text-align: left;"}
           &nbsp;
-          = "#{designation.percentage_raised}%"
+          = "#{designation.percentage_raised_and_deposited}%"
+        - if designation.percentage_deposited > 0
+          .progress-bar.progress-bar-warning{style: "width: #{designation.percentage_deposited}%; min-width: 2em; text-align: left;"}
       .subtitle
         .row
           .col-xs-6.col-sm-4
-            %h1= number_to_currency designation.amount_raised, precision: 0
+            %h1= number_to_currency designation.amount_raised_and_deposited, precision: 0
             given of
             = number_to_currency designation.goal, precision: 0
             goal
           .col-xs-3.col-sm-3
-            %h1= designation.donations.count
-            backers
+            %h1= designation.donor_count
+            donations
           .col-xs-3.col-sm-3
             %h1= project.days_until
             days to go

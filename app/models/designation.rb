@@ -12,6 +12,7 @@ class Designation < ActiveRecord::Base
   has_many :donations, primary_key: :designation_code
   has_many :pledges, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
+  has_many :deposits, dependent: :destroy
 
   def send_activation_code
     generate_activation_code unless activation_code

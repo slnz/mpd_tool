@@ -10,6 +10,7 @@ class User
 
     has_one :designation, dependent: :nullify
     has_many :donations, through: :designation
+    has_many :deposits, through: :designation
     has_many :projects, through: :donations
     enum donee_state: { setup: 0, active: 1 }
     after_update :send_welcome_notification, if: -> { donee_state_changed? && active? }

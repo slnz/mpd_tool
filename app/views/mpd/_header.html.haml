@@ -16,6 +16,8 @@
         - if user_signed_in?
           %li{class: ('active' if current_page? donations_path)}
             %a{href: donations_path} Donations
+          %li{class: ('active' if params[:controller] == 'mpd/deposits')}
+            %a{href: deposits_path} Deposits
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li{class: ('active' if current_page? edit_donee_path)}

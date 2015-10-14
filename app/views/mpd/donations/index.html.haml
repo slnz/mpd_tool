@@ -20,7 +20,7 @@
     %br/
     = search_form_for @q, class: 'form-horizontal' do |f|
       .input-group
-        = f.search_field :contact_name_cont, class: 'form-control', placeholder: 'Search by Name'
+        = f.search_field :contact_name_cont, class: 'form-control search', placeholder: 'Search by Name'
         %span.input-group-btn
           = f.button "#{fa_icon 'search'}".html_safe, class: 'btn btn-primary'
     %br
@@ -32,6 +32,11 @@
           %th= sort_link(@q, :payment_method)
           %th= sort_link(@q, :amount)
       %tbody
+        - if @donations.empty?
+          %tr
+            %td.text-center{colspan: 4}
+              %small
+                No Donations Found.
         - @donations.each do |donation|
           %tr
             %td= donation.display_date.strftime('%d/%m/%y')

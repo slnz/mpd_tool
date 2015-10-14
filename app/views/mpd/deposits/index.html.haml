@@ -1,0 +1,69 @@
+= render 'top'
+= render 'state'
+.content
+  .container
+    %h2 My Cash & Cheque Deposits
+    %p
+      This page helps you track your donations made via cash or cheque.
+      Try adding a deposit for further instructions on what to do with any cash or cheques you receive.
+      Deposits will be added toward your total goal. They will be represented by a yellow bar until they have been received.
+    .submit
+      = link_to "#{fa_icon 'plus'} Add a Deposit".html_safe, new_deposit_path, class: 'btn btn-primary'
+    %br
+    %br
+    %a.label{href: deposits_path, class: (!params[:project_id] ? 'label-primary' : 'label-default')} All
+    - current_user.projects.uniq.each do |project|
+      %a.label.label-default{href: deposits_path(project_id: project.id), class: (current_page?(deposits_path(project_id: project.id)) ? 'label-primary' : 'label-default')}= project.title
+    %br/
+    %br/
+    = search_form_for @q, class: 'form-horizontal' do |f|
+      .input-group
+        = f.search_field :first_name_or_last_name_cont, class: 'form-control search', placeholder: 'Search by First Name or Last Name'
+        %span.input-group-btn
+          = f.button "#{fa_icon 'search'}".html_safe, class: 'btn btn-primary'
+    %br
+    %table.table.table-striped
+      - if deposits.empty?
+        %tr
+          %td.text-center{colspan: 7}
+            %small
+              No Deposits Found.
+              = link_to 'Add a deposit.', new_deposit_path
+      - else
+        %thead
+          %tr
+            %th= sort_link(@q, :id, 'ID')
+            %th= sort_link(@q, :display_date, 'Date', default_order: :desc)
+            %th= sort_link(@q, :name, 'Name')
+            %th= sort_link(@q, :payment_method)
+            %th= sort_link(@q, :status)
+            %th= sort_link(@q, :amount)
+            %th
+        %tbody
+          - deposits.each do |deposit|
+            %tr
+              %td= "##{deposit.id}"
+              %td= deposit.display_date
+              %td= deposit.name
+              %td= deposit.giving_method
+              %td
+                - if deposit.pending?
+                  %span.text-muted= fa_icon 'clock-o'
+                - if deposit.complete?
+                  %span.text-success= fa_icon 'check'
+              %td= number_to_currency deposit.amount
+              %td.text-right
+                &nbsp;
+                = link_to fa_icon('search'), deposit_path(deposit), title: 'show'
+                &nbsp;
+                = link_to fa_icon('pencil'), edit_deposit_path(deposit), title: 'edit'
+                &nbsp;
+                = link_to fa_icon('trash'), deposit_path(deposit), method: :delete, title: 'delete'
+        %tfoot
+          %tr
+            %td.text-right{colspan: 5} Total
+            %th= number_to_currency @deposits.sum(:amount)
+            %td
+    .text-center
+      = paginate deposits
+= render 'give_site'

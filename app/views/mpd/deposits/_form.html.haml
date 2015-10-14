@@ -1,0 +1,24 @@
+= render partial: 'errors', locals: { f: f }
+- if deposit.pending?
+  %h3 Deposit Details
+  .details
+    = f.input :amount
+    = f.input :giving_method, as: :radio_buttons
+%h3 Donor Details
+%p
+  Address is required to send tax receipts to the donor.
+  %br
+  %strong Donors without an address will not get a tax receipt!
+.details
+  .row
+    .col-md-6
+      = f.input :first_name
+    .col-md-6
+      = f.input :last_name
+  = f.input :address_line_1
+  = f.input :address_line_2
+  .row
+    .col-md-8
+      = f.input :city
+    .col-md-4
+      = f.input :postcode

@@ -1,0 +1,13 @@
+= render 'top'
+= render 'state'
+.content
+  .container
+    %h2= "Edit #{deposit.title}"
+    = render 'status'
+    = simple_form_for @deposit do |f|
+      = render partial: 'form', locals: { f: f }
+      .submit
+        .pull-left
+          = link_to "#{fa_icon 'angle-left'} Back".html_safe, deposit_path, class: 'btn btn-primary'
+        = f.button :submit, class: 'btn btn-primary', value: "Save Deposit"
+= render 'give_site'

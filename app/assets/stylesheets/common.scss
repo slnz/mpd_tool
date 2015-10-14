@@ -187,8 +187,20 @@ header.navbar.navbar-inverse {
     .row {
       border-bottom: 1px solid #ccc;
       margin: 0;
-      [class^="col-md-"]:first-child {
-        border-right: 1px solid #ccc;
+      [class^="col-md-"] {
+        padding:0;
+        .form-group {
+          padding: 0 15px;
+          &.error {
+            background-color: #f2dede;
+            label.control-label {
+              color: #a94442;
+            }
+          }
+        }
+        &:first-child {
+          border-right: 1px solid #ccc;
+        }
       }
     }
     > .form-group {

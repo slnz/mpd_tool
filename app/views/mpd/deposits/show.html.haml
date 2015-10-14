@@ -1,0 +1,108 @@
+= render 'top'
+= render 'state'
+.content
+  .container
+    %h2= deposit.title
+    = render 'status'
+    - if deposit.complete?
+      %p
+        This donation via
+        = deposit.giving_method
+        was successfully received and processed by the Donation Processing Team.
+        You can still update the donor details but cannot modify the deposit details.
+    - if deposit.pending?
+      %h3 Instructions
+      - if deposit.cash?
+        %p
+          This donation via cash from
+          = deposit.name
+          should be deposited into the
+          = link_to 'Tandem Ministries', 'http://www.tandem.org.nz', target: :_blank
+          account (Tandem Ministries is our parent ministry)
+          with the following references:
+        %table.table.table-attributes
+          %tbody
+            %tr
+              %th.text-right{style: 'width: 50%;'} Amount
+              %td= number_to_currency deposit.amount
+            %tr
+              %th.text-right Account Name
+              %td Tandem Ministries
+            %tr
+              %th.text-right Account Number
+              %td 03-0283-0037179-007
+            %tr
+              %th.text-right Particulars
+              %td= donee.reference_name
+            %tr
+              %th.text-right Code
+              %td= deposit.code
+            %tr
+              %th.text-right Reference
+              %td= deposit.reference_name
+        %p
+          Once this is received by our Donation Processing Team this deposit will be marked as complete.
+          This usually takes 2-4 working days to process once the deposit is received in our account.
+      - if deposit.cheque?
+        %p
+          This donation via cheque from
+          = deposit.name
+          must be made payable to
+          = link_to ' Tandem Ministries', 'http://www.tandem.org.nz', target: :_blank
+          (Tandem Ministries is our parent ministry). On the back of the cheque you must write the deposit code.
+        %table.table.table-attributes
+          %tbody
+            %tr
+              %th.text-right{style: 'width: 50%;'} Amount
+              %td= number_to_currency deposit.amount
+            %tr
+              %th.text-right Payable To
+              %td Tandem Ministries
+            %tr
+              %th.text-right Code
+              %td= deposit.code
+        %p
+          You must then post the cheque by mail to:
+        %p.text-center
+          %strong Tandem Ministries
+          %br
+          Freepost 3733
+          %br
+          PO Box 78 161
+          %br
+          Grey Lynn
+          %br
+          Auckland 1245
+        %p
+          Once this is received this cheque will be deposited to our account.
+          Cheques usually take 5 working days to clear.
+          Once the cheque clears this donation will be marked as complete.
+          Our Donation Processing Team usually takes 2-4 working days to process the deposit once the cheque clears.
+    %h3 Deposit & Donor Details
+    %table.table.table-attributes
+      %tbody
+        %tr
+          %th.text-right{style: 'width: 50%;'} Amount
+          %td= number_to_currency deposit.amount
+        %tr
+          %th.text-right Donee Name
+          %td= deposit.name
+        %tr
+          %th.text-right Giving Method
+          %td= deposit.giving_method
+        - if deposit.address_line_1
+          %tr
+            %th.text-right Address
+            %td
+              = deposit.address_line_1
+              %br
+              = deposit.address_line_2
+              %br
+              = "#{deposit.city} #{deposit.postcode}"
+
+    .submit.clearfix
+      .pull-left
+        = link_to "#{fa_icon 'angle-left'} Back".html_safe, deposits_path, class: 'btn btn-primary'
+      = link_to "#{fa_icon 'trash'} Remove".html_safe, deposit_path(deposit), class: 'btn btn-primary', method: :delete
+      = link_to "#{fa_icon 'pencil'} Edit".html_safe, edit_deposit_path(deposit), class: 'btn btn-primary'
+= render 'give_site'
