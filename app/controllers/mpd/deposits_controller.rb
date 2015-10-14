@@ -71,10 +71,10 @@ module Mpd
     end
 
     def deposit_params
-        deposit_params = params[:deposit]
-        return {} unless deposit_params
-        deposit_params.permit(:first_name, :last_name, :amount, :giving_method,
-                              :address_line_1, :address_line_2, :city, :postcode, :terms)
+      deposit_params = params[:deposit]
+      return {} unless deposit_params
+      deposit_params.permit(:first_name, :last_name, :amount, :giving_method,
+                            :address_line_1, :address_line_2, :city, :postcode, :terms)
     end
   end
 end

@@ -11,7 +11,7 @@ ActiveAdmin.register Deposit do
     column(:designation) do |d|
       link_to d.designation.designation_code, admin_designation_path(d.designation)
     end
-    column(:donor) { |d| d.name }
+    column(:donor, &:name)
     column(:donee) { |d| d.designation.name }
     column :project
     column :display_date
