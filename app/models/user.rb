@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(provider: auth[:provider], uid: auth[:uid]).first_or_create(
-      email: auth[:info][:email],
+      email: auth[:info][:email] || "#{auth[:uid]}@#{auth[:provider]}.com",
       first_name: auth[:info][:first_name],
       last_name: auth[:info][:last_name],
       image: auth[:info][:image]
