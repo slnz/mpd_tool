@@ -44,7 +44,7 @@ class Pledge < ActiveRecord::Base
   end
 
   def create_response(params = nil)
-    pledge.update(params: params) if params
+    self.update(params: params) if params
     Pledge::Response.create(pledge: self)
   end
 
