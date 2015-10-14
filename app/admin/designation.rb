@@ -1,8 +1,7 @@
 ActiveAdmin.register Designation do
   config.per_page = 100
   scope :all, default: true
-  scope(:active) { |scope| scope.where.not(donee: nil) }
-  scope(:inactive) { |scope| scope.where(donee: nil) }
+  
   permit_params :email, :first_name, :last_name, :designation_code, :campus_id, :project_id
   decorate_with Decorator::DesignationDecorator
   active_admin_import(
