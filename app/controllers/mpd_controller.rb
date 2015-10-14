@@ -20,6 +20,7 @@ class MpdController < ApplicationController
 
   def load_designation
     @designation ||= load_donee.try(:designation)
+    load_donee.setup! unless @designation
   end
 
   def load_project

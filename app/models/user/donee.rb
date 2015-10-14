@@ -6,7 +6,7 @@ class User
     validates :uid, presence: true
     validates :provider, presence: true
     validates :email, presence: true
-    validate :check_activation_code
+    validate :check_activation_code, if: :active?
 
     has_one :designation, dependent: :nullify
     has_many :donations, through: :designation
@@ -20,8 +20,6 @@ class User
     end
 
     def check_activation_code
-      return unless activation_code
-      return if designation
       errors.add(:activation_code, 'is not valid') unless designation
     end
 
