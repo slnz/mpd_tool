@@ -32,6 +32,12 @@ module Give
         redirect_to action: :show
       end
 
+      def failure
+        load_pledge
+        create_response
+        redirect_to action: :show
+      end
+
       protected
 
       def load_pledges
