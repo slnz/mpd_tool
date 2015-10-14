@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   friendly_id :name, use: :slugged
   devise :database_authenticatable, :recoverable, :registerable,
          :rememberable, :trackable, :omniauthable, omniauth_providers: [:facebook]
-  validates :email, uniqueness: true, presence: true
+  validates :email, uniqueness: true
+  validates :email, presence: true, unless: :uid
   before_save :set_name
 
   def self.from_omniauth(auth)
