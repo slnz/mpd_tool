@@ -26,7 +26,7 @@ ActiveAdmin.register Pledge do
     end
   end
 
-  batch_action :approve, confirm: 'This action is irreversible. Are You sure you want to do this?' do |ids, inputs|
+  batch_action :approve, confirm: 'This action is irreversible. Are You sure you want to do this?' do |ids, _inputs|
     scoped_collection.find(ids).each do |pledge|
       pledge.success! if pledge.failure? && pledge.valid?
     end
