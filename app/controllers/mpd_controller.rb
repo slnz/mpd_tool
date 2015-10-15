@@ -20,7 +20,7 @@ class MpdController < ApplicationController
 
   def load_designation
     @designation ||= load_donee.try(:designation)
-    load_donee.setup! unless @designation
+    @donee.setup! unless @designation && @donee.try(:valid?)
     @designation
   end
 
