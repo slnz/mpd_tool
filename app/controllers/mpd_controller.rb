@@ -20,7 +20,7 @@ class MpdController < ApplicationController
 
   def load_designation
     @designation ||= load_donee.try(:designation)
-    @donee.setup! unless @designation && @donee.try(:valid?)
+    @donee.update_column(donee_state: User::Donee.donee_states['setup']) unless @designation
     @designation
   end
 
