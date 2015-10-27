@@ -10,6 +10,10 @@ module Decorator
       donor.try(:name)
     end
 
+    def donor_address
+      donor.try(:address)
+    end
+
     def donee_name
       designation.try(:name)
     end
@@ -20,6 +24,11 @@ module Decorator
 
     def display_date
       created_at.strftime('%m/%d/%Y')
+    end
+
+    def donor_wise_payment_type
+      return 'CREDITCARD' if object.giving_method == 'credit card'
+      'AP'
     end
   end
 end
