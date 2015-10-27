@@ -2,6 +2,7 @@ ActiveAdmin.register User do
   scope :all, default: true
   config.per_page = 100
   scope :all, default: true
+  decorate_with Decorator::UserDecorator
   scope(:donee) { |scope| scope.where(donee_state: 1) }
   scope(:donor) { |scope| scope.where(donor_state: 1) }
   actions :index, :show
@@ -32,6 +33,16 @@ ActiveAdmin.register User do
       status_tag('admin', :ok) if user.admin?
     end
     actions
+  end
+
+  show do
+    attributes_table do
+      row :id
+      row :name
+      row :email
+      row :phone
+      row(:address) { |u| simple_format u.address }
+    end
   end
 
   filter :email

@@ -12,8 +12,8 @@ ActiveAdmin.register Pledge do
     id_column
     column(:desingation_id) { |p| link_to p.code, admin_designation_path(p.designation) }
     column(:donation_id) { |p| link_to p.donation_id, admin_donation_path(p.donation) if p.donation }
-    column :donee_name
-    column :donor_name
+    column :donee
+    column :donor
     column(:amount) { |p| number_to_currency p.amount }
     column :giving_method
     column :display_date
@@ -26,10 +26,21 @@ ActiveAdmin.register Pledge do
     end
   end
 
-  batch_action :approve, confirm: 'This action is irreversible. Are You sure you want to do this?' do |ids, _inputs|
+  batch_action :mark_as_success,
+               confirm: 'This action is irreversible. This only applies to pledges marked as failures. '\
+                        'Are You sure you want to do this?' do |ids, _inputs|
     scoped_collection.find(ids).each do |pledge|
       pledge.success! if pledge.failure? && pledge.valid?
     end
-    redirect_to collection_path, notice: 'The failed pledges you selected have been pushed through as successes!'
+    redirect_to collection_path, notice: 'The failed pledges you selected have been pushed through as successful!'
+  end
+
+  batch_action :mark_as_complete,
+               confirm: 'This action is irreversible. This only applies to pledges marked as successful. '\
+                        'Are You sure you want to do this?' do |ids, _inputs|
+    scoped_collection.find(ids).each do |pledge|
+      pledge.complete! if pledge.success? && pledge.valid?
+    end
+    redirect_to collection_path, notice: 'The successful pledges you selected have been pushed through as completed!'
   end
 end

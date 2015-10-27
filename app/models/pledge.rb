@@ -4,6 +4,7 @@ class Pledge < ActiveRecord::Base
   belongs_to :project
   belongs_to :contact
   belongs_to :donor, class_name: 'User::Donor'
+  belongs_to :donee, class_name: 'User::Donee'
   enum status: { 'pending' => 0, 'success' => 1, 'failure' => 2, 'complete' => 3 }
   enum giving_method: { 'credit card' => 0, 'internet banking' => 1 }
   validates :donor, :project, :amount, :giving_method, presence: true
@@ -44,7 +45,7 @@ class Pledge < ActiveRecord::Base
   end
 
   def create_response(params = nil)
-    self.update(params: params) if params
+    update(params: params) if params
     Pledge::Response.create(pledge: self)
   end
 

@@ -5,7 +5,7 @@ ActiveAdmin.register User::Donee, as: 'donee' do
   scope(:active, default: true) { |scope| scope.where(donee_state: 1) }
   scope(:configured) { |scope| scope.where.not(activation_code: nil).setup }
 
-  actions :index
+  actions :index, :show
   index do
     selectable_column
     id_column
@@ -47,6 +47,10 @@ ActiveAdmin.register User::Donee, as: 'donee' do
   controller do
     def scoped_collection
       User::Donee
+    end
+
+    def find_resource
+      User.friendly.find(params[:id])
     end
   end
 end
