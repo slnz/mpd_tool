@@ -27,10 +27,10 @@ ActiveAdmin.register Pledge do
   end
 
   batch_action :mark_as_success,
-               confirm: 'This action is irreversible. This only applies to pledges marked as failures. '\
+               confirm: 'This action is irreversible. This only applies to pledges marked as failures or pending. '\
                         'Are You sure you want to do this?' do |ids, _inputs|
     scoped_collection.find(ids).each do |pledge|
-      pledge.success! if pledge.failure? && pledge.valid?
+      pledge.success! if (pledge.pending? || pledge.failure?) && pledge.valid?
     end
     redirect_to collection_path, notice: 'The failed pledges you selected have been pushed through as successful!'
   end
