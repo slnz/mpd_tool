@@ -63,6 +63,7 @@ class Donation
     end
 
     def self.contact(data)
+      Contact.where(code: nil, name: data['ACCT_NAME']).limit(1).update_all(code: data['PEOPLE_ID'])
       Contact.where(code: data['PEOPLE_ID']).first_or_create(name: data['ACCT_NAME'])
     end
   end

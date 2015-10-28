@@ -23,9 +23,7 @@ class Pledge < ActiveRecord::Base
   end
 
   def generate_contact
-    self.contact ||= Contact.create_with(code: id).find_or_create_by(
-      name: "#{donor.last_name}, #{donor.first_name}"
-    )
+    self.contact ||= Contact.find_or_create_by(name: "#{donor.last_name}, #{donor.first_name}")
   end
 
   def generate_donation
