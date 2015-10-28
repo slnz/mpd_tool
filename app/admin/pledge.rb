@@ -50,7 +50,7 @@ ActiveAdmin.register Pledge do
     column(:payment_type_code) { |p| p.donor_wise_payment_type }
     column(:donation_memo) { |p| p.donation_id }
     column(:designation_id) { |p| p.code }
-    column(:donor_id) { |p| p.contact.try(:code) }
+    column(:donor_id) { |p| p.donor_id }
     column(:donor_name) { |p| p.donor_name }
     column(:donor_address) { |p| p.donor.try(:short_address) }
     column(:donor_email) { |p| p.donor.try(:email) }
