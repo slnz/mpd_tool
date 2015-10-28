@@ -11,7 +11,7 @@ ActiveAdmin.register Pledge do
     selectable_column
     id_column
     column(:desingation_id) { |p| link_to p.code, admin_designation_path(p.designation) }
-    column(:donation_id) { |p| link_to p.donation_id, admin_donation_path(p.donation) if p.donation }
+    column(:donation_id) { |p| link_to p.donation_id, admin_donation_path(p.donation_id) if p.donation_id }
     column :donee
     column :donor
     column(:amount) { |p| number_to_currency p.amount }
