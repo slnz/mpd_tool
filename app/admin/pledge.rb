@@ -39,8 +39,7 @@ ActiveAdmin.register Pledge do
                confirm: 'This action is irreversible. This only applies to pledges marked as successful. '\
                         'Are You sure you want to do this?' do |ids, _inputs|
     scoped_collection.find(ids).each do |pledge|
-      return unless pledge.success? && pledge.valid?
-      pledge.complete!
+      pledge.complete! if pledge.success? && pledge.valid?
     end
     redirect_to collection_path, notice: 'The successful pledges you selected have been pushed through as completed!'
   end
