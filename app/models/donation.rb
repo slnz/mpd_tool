@@ -21,7 +21,7 @@ class Donation < ActiveRecord::Base
   belongs_to :contact
   has_one :pledge, dependent: :nullify
   belongs_to :designation, foreign_key: :designation_code
-  delegate :name, to: :contact
+  delegate :name, to: :contact, allow_nil: true
 
   def self.refreshable(date)
     where('created_at > ?', date).where.not(payment_type: Donation.payment_types['TRANSFER']).offline
