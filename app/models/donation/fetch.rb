@@ -59,7 +59,6 @@ class Donation
     def self.destroy_online_donation(donation)
       return unless donation
       donation.pledge.complete!
-      donation.destroy!
     end
 
     def self.contact(data)

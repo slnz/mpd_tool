@@ -41,7 +41,6 @@ ActiveAdmin.register Pledge do
     scoped_collection.find(ids).each do |pledge|
       return unless pledge.success? && pledge.valid?
       pledge.complete!
-      pledge.donation.try(:destroy!)
     end
     redirect_to collection_path, notice: 'The successful pledges you selected have been pushed through as completed!'
   end
