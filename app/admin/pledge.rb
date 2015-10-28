@@ -55,5 +55,7 @@ ActiveAdmin.register Pledge do
     column(:donor_id) { |p| p.contact.try(:code) }
     column(:donor_name) { |p| p.donor_name }
     column(:donor_address) { |p| p.donor.try(:short_address) }
+    column(:donor_email) { |p| p.donor.try(:email) }
+    column(:donor_phone) { |p| p.donor.try(:phone) }
   end
 end
