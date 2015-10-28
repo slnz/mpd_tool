@@ -14,7 +14,7 @@ class Pledge < ActiveRecord::Base
   before_destroy :destroy_donation
   delegate :donee, to: :designation
   after_update :send_notifications, if: -> { status_changed? && success? }
-  after_update :destroy_donation, if: -> { status_changed? && completed? }
+  after_update :destroy_donation, if: -> { status_changed? && complete? }
   serialize :payload
   serialize :params
 
