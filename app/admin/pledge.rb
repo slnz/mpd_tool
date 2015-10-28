@@ -44,13 +44,13 @@ ActiveAdmin.register Pledge do
     redirect_to collection_path, notice: 'The successful pledges you selected have been pushed through as completed!'
   end
 
-  csv do
+  csv force_quotes: true do
     column(:tendered_amount) { |p| number_with_precision p.amount, precision: 2 }
     column(:payment_type_code) { |p| p.donor_wise_payment_type }
     column(:donation_memo) { |p| p.donation_id }
     column(:designation_id) { |p| p.code }
     column(:donor_id) { |p| p.contact.try(:code) if p.contact.try(:code) >= 10000 }
     column(:donor_name) { |p| p.donor_name }
-    column(:donor_address) { |p| p.donor_address }
+    column(:donor_address) { |p| p.donor.try(:short_address) }
   end
 end
