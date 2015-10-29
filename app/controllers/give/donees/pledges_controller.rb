@@ -2,7 +2,7 @@ module Give
   module Donees
     class PledgesController < DoneesController
       decorates_assigned :pledges, :pledge
-      before_action :authenticate_user!, except: [:about, :index, :new]
+      before_action :authenticate_user!, except: [:about, :index, :new, :success, :failure]
       before_action :check_project, except: [:index]
       add_breadcrumb 'Giving', proc { |c| c.donee_pledges_path(donee_id: c.donee.slug) }
 
@@ -29,13 +29,15 @@ module Give
       def success
         load_pledge
         create_response
-        redirect_to action: :show
+        return redirect_to action: :show if current_user
+        render text: 'success'
       end
 
       def failure
         load_pledge
         create_response
-        redirect_to action: :show
+        return redirect_to action: :show if current_user
+        render text: 'failure'
       end
 
       protected
@@ -60,7 +62,7 @@ module Give
       end
 
       def pledge_scope
-        current_user.pledges
+        current_user ? current_user.pledges : Pledge
       end
 
       def create_request
