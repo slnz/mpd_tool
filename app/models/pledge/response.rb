@@ -1,6 +1,7 @@
 class Pledge
   class Response < ActiveType::Object
     attribute :pledge_id, :integer
+    attribute :response, :hash
 
     belongs_to :pledge
 
@@ -27,10 +28,13 @@ class Pledge
     end
 
     def pxpay
-      response = Pxpay::Response.new(pledge.params).response.to_hash
-      pledge.update(payload: response)
-      return pledge.success! if response[:success] == '1'
-      pledge.failure!
+      return unless pxpay_response[:valid] == '1'
+      pledge.update(payload: pxpay_response)
+      pxpay_response[:success] == '1' ? pledge.success! : pledge.failure!
+    end
+
+    def pxpay_response
+      self.response ||= Pxpay::Response.new(pledge.params).response.to_hash
     end
   end
 end
