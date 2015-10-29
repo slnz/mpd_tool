@@ -45,13 +45,13 @@ ActiveAdmin.register Pledge do
   end
 
   csv force_quotes: true do
-    column(:pledge_id) { |p| p.id }
+    column(:pledge_id, &:id)
     column(:tendered_amount) { |p| number_with_precision p.amount, precision: 2 }
-    column(:payment_type_code) { |p| p.donor_wise_payment_type }
-    column(:donation_memo) { |p| p.donation_id }
-    column(:designation_id) { |p| p.code }
-    column(:donor_id) { |p| p.donor_id }
-    column(:donor_name) { |p| p.donor_name }
+    column(:payment_type_code, &:donor_wise_payment_type)
+    column(:donation_memo, &:donation_id)
+    column(:designation_id, &:code)
+    column(:donor_id, &:donor_id)
+    column(:donor_name, &:donor_name)
     column(:donor_address) { |p| p.donor.try(:short_address) }
     column(:donor_email) { |p| p.donor.try(:email) }
     column(:donor_phone) { |p| p.donor.try(:phone) }
