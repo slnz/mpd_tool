@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       root to: 'projects#index', as: :give_root
       get '/projects', to: redirect('/')
       resources :projects, only: [:show]
+      authenticated :user do
+        resource :donor, path: 'me', only: [:edit, :update]
+        resources :pledges, path: 'donations', only: [:index]
+      end
       resources :donees, only: [:show], path: '' do
         collection do
           get :autocomplete_donee_name
@@ -26,9 +30,6 @@ Rails.application.routes.draw do
             end
           end
         end
-      end
-      authenticated :user do
-        resource :donor, path: 'me', only: [:edit, :update]
       end
     end
   end

@@ -13,6 +13,9 @@
       %ul.nav.navbar-nav
         %li{class: ('active' if current_page? root_path)}
           %a{href: root_path} Home
+        - if user_signed_in?
+          %li{class: ('active' if current_page? pledges_path)}
+            %a{href: pledges_path} Donations
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li{class: ('active' if current_page? edit_donor_path)}
