@@ -56,10 +56,10 @@ end
 
 group :development, :test do
   gem 'awesome_print'
-  gem 'byebug'
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'faker'

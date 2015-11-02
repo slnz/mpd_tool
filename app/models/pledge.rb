@@ -33,7 +33,7 @@ class Pledge < ActiveRecord::Base
       contact: contact,
       designation_id: designation.designation_code,
       amount: amount,
-      display_date: Time.current,
+      display_date: created_at,
       payment_type: giving_method == 'credit card' ? 'CREDITCARD' : 'AP',
       gift_type: Donation.gift_types[:online]
     )

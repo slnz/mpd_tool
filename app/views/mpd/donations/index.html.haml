@@ -4,9 +4,9 @@
   .container
     %h2 My Donations
     %p
-      - if Donation.first
-        Donations last processed on
-        = Donation.first.display_date.strftime('%A, %-d %b %Y')
+      - if Donation.where(gift_type: Donation.gift_types[:offline]).first
+        Donations via Tandem Website last processed on
+        = Donation.where(gift_type: Donation.gift_types[:offline]).first.display_date.strftime('%A, %-d %b %Y')
         %br
       %small.text-muted
         Donations take a minimum of 4 days to process.
@@ -27,6 +27,7 @@
     %table.table.table-striped
       %thead
         %tr
+          %th ID
           %th= sort_link(@q, :display_date, 'Date', default_order: :desc)
           %th= sort_link(@q, 'contact.name', 'Name')
           %th= sort_link(@q, :payment_method)
@@ -37,16 +38,13 @@
             %td.text-center{colspan: 4}
               %small
                 No Donations Found.
-        - @donations.each do |donation|
+        - donations.each do |donation|
           %tr
+            %td= donation.id
             %td= donation.display_date.strftime('%d/%m/%y')
             %td= donation.name
             %td= donation.payment_type
             %td= number_to_currency donation.amount
-      %tfoot
-        %tr
-          %td.text-right{colspan: 3} Total
-          %th= number_to_currency @donations.sum(:amount)
     .text-center
       = paginate @donations
 = render 'give_site'

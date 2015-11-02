@@ -2,6 +2,7 @@ module Mpd
   class DonationsController < MpdController
     has_scope :project
     add_breadcrumb 'Donations', proc { |c| c.donations_path }
+    decorates_assigned :donations
 
     def index
       load_donations

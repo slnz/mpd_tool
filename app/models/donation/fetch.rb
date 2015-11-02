@@ -2,7 +2,10 @@ require 'csv'
 class Donation
   class Fetch
     def self.from_dataserve
-      Donation.refreshable(datefrom).destroy_all
+      Donation.where('created_at > ?', datefrom).destroy_all
+      Pledge.where(status: Pledge.statuses['success']).each do |pledge|
+        pledge.generate_donation
+      end
       get(action: 'profiles').each do |profile|
         project = project(profile)
         get(profile: profile['PROFILE_CODE'],
