@@ -62,7 +62,7 @@ module Give
       end
 
       def pledge_scope
-        current_user ? current_user.pledges : Pledge
+        current_user ? current_user.pledges.where(designation: @designation) : Pledge
       end
 
       def create_request
