@@ -34,7 +34,8 @@ ActiveAdmin.register Designation do
     selectable_column
     id_column
     column :designation_code
-    column :name
+    column(:name) { |d| d.donee.try(:name) || d.name }
+    column(:email) { |d| d.donee.try(:email) || d.email }
     column(:amount_raised) { |d| number_to_currency d.amount_raised }
     column :campus
     column :project
@@ -83,9 +84,17 @@ ActiveAdmin.register Designation do
   batch_action :email,
                form: { subject: :text, message: :textarea },
                confirm: 'Please enter the subject and the message below' do |ids, inputs|
-    scoped_collection.find(ids).each do |donee|
-      Mpd::DoneesMailer.update(donee, inputs[:subject], inputs[:message]).deliver
+    scoped_collection.find(ids).each do |designation|
+      Mpd::DoneesMailer.update(designation.donee || designation, inputs[:subject], inputs[:message]).deliver
     end
     redirect_to collection_path, notice: 'The batch email has been sent to all the users you selected.'
+  end
+
+
+  batch_action :resend_activation do |ids, _inputs|
+    scoped_collection.find(ids).each do |designation|
+      designation.send_activation_code unless designation.donee
+    end
+    redirect_to collection_path, notice: 'The inactive designations you selected have emailed their activation codes!'
   end
 end
