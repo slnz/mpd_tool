@@ -48,7 +48,7 @@ ActiveAdmin.register Pledge do
     column(:pledge_id, &:id)
     column(:tendered_amount) { |p| number_with_precision p.amount, precision: 2 }
     column(:payment_type_code, &:donor_wise_payment_type)
-    column(:donation_memo, &:donation_id)
+    column(:donation_memo, &:id)
     column(:designation_id, &:code)
     column(:donor_id, &:donor_id)
     column(:donor_name, &:donor_name)

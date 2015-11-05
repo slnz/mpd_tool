@@ -3,7 +3,10 @@ class Donation
   class Fetch
     def self.from_dataserve
       Donation.where('created_at > ?', datefrom).destroy_all
-      Pledge.where(status: Pledge.statuses['success']).find_each(&:generate_donation)
+      Pledge.where(status: Pledge.statuses['success']).find_each do |pledge|
+        pledge.generate_donation
+        pledge.save
+      end
       get(action: 'profiles').each do |profile|
         project = project(profile)
         get(profile: profile['PROFILE_CODE'],
@@ -45,7 +48,7 @@ class Donation
     end
 
     def self.create_donation(data, project)
-      destroy_online_donation(Donation.find_by(id: data['MEMO']))
+      Pledge.find_by(id: data['MEMO']).try(:complete!)
       Donation.where(global_id: data['DONATION_ID']).first_or_create(
         project: project,
         contact: contact(data),
@@ -54,11 +57,6 @@ class Donation
         display_date: Date.strptime(data['DISPLAY_DATE'], '%m/%d/%Y'),
         payment_type: Donation.payment_types[data['PAYMENT_METHOD']]
       )
-    end
-
-    def self.destroy_online_donation(donation)
-      return unless donation
-      donation.pledge.complete!
     end
 
     def self.contact(data)
