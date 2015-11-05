@@ -3,10 +3,6 @@ class Donation
   class Fetch
     def self.from_dataserve
       Donation.where('created_at > ?', datefrom).destroy_all
-      Pledge.where(status: Pledge.statuses['success']).find_each do |pledge|
-        pledge.generate_donation
-        pledge.save
-      end
       get(action: 'profiles').each do |profile|
         project = project(profile)
         get(profile: profile['PROFILE_CODE'],
@@ -14,6 +10,10 @@ class Donation
             dateto: Date.tomorrow.strftime('%m/%d/%y'), action: 'gifts').each do |row|
           create_donation(row, project)
         end
+      end
+      Pledge.where(status: Pledge.statuses['success']).find_each do |pledge|
+        pledge.generate_donation
+        pledge.save
       end
     end
 
