@@ -12,7 +12,7 @@
     .going.clearfix
       .avatars
         - project.donees.order("RANDOM()").limit(10).each do |donee|
-          %a
+          %a{href: donee_path(donee)}
             %img{src: donee.large_image}
         - if project.designations.count > 10
           .additional

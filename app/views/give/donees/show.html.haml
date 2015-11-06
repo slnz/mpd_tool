@@ -22,7 +22,7 @@
       .going.clearfix
         .avatars
           - project.donees.where.not(id: donee.id).order("RANDOM()").limit(5).each do |donee|
-            %a
+            %a{href: donee_path(donee)}
               %img{src: donee.large_image}
           - if project.designations.count > 5
             .additional
