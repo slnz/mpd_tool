@@ -20,6 +20,14 @@ ActiveAdmin.register Pledge do
     actions
   end
 
+  filter :project
+  filter :donor
+  filter :designation,
+         collection: -> do
+           Designation.order(:first_name).pluck(:first_name, :last_name, :id).collect { |d| ["#{d[0]} #{d[1]}", d[2]] }
+         end,
+         label: 'Designation'
+
   controller do
     def scoped_collection
       Pledge
