@@ -18,13 +18,24 @@
             %a{href: donations_path} Donations
           %li{class: ('active' if params[:controller] == 'mpd/deposits')}
             %a{href: deposits_path} Deposits
+          %li{class: ('active' if current_page? donors_path)}
+            %a{href: donors_path} Donors
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
-          %li{class: ('active' if current_page? edit_donee_path)}
-            %a{href: edit_donee_path} Profile
           - if current_user.admin?
-            %li
-              %a{href: admin_root_path} Admin
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                = fa_icon 'cog'
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  %a{href: admin_root_path} Admin
+                %li{class: ('active' if current_page? edit_donee_path)}
+                  %a{href: edit_donee_path} Profile
+          - else
+            %li{class: ('active' if current_page? edit_donee_path)}
+              %a{href: edit_donee_path}
+                = fa_icon 'cog'
           - if current_donor.active?
             %li
               %a{href: give_root_url} Give

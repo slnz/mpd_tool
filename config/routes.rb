@@ -41,6 +41,7 @@ Rails.application.routes.draw do
         resource :donee, path: 'me', only: [:edit, :update]
         resources :donations, only: [:index]
         resources :deposits
+        resources :donors, only: [:index]
       end
       get '*path', to: redirect('/')
       root to: 'pages#show', id: 'home'

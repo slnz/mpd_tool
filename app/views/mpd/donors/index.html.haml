@@ -1,0 +1,47 @@
+= render 'top'
+= render 'state'
+.content
+  .container
+    %h2 My Donor Contact Info
+    %p
+      %small.text-muted
+        You are only able to access contact info for donors who have indicated that they would like your newsletters.
+    .submit
+      = link_to "#{fa_icon 'download'} Download as CSV".html_safe, donors_path(format: :csv), class: 'btn btn-primary'
+    %br/
+    = search_form_for @q, class: 'form-horizontal', url: donors_path do |f|
+      .input-group
+        = f.search_field :first_name_or_last_name_cont, class: 'form-control search', placeholder: 'Search by Name'
+        %span.input-group-btn
+          = f.button "#{fa_icon 'search'}".html_safe, class: 'btn btn-primary'
+    %br
+    %table.table.table-striped.donors
+      %thead
+        %tr
+          %th
+          %th= sort_link(@q, :first_name)
+          %th= sort_link(@q, :last_name)
+          %th= sort_link(@q, :email)
+      %tbody
+        - if @donors.empty?
+          %tr
+            %td.text-center{colspan: 4}
+              %small
+                No Donations Found.
+        - donors.each do |donor|
+          %tr
+            %td.avatar
+              - if donor.image
+                = image_tag donor.image
+              - else
+                = image_tag 'no-avatar.jpg'
+            %td= donor.first_name
+            %td= donor.last_name
+            %td= mail_to donor.email
+            %td
+              - if donor.facebook_profile
+                %a{href: donor.facebook_profile }
+                  = fa_icon 'facebook-square'
+    .text-center
+      = paginate @donors
+= render 'give_site'

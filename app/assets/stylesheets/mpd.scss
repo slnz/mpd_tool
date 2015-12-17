@@ -7,3 +7,15 @@
     box-shadow: none;
   }
 }
+table.donors {
+  tr {
+    height: 42px;
+    td.avatar {
+      width: 60px;
+      img {
+        max-width: 25px;
+        border-radius: 5px;
+      }
+    }
+  }
+}

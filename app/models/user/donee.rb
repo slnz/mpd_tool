@@ -12,6 +12,9 @@ class User
     has_many :donations, through: :designation
     has_many :deposits, through: :designation
     has_many :projects, through: :donations
+    has_many :pledges, through: :designation
+    has_many :subscriptions, through: :designation
+    has_many :donors, -> { order('first_name').distinct }, through: :subscriptions
     enum donee_state: { setup: 0, active: 1 }
     after_update :send_welcome_notification, if: -> { donee_state_changed? && active? }
 
