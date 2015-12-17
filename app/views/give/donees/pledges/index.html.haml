@@ -5,11 +5,11 @@
     %h2
       Thanks for partnering with
       = donee.first_name
-      in prayer and Finance!
+      by praying and donating!
     %br
     %a.btn.btn-primary.btn-lg{href: new_donee_pledge_path(donee)}
       = fa_icon 'angle-right'
-      Partner in Prayer and Finance
+      Partner by Praying and Donating
     - if user_signed_in? && !pledges.blank?
       %br
       %br

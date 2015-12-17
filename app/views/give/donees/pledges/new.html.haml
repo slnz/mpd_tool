@@ -5,7 +5,7 @@
     %h2
       Thanks for partnering with
       = donee.first_name
-      in prayer and finance!
+      by praying and donating!
     - if user_signed_in?
       = simple_form_for [donee, pledge], url: donee_pledges_path(donee, pledge) do |f|
         - if f.object.errors.any?

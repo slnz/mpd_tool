@@ -5,11 +5,11 @@
       - unless params[:controller] == 'give/donees/pledges'
         %a.btn-primary.btn-lg{href: new_donee_pledge_path(donee)}
           = fa_icon 'angle-right'
-          In Prayer and Finance
+          By Donating
       - unless current_page?(donee_subscriptions_path(donee))
         %a.btn-primary.btn-lg{href: donee_subscriptions_path(donee)}
           = fa_icon 'angle-right'
-          In Prayer
+          By Praying
       - unless current_page?(about_donee_path(donee))
         %a.btn-primary.btn-lg{href: about_donee_path(donee)}
           = fa_icon 'angle-right'
