@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+ruby '2.3.4'
 
 gem 'active_admin_import', git: 'https://github.com/activeadmin-plugins/active_admin_import.git'
 gem 'active_skin'
