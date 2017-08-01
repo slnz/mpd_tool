@@ -81,7 +81,6 @@ group :test do
 end
 
 group :staging, :production do
-  gem 'airbrake'
   gem 'intercom-rails'
   gem 'newrelic_rpm'
   gem 'rails_12factor'
