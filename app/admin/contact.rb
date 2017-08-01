@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Contact do
   config.per_page = 100
   scope :all, default: true

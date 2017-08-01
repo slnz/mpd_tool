@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Pledge
   class Response < ActiveType::Object
     attribute :pledge_id, :integer

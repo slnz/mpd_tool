@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register User do
   scope :all, default: true
   config.per_page = 100
@@ -12,7 +14,7 @@ ActiveAdmin.register User do
     column :first_name
     column :last_name
     column(:email) do |user|
-      link_to "#{user.email}",
+      link_to user.email.to_s,
               "mailto:#{user.email}",
               target: '_blank'
     end

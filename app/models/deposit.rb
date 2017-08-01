@@ -1,4 +1,6 @@
-class Deposit < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Deposit < ApplicationRecord
   belongs_to :designation
   belongs_to :project
   enum status: { 'pending' => 0, 'complete' => 1 }

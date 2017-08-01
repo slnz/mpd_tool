@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if Rails.env.production? && ENV['INTERCOM_APP_ID']
   IntercomRails.config do |config|
     # == Intercom app_id

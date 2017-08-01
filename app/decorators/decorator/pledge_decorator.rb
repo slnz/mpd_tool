@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Decorator
   class PledgeDecorator < ApplicationDecorator
     decorates_association :designation

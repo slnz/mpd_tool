@@ -1,10 +1,12 @@
-class Donation < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Donation < ApplicationRecord
   paginates_per 50
   default_scope do
     order('display_date desc')
       .where('display_date > ?', Time.zone.now.beginning_of_year)
   end
-  scope :project, -> project { where(project: project) }
+  scope :project, ->(project) { where(project: project) }
   enum payment_type: { 'STAFF' => 0,
                        'TRANSFER' => 1,
                        'CASH' => 2,

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Designation do
   config.per_page = 100
   scope :all, default: true
@@ -11,7 +13,7 @@ ActiveAdmin.register Designation do
     template_object: ActiveAdminImport::Model.new(
       hint: '<strong>Headers</strong><br>'\
             'email, first_name, last_name, designation_code, campus, project',
-      csv_headers: %w(email first_name last_name designation_code campus project)
+      csv_headers: %w[email first_name last_name designation_code campus project]
     ),
     back: { action: :index },
     before_batch_import: proc do |importer|
@@ -89,7 +91,6 @@ ActiveAdmin.register Designation do
     end
     redirect_to collection_path, notice: 'The batch email has been sent to all the users you selected.'
   end
-
 
   batch_action :resend_activation do |ids, _inputs|
     scoped_collection.find(ids).each do |designation|

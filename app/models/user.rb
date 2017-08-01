@@ -1,6 +1,8 @@
-class User < ActiveRecord::Base
+# frozen_string_literal: true
+
+class User < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: %i[slugged finders]
   devise :database_authenticatable, :recoverable, :registerable,
          :rememberable, :trackable, :omniauthable, omniauth_providers: [:facebook]
   validates :email, uniqueness: true
@@ -47,5 +49,9 @@ class User < ActiveRecord::Base
       provider: auth[:provider],
       uid: auth[:uid]
     )
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed?
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def bootstrap_class_for(flash_type)
     { success: 'alert-success',
@@ -13,7 +15,8 @@ module ApplicationHelper
                     message,
                     class: "alert #{bootstrap_class_for(msg_type)}") do
           content_tag(:div, class: 'container') { concat message }
-        end)
+        end
+      )
     end
     nil
   end

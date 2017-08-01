@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mpd
   class PagesController < MpdController
     before_action :setup_redirect

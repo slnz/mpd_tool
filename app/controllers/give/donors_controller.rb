@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Give
   class DonorsController < GiveController
     decorates_assigned :donor

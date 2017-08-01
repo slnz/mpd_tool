@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Donation do
   config.per_page = 100
   scope :all, default: true
@@ -46,7 +48,7 @@ ActiveAdmin.register Donation do
   form do |f|
     f.inputs do
       f.input :project
-      f.input :contact, collection: (Contact.select(:id, :name).distinct.order(:name))
+      f.input :contact, collection: Contact.select(:id, :name).distinct.order(:name)
       f.input :designation_id,
               as: :select,
               collection:

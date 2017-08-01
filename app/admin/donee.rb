@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register User::Donee, as: 'donee' do
   config.per_page = 100
   menu parent: :users
   scope :all
-  scope(:active, default: true) { |scope| scope.where(donee_state: 1) }
-  scope(:configured) { |scope| scope.where.not(activation_code: nil).setup }
+  scope :active, default: true
+  scope :configured
 
   actions :index, :show
   index do
@@ -12,7 +14,7 @@ ActiveAdmin.register User::Donee, as: 'donee' do
     column :first_name
     column :last_name
     column(:email) do |donee|
-      link_to "#{donee.email}",
+      link_to donee.email.to_s,
               "mailto:#{donee.email}",
               target: '_blank'
     end

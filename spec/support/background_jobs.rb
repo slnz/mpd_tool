@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BackgroundJobs
   def run_background_jobs_immediately
     delay_jobs = Delayed::Worker.delay_jobs

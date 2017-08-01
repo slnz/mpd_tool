@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mpd
   class DonationsController < MpdController
     has_scope :project

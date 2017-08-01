@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Give
   class DonorsMailer < GiveMailer
     def welcome(donor)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mpd
   class DonorsController < MpdController
     add_breadcrumb 'Donors', proc { |c| c.donors_path }
@@ -16,9 +18,9 @@ module Mpd
     def load_donors
       @q ||= apply_scopes(donor_scope).search(params[:q])
       @donors ||= if params[:format] == 'csv'
-        @q.result.all
-      else
-        @q.result.page(params[:page])
+                    @q.result.all
+                  else
+                    @q.result.page(params[:page])
       end
     end
 

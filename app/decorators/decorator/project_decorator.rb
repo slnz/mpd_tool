@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Decorator
   class ProjectDecorator < ApplicationDecorator
     def name

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User
   class Donor < ActiveType::Record[User]
     validates :first_name, :last_name, :email, :phone, :address_line_1, :city, presence: true, if: :active?
@@ -13,13 +15,13 @@ class User
     end
 
     def self.to_csv
-      attributes = %w{first_name last_name email facebook_profile}
+      attributes = %w[first_name last_name email facebook_profile]
 
       CSV.generate(headers: true) do |csv|
         csv << attributes
 
-        all.each do |user|
-          csv << attributes.map{ |attr| user.send(attr) }
+        all.find_each do |user|
+          csv << attributes.map { |attr| user.send(attr) }
         end
       end
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mpd
   class DoneesController < MpdController
     decorates_assigned :donee

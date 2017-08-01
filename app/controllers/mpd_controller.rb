@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MpdController < ApplicationController
   decorates_assigned :donee, :designation, :project
   before_action :load_donee, :load_designation, :load_project, if: :signed_in?

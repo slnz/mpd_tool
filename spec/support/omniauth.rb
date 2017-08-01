@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OmniauthHelper
   def self.valid_user(opts = {})
     default = { provider: :facebook,
@@ -7,15 +9,13 @@ class OmniauthHelper
                   gender: 'Male',
                   first_name: 'foo',
                   last_name: 'bar'
-                }
-              }
+                } }
     configure_omniauth default.merge(opts)
   end
 
   def self.invalid_user(opts = {})
     configure_omniauth({ provider: :facebook,
-                         invalid: :invalid_crendentials
-                       }.merge(opts))
+                         invalid: :invalid_crendentials }.merge(opts))
   end
 
   def self.configure_omniauth(data)

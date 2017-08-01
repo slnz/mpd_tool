@@ -1,7 +1,11 @@
+# frozen_string_literal: true
+
 module Give
   class PledgesController < GiveController
     decorates_assigned :pledge, :pledges
+
     def index
+      add_breadcrumb 'Donations', pledges_path
       load_pledges
     end
 

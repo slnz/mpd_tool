@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User
   class Donee < ActiveType::Record[User]
     validates :first_name, :last_name, :email, :phone, :address_line_1, :city, presence: true, if: :active?
@@ -17,6 +19,12 @@ class User
     has_many :donors, -> { order('first_name').distinct }, through: :subscriptions
     enum donee_state: { setup: 0, active: 1 }
     after_update :send_welcome_notification, if: -> { donee_state_changed? && active? }
+
+    scope :active, -> { where(donee_state: 1) }
+    scope :configured, -> { where.not(activation_code: nil).setup }
+    scope :search_by_full_name, lambda { |query|
+      where("LOWER(CONCAT_WS(' ', first_name, last_name)) LIKE ?", "%#{query.downcase}%").limit(10)
+    }
 
     def send_welcome_notification
       Mpd::DoneesMailer.welcome(self).deliver_now

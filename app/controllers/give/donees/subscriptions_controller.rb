@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Give
   module Donees
     class SubscriptionsController < DoneesController
       decorates_assigned :subscriptions, :subscription
-      before_action :authenticate_user!, except: [:index, :new]
+      before_action :authenticate_user!, except: %i[index new]
       before_action :check_project, except: [:index]
       add_breadcrumb 'Prayer Partnership', proc { |c| c.donee_subscriptions_path(donee_id: c.donee.slug) }
       helper_method :current_subscription

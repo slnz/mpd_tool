@@ -5,4 +5,5 @@
       = form_tag '', id: 'donee_search', onsubmit: 'return false;' do
         = fa_icon 'search'
         .input
-          = autocomplete_field_tag 'name', '', autocomplete_donee_name_donees_path, autocomplete: 'off', id: 'donee_name_search'
+          = text_field_tag 'search', nil, autocomplete: 'off', id: 'donee_name_search'
+    #donees

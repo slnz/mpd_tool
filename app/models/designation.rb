@@ -1,4 +1,6 @@
-class Designation < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Designation < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :designation_code, presence: true

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Give
   module Donees
     class PledgesController < DoneesController
       decorates_assigned :pledges, :pledge
-      before_action :authenticate_user!, except: [:about, :index, :new, :success, :failure]
+      before_action :authenticate_user!, except: %i[about index new success failure]
       before_action :check_project, except: [:index]
       add_breadcrumb 'Giving', proc { |c| c.donee_pledges_path(donee_id: c.donee.slug) }
 

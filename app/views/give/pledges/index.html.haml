@@ -1,16 +1,18 @@
 .container
   .content
-    - unless pledges.blank?
-      %h1 My Donation History
-      %table.table.table-striped
-        %thead
+    %h1 My Donation History
+    %table.table.table-striped
+      %thead
         %tr
           %td #
           %td Date
           %td Donee
           %td Project
           %td Amount
-        %tbody
+      %tbody
+        - if pledges.blank?
+          %tr
+            %td.text-center{colspan:100} No Donations Found
         - pledges.each_with_index do |pledge, index|
           %tr
             %td= index + 1
@@ -18,7 +20,7 @@
             %td= link_to pledge.donee.try(:name), donee_path(pledge.donee)
             %td= link_to pledge.project.try(:title), project_path(pledge.project)
             %td= number_to_currency pledge.amount
-        %tfoot
-          %tr
-            %td.text-right{colspan: 4} Total
-            %th= number_to_currency @pledges.sum(:amount)
+      %tfoot
+        %tr
+          %td.text-right{colspan: 4} Total
+          %th= number_to_currency @pledges.sum(:amount)

@@ -1,22 +1,25 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   ActiveAdmin.routes(self)
   devise_for :user, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     sessions: 'users/sessions',
-    registrations: 'users/registrations' }
+    registrations: 'users/registrations'
+  }
   constraints subdomain: 'give' do
     scope module: :give do
       root to: 'projects#index', as: :give_root
       get '/projects', to: redirect('/')
       resources :projects, only: [:show]
       authenticated :user do
-        resource :donor, path: 'me', only: [:edit, :update]
+        resource :donor, path: 'me', only: %i[edit update]
         resources :pledges, path: 'donations', only: [:index]
       end
       resources :donees, only: [:show], path: '' do
         collection do
-          get :autocomplete_donee_name
+          get :find
         end
         member do
           get 'about'
@@ -38,7 +41,7 @@ Rails.application.routes.draw do
     scope module: :mpd do
       authenticated :user do
         root to: 'pages#show', id: 'dash/home', as: :authenticated_root
-        resource :donee, path: 'me', only: [:edit, :update]
+        resource :donee, path: 'me', only: %i[edit update]
         resources :donations, only: [:index]
         resources :deposits
         resources :donors, only: [:index]

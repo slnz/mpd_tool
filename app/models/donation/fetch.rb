@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'csv'
 class Donation
   class Fetch
@@ -39,7 +41,7 @@ class Donation
 
     def self.project(profile)
       Project.where(code: profile['PROFILE_CODE'])
-        .first_or_create(title: profile['PROFILE_DESCRIPTION'])
+             .first_or_create(title: profile['PROFILE_DESCRIPTION'])
     end
 
     def self.create_donation(data, project)

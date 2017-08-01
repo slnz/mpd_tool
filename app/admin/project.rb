@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Project do
   scope :all, default: true
   config.per_page = 100

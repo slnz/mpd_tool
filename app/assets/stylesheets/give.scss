@@ -121,6 +121,28 @@ a.clean:hover {
     }
   }
 }
+#donees {
+  margin-top: 52px;
+  .donee {
+    background: #fff;
+    border: 2px solid #000;
+    border-top-width: 0;
+    a {
+      line-height: 45px;
+      height: 45px;
+      color: #000;
+      display: block;
+      .name {
+        margin-left: 10px;
+      }
+    }
+    img {
+      height: 45px;
+      width: 45px;
+      vertical-align: top;
+    }
+  }
+}
 .search {
   margin-top: 10px;
   position: relative;

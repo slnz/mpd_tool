@@ -1,4 +1,6 @@
-class Pledge < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Pledge < ApplicationRecord
   belongs_to :designation
   belongs_to :donation
   belongs_to :project

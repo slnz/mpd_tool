@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GiveController < ApplicationController
   before_action :validate_current_user, if: :signed_in?
   layout 'give'
