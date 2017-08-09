@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :rememberable, :trackable, :omniauthable, omniauth_providers: [:facebook]
   validates :email, uniqueness: true
   validates :email, presence: true, unless: :uid
-  before_save :set_name
+  before_validation :set_name
 
   def set_name
     self.name = "#{first_name} #{last_name}".strip
@@ -52,6 +52,6 @@ class User < ApplicationRecord
   end
 
   def should_generate_new_friendly_id?
-    name_changed?
+    slug.blank? || name_changed?
   end
 end
