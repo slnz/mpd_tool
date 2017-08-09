@@ -7,7 +7,7 @@ module Decorator
     end
 
     def description_with_name(name)
-      description.try(:gsub!, '%{name}', name) || ''
+      format(description, name: name)
     end
 
     def days_until
