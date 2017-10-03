@@ -23,8 +23,8 @@ ActiveAdmin.register Deposit do
   end
 
   batch_action :approve, confirm: 'This action is irreversible. Are You sure you want to do this?' do |ids, _inputs|
-    scoped_collection.find(ids).each do |donation|
-      donation.complete! if donation.valid?
+    scoped_collection.find(ids).each do |deposit|
+      deposit.complete! if deposit.valid?
     end
     redirect_to collection_path, notice: 'The deposits you selected have been marked as complete!'
   end

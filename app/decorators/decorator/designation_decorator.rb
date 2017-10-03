@@ -5,7 +5,7 @@ module Decorator
     decorates_association :project
 
     def amount_raised
-      donations.where(project: project).sum(:amount)
+      donations.where(project: project).sum(:amount) + deposits.completed.where(project: project).sum(:amount)
     end
 
     def amount_deposited
@@ -17,13 +17,13 @@ module Decorator
     end
 
     def percentage_raised
-      return 100 if goal == 0
+      return 100 if goal.zero?
       percentage = (amount_raised / goal * 100).to_i
       percentage
     end
 
     def percentage_deposited
-      return 0 if goal == 0
+      return 0 if goal.zero?
       percentage = (amount_deposited / goal * 100).to_i
       return 100 - percentage_raised if percentage_raised + percentage > 100
       percentage

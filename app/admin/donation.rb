@@ -24,15 +24,6 @@ ActiveAdmin.register Donation do
     actions
   end
 
-  action_item :fetch_donations do
-    link_to 'Fetch Donations', fetch_admin_donations_path
-  end
-
-  collection_action :fetch do
-    Donation::Fetch.from_dataserve
-    redirect_to admin_donations_url, notice: 'Fetched Donations'
-  end
-
   show do
     attributes_table do
       row :id

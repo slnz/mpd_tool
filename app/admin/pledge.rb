@@ -5,7 +5,6 @@ ActiveAdmin.register Pledge do
   scope :pending
   scope :failure
   scope :success, default: true
-  scope :complete
   config.per_page = 50
   decorate_with Decorator::PledgeDecorator
   actions :index, :destroy, :show
