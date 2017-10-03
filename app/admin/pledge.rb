@@ -44,15 +44,6 @@ ActiveAdmin.register Pledge do
     redirect_to collection_path, notice: 'The failed pledges you selected have been pushed through as successful!'
   end
 
-  batch_action :mark_as_complete,
-               confirm: 'This action is irreversible. This only applies to pledges marked as successful. '\
-                        'Are You sure you want to do this?' do |ids, _inputs|
-    scoped_collection.find(ids).each do |pledge|
-      pledge.complete! if pledge.success? && pledge.valid?
-    end
-    redirect_to collection_path, notice: 'The successful pledges you selected have been pushed through as completed!'
-  end
-
   csv force_quotes: true do
     column(:pledge_id, &:id)
     column(:tendered_amount) { |p| number_with_precision p.amount, precision: 2 }

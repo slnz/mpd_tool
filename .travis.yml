@@ -1,7 +1,6 @@
 env:
   global:
   - SECRET_KEY_BASE=7b73a3310b9f96f79c8fec09fac558ebe2bc863a25da4eed0fbff524c7795f228247dafdfe09dd580f8b7e8c0f634815851d1d018e45341f768e8dca6e4fb5ec
-  - DATASERVE_URL=https://tntdataserverasia.com/dataserver/nzl/dataquery/tntquery.aspx
   - RAILS_ENV=test
   - RACK_ENV=test
   - AMAZON_S3_BUCKET=slnz_bundle_cache

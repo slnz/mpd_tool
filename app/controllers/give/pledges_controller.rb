@@ -16,8 +16,7 @@ module Give
     end
 
     def pledge_scope
-      current_user.pledges.where(status: [Pledge.statuses['success'],
-                                          Pledge.statuses['complete']]).order('created_at desc')
+      current_user.pledges.where(status: Pledge.statuses['success']).order('created_at desc')
     end
   end
 end
