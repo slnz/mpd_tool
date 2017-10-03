@@ -5,7 +5,7 @@ module Decorator
     decorates_association :project
 
     def amount_raised
-      donations.where(project: project).sum(:amount) + deposits.completed.where(project: project).sum(:amount)
+      donations.where(project: project).sum(:amount) + deposits.complete.where(project: project).sum(:amount)
     end
 
     def amount_deposited
