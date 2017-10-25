@@ -50,4 +50,8 @@ class User < ApplicationRecord
       uid: auth[:uid]
     )
   end
+
+  def should_generate_new_friendly_id?
+    slug != name.try(:parameterize)
+  end
 end
