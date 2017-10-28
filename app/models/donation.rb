@@ -17,15 +17,10 @@ class Donation < ApplicationRecord
                        'AMEX' => 7,
                        'AP' => 8 }
   enum gift_type: { offline: 0, online: 1 }
-  validates :global_id, presence: true, uniqueness: true, unless: ->(o) { o.payment_type == 'STAFF' || online? }
   validates :project, :display_date, :amount, :designation_id, :contact, presence: true
   belongs_to :project
   belongs_to :contact
   belongs_to :pledge
   belongs_to :designation, foreign_key: :designation_code
   delegate :name, to: :contact, allow_nil: true
-
-  def self.refreshable(date)
-    where('created_at > ?', date).where.not(payment_type: Donation.payment_types['TRANSFER']).offline
-  end
 end

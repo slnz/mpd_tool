@@ -12,7 +12,6 @@ class Pledge < ApplicationRecord
   validates :donation, :contact, presence: true, if: :success?
   validates :amount, format: { with: /\A\d+[\.0]*\Z/i, message: 'can only be whole dollars' }
   before_validation :generate_contact, :generate_donation, if: :success?
-  before_destroy :destroy_donation
   delegate :donee, to: :designation
   has_one :donation, dependent: :destroy
   after_update :send_notifications, if: -> { status_changed? && success? }
@@ -29,7 +28,9 @@ class Pledge < ApplicationRecord
   end
 
   def generate_donation
-    self.donation ||= Donation.create(
+    Donation.find_or_create_by(
+      pledge: self
+    ).create_with(
       project: project,
       contact: contact,
       designation_id: designation.designation_code,
@@ -38,6 +39,8 @@ class Pledge < ApplicationRecord
       payment_type: giving_method == 'credit card' ? 'CREDITCARD' : 'AP',
       gift_type: Donation.gift_types[:online]
     )
+  rescue ActiveRecord::RecordNotUnique
+    retry
   end
 
   def create_request(options = {})
