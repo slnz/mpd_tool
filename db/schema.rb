@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014041145) do
+ActiveRecord::Schema.define(version: 20171028115850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20151014041145) do
     t.integer  "project_id"
     t.integer  "payment_type",   default: 0
     t.integer  "gift_type",      default: 0
+    t.integer  "pledge_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -117,7 +118,6 @@ ActiveRecord::Schema.define(version: 20151014041145) do
     t.datetime "updated_at",                     null: false
     t.integer  "status",         default: 0
     t.integer  "project_id"
-    t.integer  "donation_id"
     t.integer  "contact_id"
     t.text     "payload"
     t.text     "params"

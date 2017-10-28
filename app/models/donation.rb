@@ -21,7 +21,7 @@ class Donation < ApplicationRecord
   validates :project, :display_date, :amount, :designation_id, :contact, presence: true
   belongs_to :project
   belongs_to :contact
-  has_one :pledge, dependent: :nullify
+  belongs_to :pledge
   belongs_to :designation, foreign_key: :designation_code
   delegate :name, to: :contact, allow_nil: true
 

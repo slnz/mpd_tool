@@ -2,7 +2,6 @@
 
 class Pledge < ApplicationRecord
   belongs_to :designation
-  belongs_to :donation
   belongs_to :project
   belongs_to :contact
   belongs_to :donor, class_name: 'User::Donor'
@@ -15,8 +14,8 @@ class Pledge < ApplicationRecord
   before_validation :generate_contact, :generate_donation, if: :success?
   before_destroy :destroy_donation
   delegate :donee, to: :designation
+  has_one :donation, dependent: :destroy
   after_update :send_notifications, if: -> { status_changed? && success? }
-  after_update :destroy_donation, if: -> { status_changed? && complete? }
   serialize :payload
   serialize :params
 
@@ -53,11 +52,5 @@ class Pledge < ApplicationRecord
   def create_subscription
     return unless newsletter?
     Subscription.find_or_create_by(donor: donor, designation: designation, project: designation.project)
-  end
-
-  protected
-
-  def destroy_donation
-    donation.try(:destroy)
   end
 end
