@@ -28,17 +28,15 @@ class Pledge < ApplicationRecord
   end
 
   def generate_donation
-    Donation.find_or_create_by(
-      pledge: self
-    ).create_with(
-      project: project,
-      contact: contact,
-      designation_id: designation.designation_code,
-      amount: amount,
-      display_date: created_at,
-      payment_type: giving_method == 'credit card' ? 'CREDITCARD' : 'AP',
-      gift_type: Donation.gift_types[:online]
-    )
+    Donation.find_or_create_by(pledge: self) do |donation|
+      donation.project = project
+      donation.contact = contact
+      donation.designation_id = designation.designation_code
+      donation.amount = amount
+      donation.display_date = created_at
+      donation.payment_type = giving_method == 'credit card' ? 'CREDITCARD' : 'AP'
+      donation.gift_type = Donation.gift_types[:online]
+    end
   rescue ActiveRecord::RecordNotUnique
     retry
   end
